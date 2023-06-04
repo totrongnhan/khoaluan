@@ -34,7 +34,7 @@ class nganhhoc extends Database {
     }
 
     public function nganhhoc__Get_By_Id($id_nganhhoc) {
-        $obj = $this->connect->prepare("SELECT * FROM nganhhoc WHERE id_nganhhoc = ? AND action = 1");
+        $obj = $this->connect->prepare("SELECT * FROM nganhhoc WHERE id_nganhhoc = ?");
         $obj->setFetchMode(PDO::FETCH_OBJ);
         $obj->execute(array($id_nganhhoc));
         return $obj->fetch();

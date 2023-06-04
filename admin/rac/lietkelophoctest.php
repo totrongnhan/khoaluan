@@ -18,6 +18,14 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
     </head>
     <body>
+        <div class="form-group">
+            <label for="id_nganhhoc">ID ngành học</label>
+            <select class="form-control" name="id_nganhhoc" id="id_nganhhoc">
+                <?php foreach ($nganhhoc__Get_All as $id_nganhhoc): ?>
+                    <option value="<?php echo $id_nganhhoc->id_nganhhoc; ?>"><?php echo $id_nganhhoc->tennganhhoc; ?></option>
+                <?php endforeach; ?>
+            </select>
+        </div>
 
 
 
@@ -79,61 +87,59 @@
                 </table>
             </div>
         </div>
-    
+
         <?php
-        
         $nganhhoc_sql = "SELECT * FROM nganhhoc ";
         mysqli_query($conn, $lietke_sql);
         $res = mysqli_query($conn, $nganhhoc_sql);
-        
         ?>
 
-    <!-- The Modal -->
-    <div class="modal" id="myModal">
-        <div class="modal-dialog">
-            <div class="modal-content">
+        <!-- The Modal -->
+        <div class="modal" id="myModal">
+            <div class="modal-dialog">
+                <div class="modal-content">
 
-                <!-- Modal Header -->
-                <div class="modal-header">
-                    <h4 class="modal-title">Thêm lớp học</h4>
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <h4 class="modal-title">Thêm lớp học</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+
+                    <!-- Modal body -->
+                    <div class="modal-body">
+                        <form action="themlophoc.php" method="post">
+                            <div class="form-group">
+                                <label for="tenlophoc">Tên lớp học</label>
+                                <input type="text" class="form-control" name="tenlophoc" id="tenlophoc">
+                            </div>
+                            <div class="form-group">
+                                <label for="mota">Mô tả</label>
+                                <input type="text" class="form-control" name="mota" id="mota">
+                            </div>
+                            <div class="form-group">
+                                <label for="id_nganhhoc">Id ngành học</label>
+                                <select name="id_nganhhoc" id="id_nganhhoc" class="form-select">
+<?php while (($item = mysqli_fetch_assoc($res))): ?>
+                                        <option value="<?= $item['id_nganhhoc'] ?>"><?= $item['tennganhhoc'] ?></option>
+                                    <?php endwhile; ?>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="id_khoahoc">ID khóa học</label>
+                                <input type="text" class="form-control" name="id_khoahoc" id="id_khoahoc">
+                            </div>
+                            <button class="btn btn-success">Thêm lớp học</button>
+                        </form>
+                    </div>
+
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Đóng</button>
+                    </div>
+
                 </div>
-
-                <!-- Modal body -->
-                <div class="modal-body">
-                    <form action="themlophoc.php" method="post">
-                        <div class="form-group">
-                            <label for="tenlophoc">Tên lớp học</label>
-                            <input type="text" class="form-control" name="tenlophoc" id="tenlophoc">
-                        </div>
-                        <div class="form-group">
-                            <label for="mota">Mô tả</label>
-                            <input type="text" class="form-control" name="mota" id="mota">
-                        </div>
-                        <div class="form-group">
-                            <label for="id_nganhhoc">Id ngành học</label>
-                            <select name="id_nganhhoc" id="id_nganhhoc" class="form-select">
-                                <?php while(($item = mysqli_fetch_assoc($res))):?>
-                                <option value="<?=$item['id_nganhhoc']?>"><?=$item['tennganhhoc']?></option>
-                                <?php endwhile;?>
-                              </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="id_khoahoc">ID khóa học</label>
-                            <input type="text" class="form-control" name="id_khoahoc" id="id_khoahoc">
-                        </div>
-                        <button class="btn btn-success">Thêm lớp học</button>
-                    </form>
-                </div>
-
-                <!-- Modal footer -->
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Đóng</button>
-                </div>
-
             </div>
         </div>
-    </div>
 
-</body>
+    </body>
 </html>

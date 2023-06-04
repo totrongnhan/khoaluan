@@ -1,5 +1,5 @@
 <?php
-require("../../../models/getModel.php");
+require("../models/getModel.php");
 $nganhhoc__Get_All = $nganhhoc->nganhhoc__Get_All();
 ?>
 <!DOCTYPE html>
@@ -9,8 +9,8 @@ $nganhhoc__Get_All = $nganhhoc->nganhhoc__Get_All();
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Liệt kê danh sách ngành học</title>
-        <link href="../../../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-        <link href="../css.css" rel="stylesheet" type="text/css"/>
+        <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
         <!-- Latest compiled and minified CSS -->
 
         <!-- jQuery library -->
@@ -24,7 +24,6 @@ $nganhhoc__Get_All = $nganhhoc->nganhhoc__Get_All();
     </head>
     <body>
         <div>
-            <form action="./nganhhocAct.php?req=add" method="post">
                 <!-- Content -->
                 <div id="content">
                     <nav class="navbar navbar-default">
@@ -43,7 +42,7 @@ $nganhhoc__Get_All = $nganhhoc->nganhhoc__Get_All();
                             <h1>Danh sách ngành học</h1>
                             <!-- Button to Open the Modal -->
                             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-                                Thêm ngành học mới
+                                Thêm lớp ngành mới
                             </button>
 
 
@@ -52,7 +51,7 @@ $nganhhoc__Get_All = $nganhhoc->nganhhoc__Get_All();
                                     <tr>
                                         <th>Id ngành học</th>
                                         <th>Tên ngành học</th>
-                                        <th>Mô tả</th>
+                                        <th>Mô tả</th>                                       
                                         <th>Thao tác</th>
                                     </tr>
                                 </thead>
@@ -63,8 +62,8 @@ $nganhhoc__Get_All = $nganhhoc->nganhhoc__Get_All();
                                             <td><?php echo $item->tennganhhoc; ?></td>
                                             <td><?php echo $item->mota; ?></td>
                                             <td>
-                                                <a href="?req=update&id_nganhhoc=<?php echo $item->id_nganhhoc; ?>" class="btn btn-primary">Sửa</a>
-                                                <a onclick="return confirm('Bạn có muốn xóa ngành học này không');" href="?req=delete&id_nganhhoc=<?php echo $item->id_nganhhoc; ?>" class="btn btn-danger">Xóa</a>
+                                                <a href="?req=suanganhhoc&id_nganhhoc=<?php echo $item->id_nganhhoc; ?>" class="btn btn-primary">Sửa</a>
+                                                <a onclick="return confirm('Bạn có muốn xóa ngành học này không');" href="./quanly/nganhhoc/nganhhocAct.php?req=delete&id_nganhhoc=<?php echo $item->id_nganhhoc; ?>" class="btn btn-danger">Xóa</a>
                                             </td>
                                         </tr>
                                     <?php endforeach ?>
@@ -74,21 +73,14 @@ $nganhhoc__Get_All = $nganhhoc->nganhhoc__Get_All();
                         </div>
                     </div>
 
-
                     <!-- The Modal -->
                     <div class="modal" id="myModal">
                         <div class="modal-dialog">
                             <div class="modal-content">
 
                                 <!-- Modal Header -->
-                                <div class="modal-header">
-                                    <h4 class="modal-title">Thêm ngành học</h4>
-                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                </div>
-
-                                <!-- Modal body -->
                                 <div class="modal-body">
-                                    <form action="./nganhhocAct.php?req=add" method="post">
+                                    <form action="./quanly/nganhhoc/nganhhocAct.php?req=add" method="post">
                                         <div class="form-group">
                                             <label for="tennganhhoc">Tên ngành học</label>
                                             <input type="text" class="form-control" name="tennganhhoc" id="tennganhhoc">
@@ -96,8 +88,8 @@ $nganhhoc__Get_All = $nganhhoc->nganhhoc__Get_All();
                                         <div class="form-group">
                                             <label for="mota">Mô tả</label>
                                             <input type="text" class="form-control" name="mota" id="mota">
-                                        </div>
-                                        <button class="btn btn-success">Thêm ngành học</button>
+                                        </div>                                       
+                                        <button class="btn btn-success">Thêm lớp học</button>
                                     </form>
                                 </div>
 

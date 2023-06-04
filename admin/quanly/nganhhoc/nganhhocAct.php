@@ -8,37 +8,39 @@ if (isset($_GET["req"])) {
     switch ($_GET["req"]) {
         case "add":
             $tennganhhoc = $_POST['tennganhhoc'];
-            $mota = $_POST['mota'];
-            $status = $nganhhoc->nganhhoc_Add($tennganhhoc, $mota);
+            $mota = $_POST['mota'];            
+            $status = $nganhhoc->nganhhoc_Add($tennganhhoc, $mota,);
             if ($status) {
-                header("Location: lietkenganhhoc.php");
+                header('Location: ../../index.php?req=lietkenganhhoc&status=success');
             } else {
-                header('Location: lietkenganhhoc.php');
+                header('Location: ../../index.php?req=lietkenganhhoc&status=fail');
             }
             break;
 
         case "update":
-            $id_nganhhoc = $POST['id_nganhhoc'];
+            $id_nganhhoc = $_POST['id_nganhhoc'];
             $tennganhhoc = $_POST['tennganhhoc'];
-            $mota = $_POST['mota'];
-            $status = $nganhhoc->nganhhoc__Update($id_nganhhoc, $tennganhhoc, $mota);
+            $mota = $_POST['mota'];           
+            $status = $nganhhoc->nganhhoc__Update($id_nganhhoc, $tennganhhoc, $mota,);
             if ($status) {
-                header('Location: suanganhhoc.php');
+                header('Location: ../../index.php?req=lietkenganhhoc&status=success');
             } else {
-                header('Location: lietkenganhhoc.php');
+                header('Location: ../../index.php?req=lietkenganhhoc&status=fail');
             }
             break;
         case "delete":
-            $id_nganhhoc = $POST['id_nganhhoc'];          
+            $id_nganhhoc = $_GET['id_nganhhoc'];          
             $status = $nganhhoc->nganhhoc__Delete($id_nganhhoc);
             if ($status) {
-                header('Location: lietkenganhhoc.php');
+                header('Location: ../../index.php?req=lietkenganhhoc&status=success');
             } else {
-                header('Location: lietkenganhhoc.php');
+                header('Location: ../../index.php?req=lietkenganhhoc&status=fail');
             }
             break;   
     }
 }
 ?>
+
+
 
 

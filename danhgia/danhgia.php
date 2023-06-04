@@ -22,8 +22,8 @@
         <table class="uk-table uk-table-justify uk-table-divider">
     <thead>
         <tr>
-            <th class="uk-width-small">Mã đánh giá</th>
-            <th>Tên đánh giá</th>
+            <th class="uk-width-small">Id tên khảo sát</th>
+            <th>Tên khảo sát</th>
             <th>Tham gia</th>
         </tr>
     </thead>

@@ -34,7 +34,7 @@ class khoahoc extends Database {
     }
 
     public function khoahoc__Get_By_Id($id_khoahoc) {
-        $obj = $this->connect->prepare("SELECT * FROM khoahoc WHERE id_khoahoc = ? AND action = 1");
+        $obj = $this->connect->prepare("SELECT * FROM khoahoc WHERE id_khoahoc = ?");
         $obj->setFetchMode(PDO::FETCH_OBJ);
         $obj->execute(array($id_khoahoc));
         return $obj->fetch();

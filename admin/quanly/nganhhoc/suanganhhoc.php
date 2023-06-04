@@ -1,7 +1,8 @@
-
 <?php
-require("../../../models/getModel.php");
-$nganhhoc__Get_All = $nganhhoc->nganhhoc__Get_All();
+//lay id can sua
+$id_nganhhoc = $_GET['id_nganhhoc'];
+require("../models/getModel.php");
+$nganhhoc__Get_By_Id = $nganhhoc->nganhhoc__Get_By_Id($id_nganhhoc);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -10,7 +11,8 @@ $nganhhoc__Get_All = $nganhhoc->nganhhoc__Get_All();
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Sửa ngành học</title>
-        <link href="../../../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+        <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
 
         <!-- jQuery library -->
         <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>
@@ -24,16 +26,18 @@ $nganhhoc__Get_All = $nganhhoc->nganhhoc__Get_All();
     <body>
         <div class="container">
             <h1>Sửa thông tin ngành học</h1>
-            <form action="./nganhhocAct.php?req=update" method="post">
-                <input type="hidden" name="id_nganhhoc" value="<?php echo $id_nganhhoc;?>" id="">
+            <form action="./quanly/nganhhoc/nganhhocAct.php?req=update" method="post">               
+                <input type="hidden" name="id_nganhhoc" value="<?php echo $id_nganhhoc; ?>" id="">
                 <div class="form-group">
                     <label for="tennganhhoc">Tên ngành học</label>
-                    <input type="text" class="form-control" name="tennganhhoc" id="tennganhhoc"  value="<?=$tennganhhoc['tennganhhoc']; ?>">
+                    <input type="text" class="form-control" name="tennganhhoc" id="tennganhhoc"
+                           value="<?php echo $nganhhoc__Get_By_Id->tennganhhoc ?>">
                 </div>
                 <div class="form-group">
                     <label for="mota">Mô tả</label>
-                    <input type="text" class="form-control" name="mota" id="mota"  value="<?php echo $mota;?>">
-                </div>
+                    <input type="text" class="form-control" name="mota" id="mota"
+                           value="<?php echo $nganhhoc__Get_By_Id->mota ?>">
+                </div>                
                 <button class="btn btn-info">Cập nhật thông tin</button>
             </form>
 

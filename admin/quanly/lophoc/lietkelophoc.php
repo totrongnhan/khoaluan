@@ -1,6 +1,8 @@
 <?php
 require("../models/getModel.php");
 $lophoc__Get_All = $lophoc->lophoc__Get_All();
+$nganhhoc__Get_All = $nganhhoc->nganhhoc__Get_All();
+$khoahoc__Get_All = $khoahoc->khoahoc__Get_All();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -9,8 +11,8 @@ $lophoc__Get_All = $lophoc->lophoc__Get_All();
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Liệt kê danh sách lớp học</title>
-        <link href="../../../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-        <link href="../css.css" rel="stylesheet" type="text/css"/>
+        <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
         <!-- Latest compiled and minified CSS -->
 
         <!-- jQuery library -->
@@ -24,95 +26,103 @@ $lophoc__Get_All = $lophoc->lophoc__Get_All();
     </head>
     <body>
         <div>
-                <!-- Content -->
-                <div id="content">
-                    <nav class="navbar navbar-default">
-                        <div class="container-fluid">
-                            <ul class="nav navbar-nav navbar-right">
-                                <li>
-                                    <a href="#"><i class="zmdi zmdi-notifications text-danger"></i>
-                                    </a>
-                                </li>
-                                <li><a href="..index.php">Trang Chủ</a></li>
-                            </ul>
-                        </div>
-                    </nav>
+            <!-- Content -->
+            <div id="content">
+                <nav class="navbar navbar-default">
                     <div class="container-fluid">
-                        <div class="container">
-                            <h1>Danh sách lớp học</h1>
-                            <!-- Button to Open the Modal -->
-                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-                                Thêm lớp học mới
-                            </button>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li>
+                                <a href="#"><i class="zmdi zmdi-notifications text-danger"></i>
+                                </a>
+                            </li>
+                            <li><a href="..index.php">Trang Chủ</a></li>
+                        </ul>
+                    </div>
+                </nav>
+                <div class="container-fluid">
+                    <div class="container">
+                        <h1>Danh sách lớp học</h1>
+                        <!-- Button to Open the Modal -->
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+                            Thêm lớp học mới
+                        </button>
 
 
-                            <table class="table table-dark table-hover">
-                                <thead>
+                        <table class="table table-dark table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Id lớp học</th>
+                                    <th>Tên lớp học</th>
+                                    <th>Mô tả</th>
+                                    <th>Id ngành học</th>
+                                    <th>Id khóa học</th>
+                                    <th>Thao tác</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php foreach ($lophoc__Get_All as $item): ?>
                                     <tr>
-                                        <th>Id lớp học</th>
-                                        <th>Tên lớp học</th>
-                                        <th>Mô tả</th>
-                                        <th>Id ngành học</th>
-                                        <th>Id khóa học</th>
-                                        <th>Thao tác</th>
+                                        <td><?php echo $item->id_lophoc; ?></td>
+                                        <td><?php echo $item->tenlophoc; ?></td>
+                                        <td><?php echo $item->mota; ?></td>
+                                        <td><?php echo $item->id_nganhhoc; ?></td>
+                                        <td><?php echo $item->id_khoahoc; ?></td>
+                                        <td>
+                                            <a href="?req=sualophoc&id_lophoc=<?php echo $item->id_lophoc; ?>" class="btn btn-primary">Sửa</a>
+                                            <a onclick="return confirm('Bạn có muốn xóa lớp học này không');" href="./quanly/lophoc/lophocAct.php?req=delete&id_lophoc=<?php echo $item->id_lophoc; ?>" class="btn btn-danger">Xóa</a>
+                                        </td>
                                     </tr>
-                                </thead>
-                                <tbody>
-                                    <?php foreach ($lophoc__Get_All as $item): ?>
-                                        <tr>
-                                            <td><?php echo $item->id_lophoc; ?></td>
-                                            <td><?php echo $item->tenlophoc; ?></td>
-                                            <td><?php echo $item->mota; ?></td>
-                                            <td><?php echo $item->id_nganhhoc; ?></td>
-                                            <td><?php echo $item->id_khoahoc; ?></td>
-                                            <td>
-                                                <a href="?req=sualophoc&id_lophoc=<?php echo $item->id_lophoc; ?>" class="btn btn-primary">Sửa</a>
-                                                <a onclick="return confirm('Bạn có muốn xóa khóa học này không');" href="./quanly/lophoc/lophocAct.php?req=delete&id_lophoc=<?php echo $item->id_lophoc; ?>" class="btn btn-danger">Xóa</a>
-                                            </td>
-                                        </tr>
-                                    <?php endforeach ?>
+                                <?php endforeach ?>
 
-                                </tbody>
-                            </table>
-                        </div>
+                            </tbody>
+                        </table>
                     </div>
+                </div>
 
-                    <!-- The Modal -->
-                    <div class="modal" id="myModal">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
+                <!-- The Modal -->
+                <div class="modal" id="myModal">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
 
-                                <!-- Modal Header -->
-                                <div class="modal-body">
-                                    <form action="./quanly/lophoc/lophocAct.php?req=add" method="post">
-                                        <div class="form-group">
-                                            <label for="tenlophoc">Tên lớp học</label>
-                                            <input type="text" class="form-control" name="tenlophoc" id="tenlophoc">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="mota">Mô tả</label>
-                                            <input type="text" class="form-control" name="mota" id="mota">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="id_nganhhoc">ID ngành học</label>
-                                            <input type="text" class="form-control" name="id_nganhhoc" id="id_nganhhoc">
-                                        </div>                                       
-                                        <div class="form-group">
-                                            <label for="id_khoahoc">ID khóa học</label>
-                                            <input type="text" class="form-control" name="id_khoahoc" id="id_khoahoc">
-                                        </div>
-                                        <button class="btn btn-success">Thêm lớp học</button>
-                                    </form>
-                                </div>
-
-                                <!-- Modal footer -->
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Đóng</button>
-                                </div>
-
+                            <!-- Modal Header -->
+                            <div class="modal-body">
+                                <form action="./quanly/lophoc/lophocAct.php?req=add" method="post">
+                                    <div class="form-group">
+                                        <label for="tenlophoc">Tên lớp học</label>
+                                        <input type="text" class="form-control" name="tenlophoc" id="tenlophoc">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="mota">Mô tả</label>
+                                        <input type="text" class="form-control" name="mota" id="mota">
+                                    </div>                                  
+                                    <div class="form-group">
+                                        <label for="id_nganhhoc">ID ngành học</label>
+                                        <select class="form-control" name="id_nganhhoc" id="id_nganhhoc">
+                                            <?php foreach ($nganhhoc__Get_All as $item): ?>
+                                                <option value="<?= $item->id_nganhhoc ?>"><?= $item->tennganhhoc ?></option>
+                                            <?php endforeach ?>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="id_khoahoc">ID khóa học</label>
+                                        <select class="form-control" name="id_khoahoc" id="id_khoahoc">
+                                            <?php foreach ($khoahoc__Get_All as $item): ?>
+                                                <option value="<?= $item->id_khoahoc ?>"><?= $item->tenkhoahoc ?></option>
+                                            <?php endforeach ?>
+                                        </select>
+                                    </div>
+                                    <button class="btn btn-success">Thêm lớp học</button>
+                                </form>
                             </div>
+
+                            <!-- Modal footer -->
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">Đóng</button>
+                            </div>
+
                         </div>
                     </div>
+                </div>
 
-                    </body>
-                    </html>
+                </body>
+                </html>

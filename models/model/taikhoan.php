@@ -34,7 +34,7 @@ class taikhoan extends Database {
     }
 
     public function taikhoan__Get_By_Id($id_taikhoan) {
-        $obj = $this->connect->prepare("SELECT * FROM taikhoan WHERE id_taikhoan = ? AND action = 1");
+        $obj = $this->connect->prepare("SELECT * FROM taikhoan WHERE id_taikhoan = ?");
         $obj->setFetchMode(PDO::FETCH_OBJ);
         $obj->execute(array($id_taikhoan));
         return $obj->fetch();
@@ -51,9 +51,9 @@ class taikhoan extends Database {
         }
     }
 
-    public function taikhoan__Change_Password($id_taikhoan, $matkhau) {
+    public function taikhoan__Change_Password($id_taikhoan, $matkhau_new) {
         $obj = $this->connect->prepare("UPDATE taikhoan SET matkhau=? WHERE id_taikhoan=?");
-        $obj->execute(array($matkhau, $id_taikhoan));
+        $obj->execute(array($matkhau_new, $id_taikhoan));
         if($obj->rowCount() > 0){
             return $obj->fetch();
         }else{
@@ -61,15 +61,20 @@ class taikhoan extends Database {
         }
     }
 
-    public function taikhoan_Add($tentaikhoan, $email, $matkhau, $id_phanquyen) {
-        $obj = $this->connect->prepare("INSERT INTO taikhoan(tentaikhoan, email, matkhau, id_phanquyen) VALUES (?,?,?,?)");
-        $obj->execute(array($tentaikhoan, $email, $matkhau, $id_phanquyen));
+    public function taikhoan_Add($tentaikhoan, $email, $matkhau, $mota, $id_phanquyen, $id_phannhom, $id_nguoidung) {
+        $obj = $this->connect->prepare("INSERT INTO taikhoan(tentaikhoan, email, matkhau, mota, id_phanquyen, id_phannhom, id_nguoidung) VALUES (?,?,?,?,?,?,?)");
+        $obj->execute(array($tentaikhoan, $email, $matkhau, $mota, $id_phanquyen, $id_phannhom, $id_nguoidung));
         return $obj->rowCount();
     }
 
-    public function taikhoan__Update($id_taikhoan, $tentaikhoan, $email, $matkhau, $id_phanquyen) {
-        $obj = $this->connect->prepare("UPDATE taikhoan SET tentaikhoan=?, email=?, matkhau=?, id_phanquyen=?  WHERE id_taikhoan=?");
-        $obj->execute(array($tentaikhoan, $email, $matkhau, $id_phanquyen, $id_taikhoan));
+    public function taikhoan__Update($id_taikhoan, $tentaikhoan, $email, $matkhau, $mota, $id_phanquyen, $id_phannhom, $id_nguoidung) {
+        $obj = $this->connect->prepare("UPDATE taikhoan SET tentaikhoan=?, email=?, matkhau=?, mota=?, id_phanquyen=?, id_phannhom=? , id_nguoidung=? WHERE id_taikhoan=?");
+        $obj->execute(array($tentaikhoan, $email, $matkhau, $mota, $id_phanquyen, $id_phannhom, $id_nguoidung, $id_taikhoan));
+        return $obj->rowCount();
+    }
+    public function taikhoan__Reset($id_taikhoan, $matkhau) {
+        $obj = $this->connect->prepare("UPDATE taikhoan SET matkhau=? WHERE id_taikhoan=?");
+        $obj->execute(array($matkhau, $id_taikhoan));
         return $obj->rowCount();
     }
 

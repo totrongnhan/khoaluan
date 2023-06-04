@@ -22,22 +22,22 @@
         <table class="uk-table uk-table-justify uk-table-divider">
     <thead>
         <tr>
-            <th class="uk-width-small">Mã đánh giá</th>
-            <th>Tên đánh giá</th>
+            
+            <th>Tên khảo sát</th>
             <th>Tham gia</th>
         </tr>
     </thead>
     <tbody>
         <tr>
-            <td>DG1</td>
+            
             <td>Cơ sở vật chất</td>
-            <td> <a href="danhgiacsvc/csvc.php" class="uk-button uk-button-default" data-hover="dropdown">Khảo sát</a></td>
+            <td> <a href="danhgiacsvc.php" class="uk-button uk-button-default" data-hover="dropdown">Khảo sát</a></td>
             <a href="csvc.php"></a>
         </tr>
         <tr>
-            <td>DG2</td>
+            
             <td>Chương trình đào tạo</td>
-           <td> <a href="danhgiactdt/ctdt.php" class="uk-button uk-button-default" data-hover="dropdown">Khảo sát</a></td>
+           <td> <a href="danhgiactdt.php" class="uk-button uk-button-default" data-hover="dropdown">Khảo sát</a></td>
             
         </tr>
     </tbody>

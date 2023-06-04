@@ -1,5 +1,5 @@
 <?php
-require("../../../models/getModel.php");
+require("../models/getModel.php");
 $khoahoc__Get_All = $khoahoc->khoahoc__Get_All();
 ?>
 <!DOCTYPE html>
@@ -9,8 +9,8 @@ $khoahoc__Get_All = $khoahoc->khoahoc__Get_All();
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Liệt kê danh sách khóa học</title>
-        <link href="../../../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-        <link href="../css.css" rel="stylesheet" type="text/css"/>
+        <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
         <!-- Latest compiled and minified CSS -->
 
         <!-- jQuery library -->
@@ -24,7 +24,6 @@ $khoahoc__Get_All = $khoahoc->khoahoc__Get_All();
     </head>
     <body>
         <div>
-            <form action="./khoahocAct.php?req=add" method="post">
                 <!-- Content -->
                 <div id="content">
                     <nav class="navbar navbar-default">
@@ -43,7 +42,7 @@ $khoahoc__Get_All = $khoahoc->khoahoc__Get_All();
                             <h1>Danh sách khóa học</h1>
                             <!-- Button to Open the Modal -->
                             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-                                Thêm khóa học mới
+                                Thêm lớp khóa mới
                             </button>
 
 
@@ -52,23 +51,19 @@ $khoahoc__Get_All = $khoahoc->khoahoc__Get_All();
                                     <tr>
                                         <th>Id khóa học</th>
                                         <th>Tên khóa học</th>
-                                        <th>Mô tả</th>
+                                        <th>Mô tả</th>                                       
                                         <th>Thao tác</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <?php foreach ($khoahoc__Get_All as $item): ?>
-
-
-
-
                                         <tr>
                                             <td><?php echo $item->id_khoahoc; ?></td>
                                             <td><?php echo $item->tenkhoahoc; ?></td>
                                             <td><?php echo $item->mota; ?></td>
                                             <td>
-                                                <a href="?req=suakhoahoc&id_khoahoc<?php echo $item->id_khoahoc; ?>" class="btn btn-primary">Sửa</a>
-                                                <a onclick="return confirm('Bạn có muốn xóa khóa học này không');" href="?req=delete&id_khoahoc=<?php echo $item->id_khoahoc; ?>" class="btn btn-danger">Xóa</a>
+                                                <a href="?req=suakhoahoc&id_khoahoc=<?php echo $item->id_khoahoc; ?>" class="btn btn-primary">Sửa</a>
+                                                <a onclick="return confirm('Bạn có muốn xóa khóa học này không');" href="./quanly/khoahoc/khoahocAct.php?req=delete&id_khoahoc=<?php echo $item->id_khoahoc; ?>" class="btn btn-danger">Xóa</a>
                                             </td>
                                         </tr>
                                     <?php endforeach ?>
@@ -78,21 +73,14 @@ $khoahoc__Get_All = $khoahoc->khoahoc__Get_All();
                         </div>
                     </div>
 
-
                     <!-- The Modal -->
                     <div class="modal" id="myModal">
                         <div class="modal-dialog">
                             <div class="modal-content">
 
                                 <!-- Modal Header -->
-                                <div class="modal-header">
-                                    <h4 class="modal-title">Thêm khóa học</h4>
-                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                </div>
-
-                                <!-- Modal body -->
                                 <div class="modal-body">
-                                    <form action="./khoahocAct.php?req=add" method="post">
+                                    <form action="./quanly/khoahoc/khoahocAct.php?req=add" method="post">
                                         <div class="form-group">
                                             <label for="tenkhoahoc">Tên khóa học</label>
                                             <input type="text" class="form-control" name="tenkhoahoc" id="tenkhoahoc">
@@ -100,7 +88,7 @@ $khoahoc__Get_All = $khoahoc->khoahoc__Get_All();
                                         <div class="form-group">
                                             <label for="mota">Mô tả</label>
                                             <input type="text" class="form-control" name="mota" id="mota">
-                                        </div>
+                                        </div>                                       
                                         <button class="btn btn-success">Thêm khóa học</button>
                                     </form>
                                 </div>

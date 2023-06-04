@@ -23,47 +23,72 @@
             <div id="sidebar">
                 <header>
                     <a href="#">Quản lý</a>
+                    
                 </header>
                 <ul class="nav">
                     <li>
-                        <a href="?req=taikhoan">Tài Khoản</a>
+                        <a href="index.php?req=lietketaikhoan">Tài Khoản</a>
                     </li>
 
                     <li>
-                        <a href="sinhvien/lietkesinhvien.php">Sinh Viên</a>
+                        <a href="index.php?req=lietkesinhvien">Sinh viên</a>
                     </li>
                     <li>
-                        <a href="iangvien/lietkegiangvien.php">Giảng Viên</a>
+                        <a href="index.php?req=lietkegiangvien">Giảng Viên</a>
                     </li>
                     <li>
-                        <a href="canbo/lietkecanbo.php">Cán Bộ</a>
+                        <a href="index.php?req=lietkekhoahoc">Khóa học</a>
                     </li>
                     <li>
-                        <a href="khoahoc/lietkekhoahoc.php">Khóa học</a>
-                    </li>
-                    <li>
-                        <a href="nganhhoc/lietkenganhhoc.php">Ngành học</a>
+                        <a href="index.php?req=lietkenganhhoc">Ngành học</a>
                     </li>
                     <li>
                         <a href="index.php?req=lietkelophoc">Lớp</a>
                     </li>
+                    <!--                    <li>
+                                            <a href="index.php?req=lietkephieu">Phiếu</a>
+                                        </li>-->
+                    <!--                    <li>
+                                            <a href="?req=lietkelophoctest">Lớptest</a>
+                                        </li>-->
                     <li>
-                        <a href="?req=lietkelophoctest">Lớptest</a>
+                        <a href="index.php?req=lietkephanquyen">Phân Quyền</a>
                     </li>
                     <li>
-                        <a href="phanquyen/lietkephanquyen.php">Phân Quyền</a>
+                        <a href="index.php?req=lietkephannhom">Phân nhóm</a>
                     </li>
                     <li>
-                        <a href="phannhom/lietkephannhom.php">Phân nhóm</a>
+                        <a href="index.php?req=lietketrinhdo">Trình Độ</a>
                     </li>
                     <li>
-                        <a href="trinhdo/lietketrinhdo.php">Trình Độ</a>
+                        <a href="index.php?req=lietkedonvi">Đơn Vị</a>
                     </li>
                     <li>
-                        <a href="donvi/lietkedonvi.php">Đơn Vị</a>
+                        <a href="index.php?req=lietkecauhoi">Câu hỏi</a>
+                    </li>
+                    <li>
+                        <a href="index.php?req=lietkenhomcauhoi">Nhóm Câu hỏi</a>
+                    </li>
+                    <li>
+                        <a href="index.php?req=lietketenkhaosat">Tên khảo sát</a>
+                    </li>
+                    <li>
+                        <a href="index.php?req=lietkenamhoc">Năm học</a>
+                    </li>
+                    <li>
+                        <a href="index.php?req=lietkehocky">Học kỳ</a>
+                    </li>
+                    <li>
+                        <a href="index.php?req=lietkedotkhaosat">Đợt khảo sát</a>
+                    </li>
+                    <li>
+                        <a href="index.php?req=lietkedoituongapdung">Đối tượng áp dụng</a>
+                    </li>
+                    <li>
+                        <a href="index.php?req=lietkephieukhaosat">Phiếu khảo sát</a>
                     </li>
                 </ul>
             </div>
-          
+
         </div>
     </body>

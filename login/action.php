@@ -21,7 +21,7 @@ require("../models/getModel.php");
                 
                    if($status->id_phanquyen  == 3){
                     $_SESSION['user'] = $status;
-                    header("location:../danhgia/danhgia.php");
+                    header("location:../Danhgi/Hinh.php");
                 }   
                     
                 }

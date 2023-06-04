@@ -23,12 +23,8 @@
     <body>
         <main class="form-login">
             <form action="./action.php?req=login" method="post">
-                <h1 class="text-center">LOGIN</h1>
-                <div class="text-muted">
-                    Thông tin đăng nhập: <br>
-                    - email: admin@gmail.com <br>
-                    - password: 123456
-                </div>
+                <h1 class="text-center">ĐĂNG NHẬP</h1>
+
                 <br>
                 <div class="form-floating mb-1">
                     <input type="email" class="form-control" id="email" name="email">

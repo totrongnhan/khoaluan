@@ -3,42 +3,44 @@
 //userAct
 session_start();
 require("../../../models/getModel.php");
-$khoahoc__Get_All = $khoahoc->khoahoc__Get_All();
+$tenkhaosat__Get_All = $tenkhaosat->tenkhaosat__Get_All();
 if (isset($_GET["req"])) {
     switch ($_GET["req"]) {
         case "add":
-            $tenkhoahoc = $_POST['tenkhoahoc'];
+            $tenkhaosat0 = $_POST['tenkhaosat0'];
             $mota = $_POST['mota'];
-            $status = $khoahoc->khoahoc_Add($tenkhoahoc, $mota);
+            $status = $tenkhaosat->tenkhaosat_Add($tenkhaosat0, $mota);
             if ($status) {
-                header("Location: lietkekhoahoc.php");
+                header('Location: ../../index.php?req=lietketenkhaosat&status=success');
             } else {
-                header('Location: lietkekhoahoc.php');
+                header('Location: ../../index.php?req=lietketenkhaosat&status=fail');
             }
             break;
 
         case "update":
-            $id_khoahoc = $POST['id_khoahoc'];
-            $tenkhoahoc = $_POST['tenkhoahoc'];
+            $id_tenkhaosat = $_POST['id_tenkhaosat'];
+            $tenkhaosat0 = $_POST['tenkhaosat0'];
             $mota = $_POST['mota'];
-            $status = $khoahoc->khoahoc__Update($id_khoahoc, $tenkhoahoc, $mota);
+            $status = $tenkhaosat->tenkhaosat__Update($id_tenkhaosat, $tenkhaosat0, $mota);
             if ($status) {
-                header('Location: lietkekhoahoc.php');
+                header('Location: ../../index.php?req=lietketenkhaosat&status=success');
             } else {
-                header('Location: lietkekhoahoc.php');
+                header('Location: ../../index.php?req=lietketenkhaosat&status=fail');
             }
             break;
         case "delete":
-            $id_khoahoc = $POST['id_khoahoc'];          
-            $status = $khoahoc->khoahoc__Delete($id_khoahoc);
+            $id_tenkhaosat = $_GET['id_tenkhaosat'];          
+            $status = $tenkhaosat->tenkhaosat__Delete($id_tenkhaosat);
             if ($status) {
-                header('Location: lietkekhoahoc.php');
+                header('Location: ../../index.php?req=lietketenkhaosat&status=success');
             } else {
-                header('Location: lietkekhoahoc.php');
+                header('Location: ../../index.php?req=lietketenkhaosat&status=fail');
             }
             break;   
     }
 }
 ?>
+
+
 
 

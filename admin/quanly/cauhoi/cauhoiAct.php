@@ -3,42 +3,50 @@
 //userAct
 session_start();
 require("../../../models/getModel.php");
-$khoahoc__Get_All = $khoahoc->khoahoc__Get_All();
+$cauhoi__Get_All = $cauhoi->cauhoi__Get_All();
 if (isset($_GET["req"])) {
     switch ($_GET["req"]) {
         case "add":
-            $tenkhoahoc = $_POST['tenkhoahoc'];
+            $tencauhoi = $_POST['tencauhoi'];
             $mota = $_POST['mota'];
-            $status = $khoahoc->khoahoc_Add($tenkhoahoc, $mota);
+            $thutu = $_POST['thutu'];
+            $id_nhom = $_POST['id_nhom'];
+            $is_text = $_POST['is_text'];
+            $status = $cauhoi->cauhoi_Add($tencauhoi, $mota, $thutu, $id_nhom, $is_text);
             if ($status) {
-                header("Location: lietkekhoahoc.php");
+                header('Location: ../../index.php?req=lietkecauhoi&status=success');
             } else {
-                header('Location: lietkekhoahoc.php');
+                header('Location: ../../index.php?req=lietkecauhoi&status=fail');
             }
             break;
 
         case "update":
-            $id_khoahoc = $POST['id_khoahoc'];
-            $tenkhoahoc = $_POST['tenkhoahoc'];
+            $id_cauhoi = $_POST['id_cauhoi'];
+            $tencauhoi = $_POST['tencauhoi'];
             $mota = $_POST['mota'];
-            $status = $khoahoc->khoahoc__Update($id_khoahoc, $tenkhoahoc, $mota);
+            $thutu = $_POST['thutu'];
+            $id_nhom = $_POST['id_nhom'];
+            $is_text = $_POST['is_text'];
+            $status = $cauhoi->cauhoi__Update($id_cauhoi, $tencauhoi, $mota, $thutu, $id_nhom, $is_text);
             if ($status) {
-                header('Location: lietkekhoahoc.php');
+                header('Location: ../../index.php?req=lietkecauhoi&status=success');
             } else {
-                header('Location: lietkekhoahoc.php');
+                header('Location: ../../index.php?req=lietkecauhoi&status=fail');
             }
             break;
         case "delete":
-            $id_khoahoc = $POST['id_khoahoc'];          
-            $status = $khoahoc->khoahoc__Delete($id_khoahoc);
+            $id_cauhoi = $_GET['id_cauhoi'];          
+            $status = $cauhoi->cauhoi__Delete($id_cauhoi);
             if ($status) {
-                header('Location: lietkekhoahoc.php');
+                header('Location: ../../index.php?req=lietkecauhoi&status=success');
             } else {
-                header('Location: lietkekhoahoc.php');
+                header('Location: ../../index.php?req=lietkecauhoi&status=fail');
             }
             break;   
     }
 }
 ?>
+
+
 
 

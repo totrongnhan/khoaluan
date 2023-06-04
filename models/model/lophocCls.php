@@ -57,5 +57,18 @@ class lophoc extends Database {
         $obj->execute(array($id_lophoc));
         return $obj->rowCount();
     }
+    public function lophoc__Get_By_Id_khoahoc($id_khoahoc) {
+        $obj = $this->connect->prepare("SELECT * FROM lophoc WHERE id_khoahoc = ?");
+        $obj->setFetchMode(PDO::FETCH_OBJ);
+        $obj->execute(array($id_khoahoc));
+        return $obj->fetchAll();
+    }
+
+    public function lophoc__Get_By_Id_nganhhoc($id_nganhhoc) {
+        $obj = $this->connect->prepare("SELECT * FROM lophoc WHERE id_nganhhoc = ?");
+        $obj->setFetchMode(PDO::FETCH_OBJ);
+        $obj->execute(array($id_nganhhoc));
+        return $obj->fetchAll();
+    }
 }
 ?>

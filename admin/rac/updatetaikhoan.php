@@ -6,7 +6,7 @@
     $mota = $_POST['mota'];
     $id_phannhom = $_POST['id_phannhom'];
     $id_phanquyen = $_POST['id_phanquyen'];
-    $id_taikhoan = $_POST['sid'];
+    $id_nguoidung = $_POST['id_nguoidung'];
 
     //ket noi csdl
     require_once '../mod/config.php';
