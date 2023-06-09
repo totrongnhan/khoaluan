@@ -1,6 +1,7 @@
 <?php
 require("../models/getModel.php");
 $nganhhoc__Get_All = $nganhhoc->nganhhoc__Get_All();
+$donvi__Get_All = $donvi->donvi__Get_All();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -51,7 +52,8 @@ $nganhhoc__Get_All = $nganhhoc->nganhhoc__Get_All();
                                     <tr>
                                         <th>Id ngành học</th>
                                         <th>Tên ngành học</th>
-                                        <th>Mô tả</th>                                       
+                                        <th>Mô tả</th>
+                                        <th>Id_khoa</th>
                                         <th>Thao tác</th>
                                     </tr>
                                 </thead>
@@ -61,6 +63,7 @@ $nganhhoc__Get_All = $nganhhoc->nganhhoc__Get_All();
                                             <td><?php echo $item->id_nganhhoc; ?></td>
                                             <td><?php echo $item->tennganhhoc; ?></td>
                                             <td><?php echo $item->mota; ?></td>
+                                            <td><?php echo $item->id_khoaa; ?></td>
                                             <td>
                                                 <a href="?req=suanganhhoc&id_nganhhoc=<?php echo $item->id_nganhhoc; ?>" class="btn btn-primary">Sửa</a>
                                                 <a onclick="return confirm('Bạn có muốn xóa ngành học này không');" href="./quanly/nganhhoc/nganhhocAct.php?req=delete&id_nganhhoc=<?php echo $item->id_nganhhoc; ?>" class="btn btn-danger">Xóa</a>
@@ -88,7 +91,15 @@ $nganhhoc__Get_All = $nganhhoc->nganhhoc__Get_All();
                                         <div class="form-group">
                                             <label for="mota">Mô tả</label>
                                             <input type="text" class="form-control" name="mota" id="mota">
-                                        </div>                                       
+                                        </div>
+                                        <div class="form-group">
+                                        <label for="id_khoaa">ID khoa</label>
+                                        <select class="form-control" name="id_khoaa" id="id_khoaa">
+                                            <?php foreach ($donvi__Get_All as $item): ?>
+                                                <option value="<?= $item->id_donvi ?>"><?= $item->is_khoa ?></option>
+                                            <?php endforeach ?>
+                                        </select>
+                                    </div>
                                         <button class="btn btn-success">Thêm lớp học</button>
                                     </form>
                                 </div>

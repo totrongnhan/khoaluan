@@ -8,8 +8,9 @@ if (isset($_GET["req"])) {
     switch ($_GET["req"]) {
         case "add":
             $tennganhhoc = $_POST['tennganhhoc'];
-            $mota = $_POST['mota'];            
-            $status = $nganhhoc->nganhhoc_Add($tennganhhoc, $mota,);
+            $mota = $_POST['mota'];
+            $id_khoaa = $_POST['id_khoaa'];
+            $status = $nganhhoc->nganhhoc_Add($tennganhhoc, $mota, $id_khoaa);
             if ($status) {
                 header('Location: ../../index.php?req=lietkenganhhoc&status=success');
             } else {
@@ -20,8 +21,10 @@ if (isset($_GET["req"])) {
         case "update":
             $id_nganhhoc = $_POST['id_nganhhoc'];
             $tennganhhoc = $_POST['tennganhhoc'];
-            $mota = $_POST['mota'];           
-            $status = $nganhhoc->nganhhoc__Update($id_nganhhoc, $tennganhhoc, $mota,);
+            $mota = $_POST['mota'];
+            $id_khoaa = $_POST['id_khoaa'];
+            $status = $nganhhoc->nganhhoc__Update($id_nganhhoc, $tennganhhoc, $mota, $id_khoaa);
+            
             if ($status) {
                 header('Location: ../../index.php?req=lietkenganhhoc&status=success');
             } else {

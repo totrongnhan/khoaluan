@@ -3,6 +3,8 @@ require("../models/getModel.php");
 $taikhoan__Get_All = $taikhoan->taikhoan__Get_All();
 $phannhom__Get_All = $phannhom->phannhom__Get_All();
 $phanquyen__Get_All = $phanquyen->phanquyen__Get_All();
+$taikhoan__Get_check = $taikhoan->taikhoan__Get_check();
+$taikhoan__Get_checkgv = $taikhoan->taikhoan__Get_checkgv();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -51,6 +53,9 @@ $phanquyen__Get_All = $phanquyen->phanquyen__Get_All();
                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
                         Thêm tài khoản mới
                     </button>
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal2">
+                        Thêm tài khoản gv mới
+                    </button>
 
                     <table class="table table-dark table-hover">
                         <thead>
@@ -60,8 +65,8 @@ $phanquyen__Get_All = $phanquyen->phanquyen__Get_All();
                                 <th>Email</th>
                                 <th>Mật khẩu</th>
                                 <th>Mô tả</th>
-                                <th>Id phân nhóm</th>
-                                <th>Id phân quyền</th>
+                                <th>Tên phân nhóm</th>
+                                <th>Tên phân quyền</th>
                                 <th>Id người dùng</th>
                                 <th>Thao tác</th>
                             </tr>
@@ -74,8 +79,30 @@ $phanquyen__Get_All = $phanquyen->phanquyen__Get_All();
                                     <td><?php echo $item->email; ?></td>
                                     <td><?php echo $item->matkhau; ?></td>
                                     <td><?php echo $item->mota; ?></td>
-                                    <td><?php echo $item->id_phannhom; ?></td>
-                                    <td><?php echo $item->id_phanquyen; ?></td>
+                                    <td>
+                                            <?php
+                                            $tenphannhom = '';
+                                            foreach ($phannhom__Get_All as $phannhomitem) {
+                                                if ($phannhomitem->id_phannhom == $item->id_phannhom) {
+                                                    $tenphannhom = $phannhomitem->tenphannhom;
+                                                    break;
+                                                }
+                                            }
+                                            echo $tenphannhom
+                                            ?>
+                                        </td>
+                                    <td>
+                                            <?php
+                                            $tenphanquyen = '';
+                                            foreach ($phanquyen__Get_All as $phanquyenitem) {
+                                                if ($phanquyenitem->id_phanquyen == $item->id_phanquyen) {
+                                                    $tenphanquyen = $phanquyenitem->tenphanquyen;
+                                                    break;
+                                                }
+                                            }
+                                            echo $tenphanquyen
+                                            ?>
+                                        </td>
                                     <td><?php echo $item->id_nguoidung; ?></td>
                                     <td>
                                         <a href="./quanly/taikhoan/taikhoanAct.php?req=reset&id_taikhoan=<?php echo $item->id_taikhoan; ?>&email=<?php echo $item->email; ?>" class="btn btn-warning">Đổi mật khẩu</a>
@@ -146,8 +173,11 @@ $phanquyen__Get_All = $phanquyen->phanquyen__Get_All();
                                 </div>
                                 <div class="form-group">
                                     <label for="id_nguoidung">ID người dùng</label>
-                                    <input type="text" class="form-control" name="id_nguoidung" id="id_nguoidung"
-                                           value="">
+                                    <select class="form-control" name="id_nguoidung" id="id_nguoidung">
+                                        <?php foreach ($taikhoan__Get_check as $item): ?>
+                                            <option value="<?= $item->id_sinhvien ?>"><?= $item->tensinhvien ?></option>
+                                        <?php endforeach ?>
+                                    </select>
                                 </div>
 
 
@@ -163,6 +193,84 @@ $phanquyen__Get_All = $phanquyen->phanquyen__Get_All();
                     </div>
                 </div>
             </div>
+            <!-- Bảng thêm tài khoản thứ nhất -->
+
+
+            <!-- Bảng thêm tài khoản giảng viên -->
+            <div class="modal" id="myModal2">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <!-- Modal Header -->
+                        <div class="modal-header">
+                            <h4 class="modal-title">Thêm tài khoản giảng viên</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+
+                        <!-- Modal body -->
+                        <div class="modal-body">
+                            <form action="./quanly/taikhoan/taikhoanAct.php?req=add" method="post">
+
+                                <div class="form-group">
+                                    <label for="tentaikhoan">Tên tài khoản</label>
+                                    <input type="text" class="form-control" name="tentaikhoan" id="tentaikhoan"
+                                           value="">
+                                </div>
+
+
+                                <div class="form-group">
+                                    <label for="email">Email</label>
+                                    <input type="text" class="form-control" name="email" id="email">
+
+                                </div>
+                                <div class="form-group">
+                                    <label for="matkhau">Mật khẩu</label>
+                                    <input type="password" class="form-control" name="matkhau" id="matkhau"
+                                           value="">
+                                </div>
+                                <div class="form-group">
+                                    <label for="mota">Mô tả</label>
+                                    <input type="text" class="form-control" name="mota" id="mota"
+                                           value="">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="id_phannhom">ID phân nhóm</label>
+                                    <select class="form-control" name="id_phannhom" id="id_phannhom">
+                                        <?php foreach ($phannhom__Get_All as $item): ?>
+                                            <option value="<?= $item->id_phannhom ?>"><?= $item->tenphannhom ?></option>
+                                        <?php endforeach ?>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="id_phanquyen">ID phân quyền</label>
+                                    <select class="form-control" name="id_phanquyen" id="id_phanquyen">
+                                        <?php foreach ($phanquyen__Get_All as $item): ?>
+                                            <option value="<?= $item->id_phanquyen ?>"><?= $item->tenphanquyen ?></option>
+                                        <?php endforeach ?>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="id_nguoidung">ID người dùng</label>
+                                    <select class="form-control" name="id_nguoidung" id="id_nguoidung">
+                                        <?php foreach ($taikhoan__Get_checkgv as $item): ?>
+                                            <option value="<?= $item->id_giangvien ?>"><?= $item->tengiangvien ?></option>
+                                        <?php endforeach ?>
+                                    </select>
+                                </div>
+
+
+                                <button class="btn btn-success">Thêm tài khoản</button>
+                            </form>
+                        </div>
+
+                        <!-- Modal footer -->
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Đóng</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
 
     </body>
 </html>

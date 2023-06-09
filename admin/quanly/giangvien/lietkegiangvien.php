@@ -52,9 +52,9 @@ $donvi__Get_All = $donvi->donvi__Get_All();
                     <table class="table table-dark table-hover">
                         <thead>
                             <tr>
-                                <th>Id sinh viên</th>
-                                <th>Mã sinh viên</th>
-                                <th>Tên sinh viên</th>
+                                <th>Id giảng viên</th>
+                                <th>Mã giảng viên</th>
+                                <th>Tên giảng viên</th>
                                 <th>Giới tính</th>
                                 <th>Ngày sinh</th>
                                 <th>Email</th>
@@ -62,8 +62,8 @@ $donvi__Get_All = $donvi->donvi__Get_All();
                                 <th>Địa chỉ liên lạc</th>
                                 <th>Số điện thoại 1</th>
                                 <th>Số điện thoại 2</th>
-                                <th>Id đơn vị</th>
-                                <th>Id trình độ</th>
+                                <th>Tên đơn vị</th>
+                                <th>Tên trình độ</th>
                                 <th>Thao tác</th>
                             </tr>
                         </thead>
@@ -80,8 +80,30 @@ $donvi__Get_All = $donvi->donvi__Get_All();
                                     <td><?php echo $item->diachilienlac; ?></td>
                                     <td><?php echo $item->sdt1; ?></td>
                                     <td><?php echo $item->sdt2; ?></td>
-                                    <td><?php echo $item->id_donvi; ?></td>
-                                    <td><?php echo $item->id_trinhdo; ?></td>
+                                    <td>
+                                        <?php
+                                        $tendonvi = '';
+                                        foreach ($donvi__Get_All as $donviitem) {
+                                            if ($donviitem->id_donvi == $item->id_donvi) {
+                                                $tendonvi = $donviitem->tendonvi;
+                                                break;
+                                            }
+                                        }
+                                        echo $tendonvi;
+                                        ?>
+                                    </td>
+                                    <td>
+                                        <?php
+                                        $tentrinhdo = '';
+                                        foreach ($trinhdo__Get_All as $trinhdoitem) {
+                                            if ($trinhdoitem->id_trinhdo == $item->id_trinhdo) {
+                                                $tentrinhdo = $trinhdoitem->tentrinhdo;
+                                                break;
+                                            }
+                                        }
+                                        echo $tentrinhdo;
+                                        ?>
+                                    </td>
                                     <td>
                                         <a href="?req=suagiangvien&id_giangvien=<?php echo $item->id_giangvien; ?>" class="btn btn-primary">Sửa</a>
                                         <a onclick="return confirm('Bạn có muốn xóa giảng viên này không');" href="./quanly/giangvien/giangvienAct.php?req=delete&id_giangvien=<?php echo $item->id_giangvien; ?>" class="btn btn-danger">Xóa</a>
@@ -126,32 +148,32 @@ $donvi__Get_All = $donvi->donvi__Get_All();
                                 <div class="form-group">
                                     <label for="ngaysinh">Ngày sinh</label>
                                     <input type="date" class="form-control" name="ngaysinh" id="ngaysinh">
-                                           
+
                                 </div>
                                 <div class="form-group">
                                     <label for="email">Email</label>
                                     <input type="text" class="form-control" name="email" id="email">
-                                           
+
                                 </div>
                                 <div class="form-group">
                                     <label for="diachithuongtru">Địa chỉ thường trú</label>
                                     <input type="text" class="form-control" name="diachithuongtru" id="diachithuongtru">
-                                           
+
                                 </div>
                                 <div class="form-group">
                                     <label for="diachilienlac">Địa chỉ liên lạc</label>
                                     <input type="text" class="form-control" name="diachilienlac" id="diachilienlac">
-                                           
+
                                 </div>
                                 <div class="form-group">
                                     <label for="sdt1">Số điện thoại 1</label>
                                     <input type="text" class="form-control" name="sdt1" id="sdt1">
-                                           
+
                                 </div>
                                 <div class="form-group">
                                     <label for="sdt2">Số điện thoại 2</label>
                                     <input type="text" class="form-control" name="sdt2" id="sdt2">
-                                           
+
                                 </div>
                                 <div class="form-group">
                                     <label for="id_donvi">ID đơn vị</label>
@@ -169,7 +191,7 @@ $donvi__Get_All = $donvi->donvi__Get_All();
                                         <?php endforeach ?>
                                     </select>
                                 </div>
-                               
+
                                 <button class="btn btn-success">Thêm giảng viên</button>
                             </form>
                         </div>

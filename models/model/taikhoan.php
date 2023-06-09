@@ -32,9 +32,33 @@ class taikhoan extends Database {
         $obj->execute();
         return $obj->fetchAll();
     }
+    public function taikhoan__Get_check() {
+        $obj = $this->connect->prepare("SELECT * FROM sinhvien WHERE id_sinhvien not in(SELECT id_nguoidung FROM taikhoan WHERE id_phannhom = 3)");
+        $obj->setFetchMode(PDO::FETCH_OBJ);
+        $obj->execute();
+        return $obj->fetchAll();
+    }
+    public function taikhoan__Get_checkgv() {
+        $obj = $this->connect->prepare("SELECT * FROM giangvien WHERE id_giangvien not in(SELECT id_nguoidung FROM taikhoan WHERE id_phannhom = 2)");
+        $obj->setFetchMode(PDO::FETCH_OBJ);
+        $obj->execute();
+        return $obj->fetchAll();
+    }
 
     public function taikhoan__Get_By_Id($id_taikhoan) {
         $obj = $this->connect->prepare("SELECT * FROM taikhoan WHERE id_taikhoan = ?");
+        $obj->setFetchMode(PDO::FETCH_OBJ);
+        $obj->execute(array($id_taikhoan));
+        return $obj->fetch();
+    }
+    public function taikhoan__Get_By_thongtinsinhvien($id_taikhoan) {
+        $obj = $this->connect->prepare("SELECT * FROM taikhoan , sinhvien WHERE taikhoan.id_nguoidung = sinhvien.id_sinhvien AND taikhoan.id_taikhoan = ?");
+        $obj->setFetchMode(PDO::FETCH_OBJ);
+        $obj->execute(array($id_taikhoan));
+        return $obj->fetch();
+    }
+    public function taikhoan__Get_By_thongtingiangvien($id_taikhoan) {
+        $obj = $this->connect->prepare("SELECT * FROM taikhoan , giangvien WHERE taikhoan.id_nguoidung = giangvien.id_giangvien AND taikhoan.id_taikhoan = ?");
         $obj->setFetchMode(PDO::FETCH_OBJ);
         $obj->execute(array($id_taikhoan));
         return $obj->fetch();
@@ -51,9 +75,9 @@ class taikhoan extends Database {
         }
     }
 
-    public function taikhoan__Change_Password($id_taikhoan, $matkhau_new) {
+    public function taikhoan__Change_Password($id_taikhoan, $matkhau) {
         $obj = $this->connect->prepare("UPDATE taikhoan SET matkhau=? WHERE id_taikhoan=?");
-        $obj->execute(array($matkhau_new, $id_taikhoan));
+        $obj->execute(array($matkhau, $id_taikhoan));
         if($obj->rowCount() > 0){
             return $obj->fetch();
         }else{
@@ -82,6 +106,27 @@ class taikhoan extends Database {
         $obj = $this->connect->prepare("DELETE FROM taikhoan WHERE id_taikhoan = ?");
         $obj->execute(array($id_taikhoan));
         return $obj->rowCount();
+    }
+    public function taikhoan__Get_By_Id_phanquyen($id_phanquyen) {
+        $obj = $this->connect->prepare("SELECT * FROM taikhoan WHERE id_phanquyen = ?");
+        $obj->setFetchMode(PDO::FETCH_OBJ);
+        $obj->execute(array($id_phanquyen));
+        return $obj->fetchAll();
+    }
+
+    
+    public function taikhoan__Get_By_Id_phannhom($id_phannhom) {
+        $obj = $this->connect->prepare("SELECT * FROM taikhoan WHERE id_phannhom = ?");
+        $obj->setFetchMode(PDO::FETCH_OBJ);
+        $obj->execute(array($id_phannhom));
+        return $obj->fetchAll();
+    }
+
+    public function taikhoan__Get_By_Id_nguoidung($id_nguoidung) {
+        $obj = $this->connect->prepare("SELECT * FROM taikhoan WHERE id_nguoidung = ?");
+        $obj->setFetchMode(PDO::FETCH_OBJ);
+        $obj->execute(array($id_nguoidung));
+        return $obj->fetchAll();
     }
 }
 ?>

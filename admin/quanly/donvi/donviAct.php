@@ -10,7 +10,8 @@ if (isset($_GET["req"])) {
             $ma_donvi = $_POST['ma_donvi'];
             $tendonvi = $_POST['tendonvi'];
             $mota = $_POST['mota'];
-            $status = $donvi->donvi_Add($ma_donvi, $tendonvi, $mota);
+            $is_khoa = $_POST['is_khoa'];
+            $status = $donvi->donvi_Add($ma_donvi, $tendonvi, $mota, $is_khoa);
             if ($status) {
                 header('Location: ../../index.php?req=lietkedonvi&status=success');
             } else {
@@ -23,7 +24,8 @@ if (isset($_GET["req"])) {
             $ma_donvi = $_POST['ma_donvi'];
             $tendonvi = $_POST['tendonvi'];
             $mota = $_POST['mota'];
-            $status = $donvi->donvi__Update($id_donvi, $ma_donvi, $tendonvi, $mota);
+            $is_khoa = $_POST['is_khoa'];
+            $status = $donvi->donvi__Update($id_donvi, $ma_donvi, $tendonvi, $mota, $is_khoa);
             if ($status) {
                 header('Location: ../../index.php?req=lietkedonvi&status=success');
             } else {

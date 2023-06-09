@@ -26,7 +26,6 @@ include_once($des);
 
 class trinhdo extends Database
 {
-
     public function trinhdo__Get_All()
     {
         $obj = $this->connect->prepare("SELECT * FROM trinhdo");

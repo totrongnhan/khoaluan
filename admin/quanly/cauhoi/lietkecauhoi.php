@@ -54,7 +54,7 @@ $nhomcauhoi__Get_All = $nhomcauhoi->nhomcauhoi__Get_All();
                                     <th>Tên câu hỏi</th>
                                     <th>Mô tả</th>
                                     <th>Thứ tự</th>
-                                    <th>Id nhóm</th>
+                                    <th>Tên nhóm</th>
                                     <th>Is text</th>
                                     <th>Thao tác</th>
                                 </tr>
@@ -66,7 +66,18 @@ $nhomcauhoi__Get_All = $nhomcauhoi->nhomcauhoi__Get_All();
                                         <td><?php echo $item->tencauhoi; ?></td>
                                         <td><?php echo $item->mota; ?></td>
                                         <td><?php echo $item->thutu; ?></td>
-                                        <td><?php echo $item->id_nhom; ?></td>
+                                        <td>
+                                            <?php
+                                            $tennhomcauhoi = '';
+                                            foreach ($nhomcauhoi__Get_All as $nhomcauhoiitem) {
+                                                if ($nhomcauhoiitem->id_nhomcauhoi == $item->id_nhom) {
+                                                    $tennhomcauhoi = $nhomcauhoiitem->tennhomcauhoi;
+                                                    break;
+                                                }
+                                            }
+                                            echo $tennhomcauhoi;
+                                            ?>
+                                        </td>
                                         <td><?php echo $item->is_text; ?></td>
                                         <td>
                                             <a href="?req=suacauhoi&id_cauhoi=<?php echo $item->id_cauhoi; ?>" class="btn btn-primary">Sửa</a>
@@ -105,7 +116,7 @@ $nhomcauhoi__Get_All = $nhomcauhoi->nhomcauhoi__Get_All();
                                         <label for="id_nhom">ID nhóm câu hỏi</label>
                                         <select class="form-control" name="id_nhom" id="id_nhom">
                                             <?php foreach ($nhomcauhoi__Get_All as $item): ?>
-                                                <option value="<?= $item->id_nhom ?>"><?= $item->tennhomcauhoi ?></option>
+                                                <option value="<?= $item->id_nhomcauhoi ?>"><?= $item->tennhomcauhoi ?></option>
                                             <?php endforeach ?>
                                         </select>
                                     </div>

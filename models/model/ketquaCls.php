@@ -24,44 +24,29 @@ if (file_exists($e)) {
 }
 include_once($des);
 
-class trinhdo extends Database
+class ketqua extends Database
 {
 
-    public function trinhdo__Get_All()
+    public function ketqua__Get_All()
     {
-        $obj = $this->connect->prepare("SELECT * FROM trinhdo");
+        $obj = $this->connect->prepare("SELECT * FROM `thong ke ket qua`");
         $obj->setFetchMode(PDO::FETCH_OBJ);
         $obj->execute();
         return $obj->fetchAll();
     }
 
-    public function trinhdo__Get_By_Id($id_trinhdo)
+    public function ketqua_Add($id_dot, $kohl, $ithl, $khahl, $hl, $rathl, $per_kohl, $per_ithl, $per_khahl, $per_hl, $per_rathl)
     {
-        $obj = $this->connect->prepare("SELECT * FROM trinhdo WHERE id_trinhdo = ?");
-        $obj->setFetchMode(PDO::FETCH_OBJ);
-        $obj->execute(array($id_trinhdo));
-        return $obj->fetch();
-    }
-
-
-    public function trinhdo_Add($ma_trinhdo, $tentrinhdo, $mota)
-    {
-        $obj = $this->connect->prepare("INSERT INTO trinhdo(ma_trinhdo, tentrinhdo, mota) VALUES (?,?,?)");
-        $obj->execute(array($ma_trinhdo, $tentrinhdo, $mota));
+        $obj = $this->connect->prepare("INSERT INTO `thong ke ket qua`(`id`, `id_dot`, `kohl`, `ithl`, `khahl`, `hl`, `rathl`, `per_kohl`, `per_ithl`, `per_khahl`, `per_hl`, `per_rathl`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)");
+        $obj->execute(array($id_dot, $kohl, $ithl, $khahl, $hl, $rathl, $per_kohl, $per_ithl, $per_khahl, $per_hl, $per_rathl));
         return $obj->rowCount();
     }
 
-    public function trinhdo__Update($id_trinhdo, $ma_trinhdo,  $tentrinhdo, $mota)
-    {
-        $obj = $this->connect->prepare("UPDATE trinhdo SET ma_trinhdo=?, tentrinhdo=?, mota=? WHERE id_trinhdo=?");
-        $obj->execute(array($ma_trinhdo, $tentrinhdo, $mota, $id_trinhdo));
-        return $obj->rowCount();
-    }
 
-    public function trinhdo__Delete($id_trinhdo)
+    public function ketqua__Delete($id)
     {
-        $obj = $this->connect->prepare("DELETE FROM trinhdo WHERE id_trinhdo = ?");
-        $obj->execute(array($id_trinhdo));
+        $obj = $this->connect->prepare("DELETE FROM `thong ke ket qua` WHERE id = ?");
+        $obj->execute(array($id));
         return $obj->rowCount();
     }
 }

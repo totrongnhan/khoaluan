@@ -68,6 +68,14 @@ class dotkhaosat extends Database {
         return $obj->fetchAll();
     }
    
-
+    public function dotkhaosat__Get_Last() {
+        $obj = $this->connect->prepare("SELECT * FROM dotkhaosat ORDER BY id_dot DESC LIMIT 1");
+        $obj->setFetchMode(PDO::FETCH_OBJ);
+        $obj->execute();
+        return $obj->fetch();
+    
 }
+
+    }
+
 ?>

@@ -14,8 +14,9 @@ if (isset($_GET["req"])) {
             $id_phannhom = $_POST['id_phannhom'];
             $id_phanquyen = $_POST['id_phanquyen'];
             $id_nguoidung = $_POST['id_nguoidung'];
+            
              
-            $status = $taikhoan->taikhoan_Add($tentaikhoan, $email, $matkhau, $mota, $id_phanquyen, $id_phannhom,$id_nguoidung);
+            $status = $taikhoan->taikhoan_Add($tentaikhoan, $email, $matkhau, $mota, $id_phanquyen, $id_phannhom, $id_nguoidung);
             if ($status) {
                 header('Location: ../../index.php?req=lietketaikhoan&status=success');
             } else {

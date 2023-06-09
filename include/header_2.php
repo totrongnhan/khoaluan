@@ -1,4 +1,7 @@
-<html xmlns="http://www.w3.org/1999/xhtml">
+
+<!DOCTYPE html>
+<html lang="en">
+
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
@@ -27,7 +30,7 @@
     //}
         ?>
         <body>
-            <?php include('../models/configs/config.php'); ?>
+           
         <div class="dnn_banner bannerg">            
             <img id="dnn_banner" src="../assets/img/bannertruong.jpg" alt=""/>
             <nav class="navbar" style="background-color: 5fbf00;">
@@ -37,7 +40,7 @@
                         <span class="navbar-toggler-icon"></span>
                     </button>
                     <form class="d-flex">
-                        <a class="dropdown-item">Xin chào:Tô Trọng Nhân </a>
+                        <a class="dropdown-item">Xin chào:<?= isset($_SESSION['user'])?$_SESSION['user']->tengiangvien:"chuadapnhap" ;?></a>
                         <a class="dropdown-item" href="../login/index.php">Đăng xuất</a>
 
 

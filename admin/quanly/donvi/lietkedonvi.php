@@ -55,6 +55,7 @@ $donvi__Get_All = $donvi->donvi__Get_All();
                                 <th>Mã đơn vị</th>
                                 <th>Tên đơn vị</th>
                                 <th>Mô tả</th>
+                                <th>Thuộc khoa</th>
                                 <th>Thao tác</th>
                             </tr>
                         </thead>
@@ -65,6 +66,7 @@ $donvi__Get_All = $donvi->donvi__Get_All();
                                     <td><?php echo $item->ma_donvi; ?></td>
                                     <td><?php echo $item->tendonvi; ?></td>
                                     <td><?php echo $item->mota; ?></td>
+                                    <td><?php echo $item->is_khoa; ?></td>
                                     <td>
                                         <a href="?req=suadonvi&id_donvi=<?php echo $item->id_donvi; ?>" class="btn btn-primary">Sửa</a>
                                         <a onclick="return confirm('Bạn có muốn xóa đơn vị này không');" href="./quanly/donvi/donviAct.php?req=delete&id_donvi=<?php echo $item->id_donvi; ?>" class="btn btn-danger">Xóa</a>
@@ -98,7 +100,12 @@ $donvi__Get_All = $donvi->donvi__Get_All();
                                     <label for="mota">Mô tả</label>
                                     <input type="text" class="form-control" name="mota" id="mota">
                                 </div>
-                                <button class="btn btn-success">Thêm lớp học</button>
+                                 <div class="form-group">
+                                    <label for="is_khoa">Thuộc khoa</label>
+                                    Thuộc<input type="radio" name="is_khoa" value="1" checked="true" >
+                                    Không<input type="radio" name="is_khoa" value="0" >
+                                </div>
+                                <button class="btn btn-success">Thêm đơn vị</button>
                             </form>
                         </div>
 

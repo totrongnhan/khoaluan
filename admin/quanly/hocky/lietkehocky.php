@@ -55,7 +55,7 @@ $namhoc__Get_All = $namhoc->namhoc__Get_All();
                                 <th>ID học kỳ</th>
                                 <th>Tên học kỳ</th>
                                 <th>Mô tả</th>
-                                <th>ID năm học</th>
+                                <th>Tên năm học</th>
                                 <th>Thao tác</th>
                             </tr>
                         </thead>
@@ -65,7 +65,18 @@ $namhoc__Get_All = $namhoc->namhoc__Get_All();
                                 <td><?php echo $item->id_hocky; ?></td>
                                 <td><?php echo $item->tenhocky; ?></td>
                                 <td><?php echo $item->mota; ?></td>
-                                <td><?php echo $item->id_namhoc; ?></td>
+                                <td>
+                                            <?php
+                                            $tennamhoc = '';
+                                            foreach ($namhoc__Get_All as $namhocitem) {
+                                                if ($namhocitem->id_namhoc == $item->id_namhoc) {
+                                                    $tennamhoc = $namhocitem->tennamhoc;
+                                                    break;
+                                                }
+                                            }
+                                            echo $tennamhoc;
+                                            ?>
+                                        </td>
                                 <td>
                                     <a href="?req=suahocky&id_hocky=<?php echo $item->id_hocky; ?>"
                                         class="btn btn-primary">Sửa</a>

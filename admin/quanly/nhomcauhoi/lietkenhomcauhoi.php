@@ -54,7 +54,7 @@ $tenkhaosat__Get_All = $tenkhaosat->tenkhaosat__Get_All();
                                     <th>Tên nhóm câu hỏi</th>
                                     <th>Mô tả</th>
                                     <th>Thứ tự</th>
-                                    <th>Id tên khảo sát</th>                                 
+                                    <th>Tên khảo sát</th>                                 
                                     <th>Thao tác</th>
                                 </tr>
                             </thead>
@@ -65,7 +65,18 @@ $tenkhaosat__Get_All = $tenkhaosat->tenkhaosat__Get_All();
                                         <td><?php echo $item->tennhomcauhoi; ?></td>
                                         <td><?php echo $item->mota; ?></td>
                                         <td><?php echo $item->thutu; ?></td>
-                                        <td><?php echo $item->id_tenkhaosat; ?></td>
+                                        <td>
+                                            <?php
+                                            $tenkhaosat = '';
+                                            foreach ($tenkhaosat__Get_All as $tenkhaosatitem) {
+                                                if ($tenkhaosatitem->id_tenkhaosat == $item->id_tenkhaosat) {
+                                                    $tenkhaosat = $tenkhaosatitem->tenkhaosat0;
+                                                    break;
+                                                }
+                                            }
+                                            echo $tenkhaosat
+                                            ?>
+                                        </td>
                                         <td>
                                             <a href="?req=suanhomcauhoi&id_nhomcauhoi=<?php echo $item->id_nhomcauhoi; ?>" class="btn btn-primary">Sửa</a>
                                             <a onclick="return confirm('Bạn có muốn xóa nhóm câu hỏi này không');" href="./quanly/nhomcauhoi/nhomcauhoiAct.php?req=delete&id_nhomcauhoi=<?php echo $item->id_nhomcauhoi; ?>" class="btn btn-danger">Xóa</a>

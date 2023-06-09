@@ -3,6 +3,7 @@
 $id_nganhhoc = $_GET['id_nganhhoc'];
 require("../models/getModel.php");
 $nganhhoc__Get_By_Id = $nganhhoc->nganhhoc__Get_By_Id($id_nganhhoc);
+$donvi__Get_All = $donvi->donvi__Get_All();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -37,7 +38,16 @@ $nganhhoc__Get_By_Id = $nganhhoc->nganhhoc__Get_By_Id($id_nganhhoc);
                     <label for="mota">Mô tả</label>
                     <input type="text" class="form-control" name="mota" id="mota"
                            value="<?php echo $nganhhoc__Get_By_Id->mota ?>">
-                </div>                
+                </div
+                <div class="form-group">
+                    <label for="id_khoaa">Thuộc khoa</label>
+                    <select class="form-control" name="id_khoaa" id="id_khoaa">
+                        <?php foreach ($donvi__Get_All as $item): ?>
+                            <option value="<?php echo $nganhhoc__Get_By_Id->id_khoaa ?>"><?= $item->is_khoa ?></option>
+                        <?php endforeach ?>
+                    </select>
+                </div>
+                 
                 <button class="btn btn-info">Cập nhật thông tin</button>
             </form>
 

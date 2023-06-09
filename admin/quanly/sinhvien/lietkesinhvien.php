@@ -60,7 +60,7 @@ $lophoc__Get_All = $lophoc->lophoc__Get_All();
                                 <th>Địa chỉ liên lạc</th>
                                 <th>Số điện thoại 1</th>
                                 <th>Số điện thoại 2</th>
-                                <th>Id lớp học</th>
+                                <th>Tên lớp học</th>
                                 <th>Thao tác</th>
                             </tr>
                         </thead>
@@ -77,7 +77,18 @@ $lophoc__Get_All = $lophoc->lophoc__Get_All();
                                     <td><?php echo $item->diachilienlac; ?></td>
                                     <td><?php echo $item->sdt1; ?></td>
                                     <td><?php echo $item->sdt2; ?></td>
-                                    <td><?php echo $item->id_lophoc; ?></td>
+                                    <td>
+                                        <?php
+                                        $tenlophoc = '';
+                                        foreach ($lophoc__Get_All as $lophocitem) {
+                                            if ($lophocitem->id_lophoc == $item->id_lophoc) {
+                                                $tenlophoc = $lophocitem->tenlophoc;
+                                                break;
+                                            }
+                                        }
+                                        echo $tenlophoc;
+                                        ?>
+                                    </td>
                                     <td>
                                         <a href="?req=suasinhvien&id_sinhvien=<?php echo $item->id_sinhvien; ?>" class="btn btn-primary">Sửa</a>
                                         <a onclick="return confirm('Bạn có muốn xóa sinh viên này không');" href="./quanly/sinhvien/sinhvienAct.php?req=delete&id_sinhvien=<?php echo $item->id_sinhvien; ?>" class="btn btn-danger">Xóa</a>

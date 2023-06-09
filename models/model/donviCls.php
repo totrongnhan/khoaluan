@@ -44,17 +44,17 @@ class donvi extends Database
     }
 
 
-    public function donvi_Add($ma_donvi, $tendonvi, $mota)
+    public function donvi_Add($ma_donvi, $tendonvi, $mota, $is_khoa)
     {
-        $obj = $this->connect->prepare("INSERT INTO donvi(ma_donvi, tendonvi, mota) VALUES (?,?,?)");
-        $obj->execute(array($ma_donvi, $tendonvi, $mota));
+        $obj = $this->connect->prepare("INSERT INTO donvi(ma_donvi, tendonvi, mota, is_khoa) VALUES (?,?,?,?)");
+        $obj->execute(array($ma_donvi, $tendonvi, $mota, $is_khoa));
         return $obj->rowCount();
     }
 
-    public function donvi__Update($id_donvi, $ma_donvi,  $tendonvi, $mota)
+    public function donvi__Update($id_donvi, $ma_donvi,  $tendonvi, $mota, $is_khoa)
     {
-        $obj = $this->connect->prepare("UPDATE donvi SET ma_donvi=?, tendonvi=?, mota=? WHERE id_donvi=?");
-        $obj->execute(array($ma_donvi, $tendonvi, $mota, $id_donvi));
+        $obj = $this->connect->prepare("UPDATE donvi SET ma_donvi=?, tendonvi=?, mota=?, is_khoa=? WHERE id_donvi=?");
+        $obj->execute(array($ma_donvi, $tendonvi, $mota, $is_khoa, $id_donvi));
         return $obj->rowCount();
     }
 

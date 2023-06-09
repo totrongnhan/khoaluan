@@ -10,14 +10,14 @@ if (isset($_GET['req'])) {
         case 'suataikhoan':
             require './quanly/taikhoan/suataikhoan.php';
             break;
-        
+
         case 'lietkesinhvien':
             require './quanly/sinhvien/lietkesinhvien.php';
             break;
         case 'suasinhvien':
             require './quanly/sinhvien/suasinhvien.php';
             break;
-        
+
         case 'lietkegiangvien':
             require './quanly/giangvien/lietkegiangvien.php';
             break;
@@ -49,7 +49,7 @@ if (isset($_GET['req'])) {
         case 'suakhoahoc':
             require './quanly/khoahoc/suakhoahoc.php';
             break;
-             
+
         case 'lietkephieu':
             require './quanly/phieu/lietkephieu.php';
             break;
@@ -81,28 +81,28 @@ if (isset($_GET['req'])) {
         case 'suadonvi':
             require './quanly/donvi/suadonvi.php';
             break;
-        
+
         case 'lietkecauhoi':
             require './quanly/cauhoi/lietkecauhoi.php';
             break;
         case 'suacauhoi':
             require './quanly/cauhoi/suacauhoi.php';
             break;
-            
+
         case 'lietkenhomcauhoi':
             require './quanly/nhomcauhoi/lietkenhomcauhoi.php';
             break;
         case 'suanhomcauhoi':
             require './quanly/nhomcauhoi/suanhomcauhoi.php';
             break;
-        
+
         case 'lietketenkhaosat':
             require './quanly/tenkhaosat/lietketenkhaosat.php';
             break;
         case 'suatenkhaosat':
             require './quanly/tenkhaosat/suatenkhaosat.php';
             break;
-        
+
         case 'lietkenamhoc':
             require './quanly/namhoc/lietkenamhoc.php';
             break;
@@ -133,13 +133,24 @@ if (isset($_GET['req'])) {
         case 'suaphieukhaosat':
             require './quanly/phieukhaosat/suaphieukhaosat.php';
             break;
+        case 'lietkephieukhaosatgv':
+            require './quanly/phieukhaosatgv/lietkephieukhaosatgv.php';
+            break;
+        case 'suaphieukhaosatgv':
+            require './quanly/phieukhaosatgv/suaphieukhaosatgv.php';
+            break;
         case 'taophieu':
             require './quanly/taophieu/taophieu.php';
             break;
         case 'suaphieukhaosat':
             require './quanly/phieukhaosat/suaphieukhaosat.php';
             break;
-        
+        case 'lietkeketqua':
+            require './quanly/ketqua/lietkeketqua.php';
+            break;
+        case 'index':
+            require './quanly/import-from-excel/index.php';
+            break;
     }
 } else {
     

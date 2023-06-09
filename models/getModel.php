@@ -14,10 +14,13 @@ require "model/cauhoiCls.php";
 require "model/nhomcauhoiCls.php";
 require "model/tenkhaosatCls.php";
 require "model/phieukhaosatCls.php";
+require "model/phieukhaosatgvCls.php";
 require "model/doituongapdungCls.php";
 require "model/namhocCls.php";
 require "model/hockyCls.php";
 require "model/dotkhaosatCls.php";
+require "model/ketquaCls.php";
+
 
 
 $taikhoan = new taikhoan();
@@ -34,9 +37,11 @@ $cauhoi = new cauhoi();
 $nhomcauhoi = new nhomcauhoi();
 $tenkhaosat = new tenkhaosat();
 $phieukhaosat = new phieukhaosat();
+$phieukhaosatgv = new phieukhaosatgv();
 $doituongapdung = new doituongapdung();
 $namhoc = new namhoc();
 $hocky = new hocky();
 $dotkhaosat = new dotkhaosat();
+$ketqua = new ketqua();
 
 ?>

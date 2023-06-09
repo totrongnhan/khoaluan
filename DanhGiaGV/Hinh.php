@@ -1,7 +1,3 @@
-
-
-
-
 <head>
 
     <title>Chấm điểm gèn luyện cho sv</title>
@@ -55,10 +51,10 @@
 <!--        <table border="0" width="1500px;">
   </table>-->
 
-    <?php include_once '../include/header.php'; ?><br>
+    <?php include_once '../include/header_2.php'; ?><br>
     <body>
-        <h3 style="color: #0d6efd; font-size: 40px;"> Chào mừng học viên, sinh viên<br> đến với phần mềm khảo sát Trường Đại học Tây Đô</h3>
-        <h3 style="color: #0d6efd; font-size: 40px;">Chúng tôi giữ kín các thông tin về người trả lời nên Anh/ Chị vui<br> lòng trả lời một cách thẳng thắn, khách quan<br>
+        <h3 style="color: #0d6efd; font-size: 40px;"> Chào mừng cán bộ, giảng viên viên<br> đến với phần mềm khảo sát Trường Đại học Tây Đô</h3>
+        <h3 style="color: #0d6efd; font-size: 40px;">Chúng tôi giữ kín các thông tin về người trả lời nên Thầy/ Cô vui<br> lòng trả lời một cách thẳng thắn, khách quan<br>
             và đầy đủ cho các câu hỏi được đặt ra trong phiếu</h3>
     </body>
     <center>
@@ -66,6 +62,7 @@
 
 
             <a href="./danhgia.php"><button class="button button1" >Bắt Đầu</button></a>
+            
 
 
 

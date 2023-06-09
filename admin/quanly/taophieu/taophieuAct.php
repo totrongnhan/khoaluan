@@ -35,6 +35,18 @@ if (isset($_GET["req"])) {
                 }
 
             }
+            if ($id_phannhom == 2) {
+                $giangvien__Get_All = $giangvien->giangvien__Get_All();
+                foreach ($giangvien__Get_All as $s) {
+                    $id_doituong = $s->id_giangvien;
+                    $ketqua = "";
+                    $ngaythuchien = date('Y-M-D');
+
+                    $status .= $phieukhaosatgv->phieukhaosatgv_Add($id_apdung, $id_doituong, $ketqua, $ngaythuchien);
+
+                }
+
+            }
 
 
 

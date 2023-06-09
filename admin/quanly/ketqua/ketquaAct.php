@@ -3,42 +3,55 @@
 //userAct
 session_start();
 require("../../../models/getModel.php");
-$phieukhaosat__Get_All = $phieukhaosat->phieukhaosat__Get_All();
+$ketqua__Get_All = $ketqua->ketqua__Get_All();
 if (isset($_GET["req"])) {
     switch ($_GET["req"]) {
         case "add":
-            $id_apdung = $_POST['id_apdung'];
-            $id_doituong = $_POST['id_doituong'];
-            $ketqua = $_POST['ketqua'];
-            $ngaythuchien = $_POST['ngaythuchien'];
-            $status = $phieukhaosat->phieukhaosat_Add($id_apdung, $id_doituong, $ketqua, $ngaythuchien);
+            $id_dot = $_POST['id_dot'];
+            $kohl = $_POST['kohl'];
+            $ithl = $_POST['ithl'];
+            $khahl = $_POST['khahl'];
+            $hl = $_POST['hl'];
+            $rathl = $_POST['rathl'];
+            $per_kohl = $_POST['per_kohl'];
+            $per_ithl = $_POST['per_ithl'];
+            $per_khahl = $_POST['per_khahl'];
+            $per_hl = $_POST['per_hl'];
+            $per_rathl = $_POST['per_rathl'];
+            $status = $ketqua->ketqua_Add($id_dot, $kohl, $ithl, $khahl, $hl, $rathl, $per_kohl, $per_ithl, $per_khahl, $per_hl, $per_rathl);
             if ($status) {
-                header('Location: ../../index.php?req=lietkephieukhaosat&status=success');
+                header('Location: ../../index.php?req=lietkeketqua&status=success');
             } else {
-                header('Location: ../../index.php?req=lietkephieukhaosat&status=fail');
+                header('Location: ../../index.php?req=lietkeketqua&status=fail');
             }
             break;
 
         case "update":
-            $id_phieu = $_POST['id_phieu'];
-            $id_apdung = $_POST['id_apdung'];
-            $id_doituong = $_POST['id_doituong'];
-            $ketqua = $_POST['ketqua'];
-            $ngaythuchien = $_POST['ngaythuchien'];
-            $status = $phieukhaosat->phieukhaosat__Update($id_phieu, $id_apdung, $id_doituong, $ketqua, $ngaythuchien);
+             $id_dot = $_POST['id_dot'];
+            $kohl = $_POST['kohl'];
+            $ithl = $_POST['ithl'];
+            $khahl = $_POST['khahl'];
+            $hl = $_POST['hl'];
+            $rathl = $_POST['rathl'];
+            $per_kohl = $_POST['per_kohl'];
+            $per_ithl = $_POST['per_ithl'];
+            $per_khahl = $_POST['per_khahl'];
+            $per_hl = $_POST['per_hl'];
+            $per_rathl = $_POST['per_rathl'];
+            $status = $ketqua->ketqua_Add($id, $id_dot, $kohl, $ithl, $khahl, $hl, $rathl, $per_kohl, $per_ithl, $per_khahl, $per_hl, $per_rathl);
             if ($status) {
-                header('Location: ../../index.php?req=lietkephieukhaosat&status=success');
+                header('Location: ../../index.php?req=lietkeketqua&status=success');
             } else {
-                header('Location: ../../index.php?req=lietkephieukhaosat&status=fail');
+                header('Location: ../../index.php?req=lietkeketqua&status=fail');
             }
             break;
         case "delete":
-            $id_phieu = $_GET['id_phieu'];          
-            $status = $phieukhaosat->phieukhaosat__Delete($id_phieu);
+            $id = $_GET['id'];          
+            $status = $ketqua->ketqua__Delete($id);
             if ($status) {
-                header('Location: ../../index.php?req=lietkephieukhaosat&status=success');
+                header('Location: ../../index.php?req=lietkeketqua&status=success');
             } else {
-                header('Location: ../../index.php?req=lietkephieukhaosat&status=fail');
+                header('Location: ../../index.php?req=lietkeketqua&status=fail');
             }
             break;   
     }

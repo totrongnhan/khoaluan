@@ -1,6 +1,6 @@
 <?php
 require("../models/getModel.php");
-$phieukhaosat__Get_All = $phieukhaosat->phieukhaosat__Get_All();
+$phieukhaosatgv__Get_All = $phieukhaosatgv->phieukhaosatgv__Get_All();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -39,17 +39,17 @@ $phieukhaosat__Get_All = $phieukhaosat->phieukhaosat__Get_All();
                 </nav>
                 <div class="container-fluid">
                     <div class="container">
-                        <h1>Danh sách phiếu khảo sát</h1>
+                        <h1>Danh sách phiếu khảo sát gv</h1>
                         <!-- Button to Open the Modal -->
                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-                            Thêm phiếu khảo sát mới
+                            Thêm phiếu khảo sát gv mới
                         </button>
 
 
                         <table class="table table-dark table-hover">
                             <thead>
                                 <tr>
-                                    <th>Id phiếu khảo sát</th>
+                                    <th>Id phiếu khảo sát gv</th>
                                     <th>Id áp dụng</th>
                                     <th>Id đối tượng</th>                                   
                                     <th>Kết quả</th>
@@ -58,7 +58,7 @@ $phieukhaosat__Get_All = $phieukhaosat->phieukhaosat__Get_All();
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php foreach ($phieukhaosat__Get_All as $item): ?>
+                                <?php foreach ($phieukhaosatgv__Get_All as $item): ?>
                                     <tr>
                                         <td><?php echo $item->id_phieu; ?></td>
                                         <td><?php echo $item->id_apdung; ?></td>
@@ -108,7 +108,7 @@ $phieukhaosat__Get_All = $phieukhaosat->phieukhaosat__Get_All();
                                    
 
 
-                                    <button class="btn btn-success">Thêm phiếu khảo sát</button>
+                                    <button class="btn btn-success">Thêm phiếu khảo sát gv</button>
                                 </form>
                             </div>
 

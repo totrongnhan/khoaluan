@@ -26,7 +26,10 @@
             <a href="index.php?req=lietkedotkhaosat" style="color: #ffffff; background-color: #585858;" class="w3-bar-item w3-button">Đợt khảo sát</a>
             <a href="index.php?req=lietkedoituongapdung" style="color: #ffffff; background-color: #585858;" class="w3-bar-item w3-button">Đối tượng áp dụng</a>          
             <a href="index.php?req=lietkephieukhaosat" style="color: #ffffff; background-color: #585858;" class="w3-bar-item w3-button">Phiếu khảo sát</a>
+            <a href="index.php?req=lietkephieukhaosatgv" style="color: #ffffff; background-color: #585858;" class="w3-bar-item w3-button">Phiếu khảo sát gv</a>
             <a href="index.php?req=taophieu" style="color: #ffffff; background-color: #585858;" class="w3-bar-item w3-button">Tạo phiếu</a>
+            <a href="index.php?req=lietkeketqua" style="color: #ffffff; background-color: #585858;" class="w3-bar-item w3-button">Kết quả</a>
+            <a href="index.php?req=index" style="color: #ffffff; background-color: #585858;" class="w3-bar-item w3-button">Import sv</a>
         </div>
 
         <!-- Page Content -->

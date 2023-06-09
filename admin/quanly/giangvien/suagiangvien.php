@@ -40,9 +40,9 @@ $giangvien__Get_By_Id = $giangvien->giangvien__Get_By_Id($id_giangvien);
                 </div>
                 <div class="form-group">
                     <label for="gioitinh">Giới tính</label><br>
-                    <input type="radio" name="gioitinh" id="nam" value="1">
+                    <input type="radio" name="gioitinh" id="nam" value="1" <?=$giangvien__Get_By_Id->gioitinh == 1 ? "checked" : ""?>>
                     <label for="nam">Nam</label>
-                    <input type="radio" name="gioitinh" id="nu" value="0">
+                    <input type="radio" name="gioitinh" id="nu" value="0" <?=$giangvien__Get_By_Id->gioitinh == 0 ? "checked" : ""?>>
                     <label for="nu">Nữ</label>
                 </div>
                 <div class="form-group">

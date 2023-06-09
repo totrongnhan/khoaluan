@@ -41,15 +41,15 @@ class nganhhoc extends Database {
     }
 
 
-    public function nganhhoc_Add($tennganhhoc, $mota) {
-        $obj = $this->connect->prepare("INSERT INTO nganhhoc(tennganhhoc, mota) VALUES (?,?)");
-        $obj->execute(array($tennganhhoc, $mota));
+    public function nganhhoc_Add($tennganhhoc, $mota, $id_khoaa) {
+        $obj = $this->connect->prepare("INSERT INTO nganhhoc(tennganhhoc, mota, id_khoaa) VALUES (?,?,?)");
+        $obj->execute(array($tennganhhoc, $mota, $id_khoaa));
         return $obj->rowCount();
     }
 
-    public function nganhhoc__Update($id_nganhhoc, $tennganhhoc, $mota) {
-        $obj = $this->connect->prepare("UPDATE nganhhoc SET tennganhhoc=?, mota=? WHERE id_nganhhoc=?");
-        $obj->execute(array($tennganhhoc, $mota, $id_nganhhoc));
+    public function nganhhoc__Update($id_nganhhoc, $tennganhhoc, $mota, $id_khoaa) {
+        $obj = $this->connect->prepare("UPDATE nganhhoc SET tennganhhoc=?, mota=? ,id_khoaa=? WHERE id_nganhhoc=?");
+        $obj->execute(array($tennganhhoc, $mota, $id_khoaa, $id_nganhhoc));
         return $obj->rowCount();
     }
 

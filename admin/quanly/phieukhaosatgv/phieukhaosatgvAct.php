@@ -3,7 +3,7 @@
 //userAct
 session_start();
 require("../../../models/getModel.php");
-$phieukhaosat__Get_All = $phieukhaosat->phieukhaosat__Get_All();
+$phieukhaosatgv__Get_All = $phieukhaosatgv->phieukhaosatgv__Get_All();
 if (isset($_GET["req"])) {
     switch ($_GET["req"]) {
         case "add":
@@ -11,7 +11,7 @@ if (isset($_GET["req"])) {
             $id_doituong = $_POST['id_doituong'];
             $ketqua = $_POST['ketqua'];
             $ngaythuchien = $_POST['ngaythuchien'];
-            $status = $phieukhaosat->phieukhaosat_Add($id_apdung, $id_doituong, $ketqua, $ngaythuchien);
+            $status = $phieukhaosatgv->phieukhaosatgv_Add($id_apdung, $id_doituong, $ketqua, $ngaythuchien);
             if ($status) {
                 header('Location: ../../index.php?req=lietkephieukhaosat&status=success');
             } else {
@@ -25,7 +25,7 @@ if (isset($_GET["req"])) {
             $id_doituong = $_POST['id_doituong'];
             $ketqua = $_POST['ketqua'];
             $ngaythuchien = $_POST['ngaythuchien'];
-            $status = $phieukhaosat->phieukhaosat__Update($id_phieu, $id_apdung, $id_doituong, $ketqua, $ngaythuchien);
+            $status = $phieukhaosatgv->phieukhaosatgv__Update($id_phieu, $id_apdung, $id_doituong, $ketqua, $ngaythuchien);
             if ($status) {
                 header('Location: ../../index.php?req=lietkephieukhaosat&status=success');
             } else {
@@ -34,7 +34,7 @@ if (isset($_GET["req"])) {
             break;
         case "delete":
             $id_phieu = $_GET['id_phieu'];          
-            $status = $phieukhaosat->phieukhaosat__Delete($id_phieu);
+            $status = $phieukhaosatgv->phieukhaosatv__Delete($id_phieu);
             if ($status) {
                 header('Location: ../../index.php?req=lietkephieukhaosat&status=success');
             } else {

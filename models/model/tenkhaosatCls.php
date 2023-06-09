@@ -33,7 +33,7 @@ class tenkhaosat extends Database {
         return $obj->fetchAll();
     }
     
-    public function tenkhaosat__Add($tenkhaosat0, $mota) {
+    public function tenkhaosat_Add($tenkhaosat0, $mota) {
         $obj = $this->connect->prepare("INSERT INTO tenkhaosat(tenkhaosat0, mota) VALUES (?,?)");
         $obj->execute(array($tenkhaosat0, $mota));
         return $obj->rowCount();
@@ -58,6 +58,25 @@ class tenkhaosat extends Database {
         $obj->setFetchMode(PDO::FETCH_OBJ);
         $obj->execute(array($id_tenkhaosat));
         return $obj->fetch();
+    }
+     public function tenkhaosat__Get_By_Id_Ap_Dung($id_apdung) {
+        $obj = $this->connect->prepare("SELECT * FROM tenkhaosat WHERE id_apdung = ?");
+        $obj->setFetchMode(PDO::FETCH_OBJ);
+        $obj->execute(array($id_apdung));
+        return $obj->fetch();
+    }
+    
+    public function tenkhaosat__Get_By_Id_sinhvien($id_sinhvien, $id_dot) {
+        $obj = $this->connect->prepare("SELECT * FROM phieukhaosat , doituongapdung , tenkhaosat WHERE phieukhaosat.id_apdung = doituongapdung.id_apdung AND doituongapdung.id_tenkhaosat = tenkhaosat.id_tenkhaosat AND phieukhaosat.id_doituong = ? AND doituongapdung.id_dot = ?");
+        $obj->setFetchMode(PDO::FETCH_OBJ);
+        $obj->execute(array($id_sinhvien, $id_dot));
+        return $obj->fetchAll();
+    }
+    public function tenkhaosat__Get_By_Id_giangvien($id_giangvien) {
+        $obj = $this->connect->prepare("SELECT * FROM phieukhaosatgv , doituongapdung , tenkhaosat WHERE phieukhaosatgv.id_apdung = doituongapdung.id_apdung AND doituongapdung.id_tenkhaosat = tenkhaosat.id_tenkhaosat AND phieukhaosatgv.id_doituong = ?;");
+        $obj->setFetchMode(PDO::FETCH_OBJ);
+        $obj->execute(array($id_giangvien));
+        return $obj->fetchAll();
     }
 
 }

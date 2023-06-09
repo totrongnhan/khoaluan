@@ -54,8 +54,8 @@ $khoahoc__Get_All = $khoahoc->khoahoc__Get_All();
                                     <th>Id lớp học</th>
                                     <th>Tên lớp học</th>
                                     <th>Mô tả</th>
-                                    <th>Id ngành học</th>
-                                    <th>Id khóa học</th>
+                                    <th>Tên ngành học</th>
+                                    <th>Tên khóa học</th>
                                     <th>Thao tác</th>
                                 </tr>
                             </thead>
@@ -65,8 +65,30 @@ $khoahoc__Get_All = $khoahoc->khoahoc__Get_All();
                                         <td><?php echo $item->id_lophoc; ?></td>
                                         <td><?php echo $item->tenlophoc; ?></td>
                                         <td><?php echo $item->mota; ?></td>
-                                        <td><?php echo $item->id_nganhhoc; ?></td>
-                                        <td><?php echo $item->id_khoahoc; ?></td>
+                                        <td>
+                                            <?php
+                                            $tennganhhoc = '';
+                                            foreach ($nganhhoc__Get_All as $nganhhocitem) {
+                                                if ($nganhhocitem->id_nganhhoc == $item->id_nganhhoc) {
+                                                    $tennganhhoc = $nganhhocitem->tennganhhoc;
+                                                    break;
+                                                }
+                                            }
+                                            echo $tennganhhoc;
+                                            ?>
+                                        </td>
+                                        <td>
+                                            <?php
+                                            $tenkhoahoc = '';
+                                            foreach ($khoahoc__Get_All as $khoahocitem) {
+                                                if ($khoahocitem->id_khoahoc == $item->id_khoahoc) {
+                                                    $tenkhoahoc = $khoahocitem->tenkhoahoc;
+                                                    break;
+                                                }
+                                            }
+                                            echo $tenkhoahoc;
+                                            ?>
+                                        </td>
                                         <td>
                                             <a href="?req=sualophoc&id_lophoc=<?php echo $item->id_lophoc; ?>" class="btn btn-primary">Sửa</a>
                                             <a onclick="return confirm('Bạn có muốn xóa lớp học này không');" href="./quanly/lophoc/lophocAct.php?req=delete&id_lophoc=<?php echo $item->id_lophoc; ?>" class="btn btn-danger">Xóa</a>

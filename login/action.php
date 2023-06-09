@@ -20,9 +20,17 @@ require("../models/getModel.php");
                 }
                 
                    if($status->id_phanquyen  == 3){
-                    $_SESSION['user'] = $status;
-                    header("location:../Danhgi/Hinh.php");
+                    $sinhvien = $taikhoan->taikhoan__Get_By_thongtinsinhvien($status->id_taikhoan);
+                     $_SESSION['user'] = $sinhvien;
+
+                    header("location:../DanhgiaSV/Hinh.php");
                 }   
+                if($status->id_phanquyen  == 2){
+                    $giangvien = $taikhoan->taikhoan__Get_By_thongtingiangvien($status->id_taikhoan);
+                     $_SESSION['user'] = $giangvien;
+
+                    header("location:../DanhgiaGV/Hinh.php");
+                }
                     
                 }
                 break; 

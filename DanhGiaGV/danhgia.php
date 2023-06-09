@@ -1,8 +1,15 @@
-<?php
-session_start();
-require '../models/getModel.php';
-?>
 
+<?php
+    session_start();
+    
+    
+
+require("../models/getModel.php");
+$id_giangvien = $_SESSION['user']->id_giangvien;
+$tenkhaosat__Get_By_Id_giangvien = $tenkhaosat->tenkhaosat__Get_By_Id_giangvien($id_giangvien);
+
+
+?>
 <!DOCTYPE html>
 <html>
 
@@ -41,6 +48,7 @@ require '../models/getModel.php';
                 margin: -5px;
                 height: 100px;
             }
+            
         </style>
     </head>
     <center>
@@ -52,22 +60,30 @@ require '../models/getModel.php';
 
 
 
-        <h3 class="H3">KHẢO SÁT VÀ ĐÁNH GIÁ TRƯỜNG TÂY ĐÔ CỦA SINH VIÊN<br> HK1-NĂM-2022-2023 </h3>
-        <h1 style="font-size: 25PX; margin-bottom: -1px; margin-top: -15px; text-align: end; color: #000;">Xin Chào: <b
-                style="color: red;">
-                    <?php echo $_SESSION['name'] ?>
-            </b></h1>
-        <?php
-        $hocphan = "Lớp công nghệ thông tin k14";
-        $hocky = "học kỳ 1, năm học 2022-2023";
-        $khoa = "Khoa kỹ thuật công nghệ"
-        ?>
+        <div class="dnn_banner bannerg">            
+            <img src="../assets/img/bannertruong.jpg" style="width: 1400px;"/>
+            <nav class="navbar" style="background-color: 5fbf00;">
+                <div class="container-fluid">
+<!--                    <a class="navbar-brand" href="../danhgia/danhgia.php>">Trang chủ</a>-->
+<!--                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>-->
+                    <form class="d-flex">
+                        
+                        <a style="font-size: 25px; margin-left: 1200px; color: red; margin-top: 50px; " class="dropdown-item">Xin chào:<?= isset($_SESSION['user'])?$_SESSION['user']->tengiangvien:"chuadapnhap" ;?>
+                        </a>
+<!--                        <a class="dropdown-item" href="../login/index.php">Đăng xuất</a>-->
 
-    </body>
-    <table border="1">
+
+                    </form>
+                </div>
+        </div>
+        <table border="1">
         <tr>
 
-            <th style="text-align: center; background-color: #82ce34;">THÔNG TIN SINH VIÊN</th>
+
+            
+            <td style="border-collapse: collapse; background-color: #82ce34; width: 80px;" > <a href="../login/index.php">Đăng xuất</a></td>
 
 
         </tr>
@@ -75,69 +91,42 @@ require '../models/getModel.php';
 
 
     </table>
+        
 
-    <?php
-    if (isset($_POST['ketqua'])) {
-        foreach ($_POST['ketqua'] as $item) {
-            echo $item . "|";
-        }
-    }
-    ?>
+    </body>
 
+
+    
 
     <form action="" method="post">
         <table>
             <thead>
                 <tr>
-                    <th style="text-align: center;">Tên đánh giá</th>
-                    <th style="text-align: center;">Câu hỏi Đánh Giá</th>
-                    <th style="text-align: center;">Sinh Viên Tự Chấm</th>
+                    <th style="text-align: center; background-color: #82ce34;">Tên đánh giá</th>
+                    <th style="text-align: center; background-color: #82ce34;">Thực hiện</th>
 
                 </tr>
             </thead>
             <tbody>
-                <?php foreach ($tenkhaosat->tenkhaosat__Get_All() as $item_1): ?>
-                    <tr>
-                        <th style="text-align: center;">
-                            <?= $item_1->tenkhaosat0 ?>
-                        </th>
-                        <td>
-                            <?php foreach ($nhomcauhoi->nhomcauhoi__Get_By_Id_tenkhaosat($item_1->id_tenkhaosat) as $item_2): ?>
-                                <h4 class="text-left border-custom box-1">
-                                    <?= $item_2->tennhomcauhoi ?>
-                                </h4>
-                                <?php foreach ($cauhoi->cauhoi__Get_By_Id_nhom($item_2->id_nhomcauhoi) as $item_3): ?>
-                                    <p class="text-left border-custom box-2">
-                                        <?= $item_3->tencauhoi ?>
-                                    </p>
-                                <?php endforeach ?>
+                <?php foreach ($tenkhaosat__Get_By_Id_giangvien as $item_1): ?>
+    <tr>
+        <th style="text-align: center;">
+            <?= $item_1->tenkhaosat0 ?>
+        </th>
+        <td>
+             <center> <img style="margin-bottom: -2px; margin-right: 5px;" <i style="color: #ffffff;"><a href="danhgiacsvc.php?id=<?=$item_1->id_phieu?>" style="color: red;">Khảo sát</a> </center>
 
-                            <?php endforeach ?>
-                        </td>
-                        <td>
-                            <?php foreach ($nhomcauhoi->nhomcauhoi__Get_By_Id_tenkhaosat($item_1->id_tenkhaosat) as $item_2): ?>
-                                <h4 class="text-left border-custom box-1-set">
+        </td>
+        
+    </tr>
+<?php endforeach ?>
 
-                                </h4>
-                                <?php foreach ($cauhoi->cauhoi__Get_By_Id_nhom($item_2->id_nhomcauhoi) as $item_3): ?>
-                                    <p class="text-left border-custom box-2-set">
-                                        <input type="radio" name="ketqua[]" id="" class="form-control" required>
-                                        <input type="radio" name="ketqua[]" id="" class="form-control" required>
-                                        <input type="radio" name="ketqua[]" id="" class="form-control" required>
-                                        <input type="radio" name="ketqua[]" id="" class="form-control" required>
-                                        <input type="radio" name="ketqua[]" id="" class="form-control" required>
-                                    </p>
-                                <?php endforeach ?>
-                            <?php endforeach ?>
-                        </td>
 
-                    </tr>
-                <?php endforeach ?>
             </tbody>
 
         </table>
 
-        <button type="submit">aaa</button>
+
 
     </form>
     <script>
@@ -157,7 +146,7 @@ require '../models/getModel.php';
 
 
 
-    
+
 </body>
 
 </center>

@@ -1,6 +1,6 @@
 <?php
 require("../models/getModel.php");
-$phieukhaosat__Get_All = $phieukhaosat->phieukhaosat__Get_All();
+$ketqua__Get_All = $ketqua->ketqua__Get_All();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -39,7 +39,7 @@ $phieukhaosat__Get_All = $phieukhaosat->phieukhaosat__Get_All();
                 </nav>
                 <div class="container-fluid">
                     <div class="container">
-                        <h1>Danh sách phiếu khảo sát</h1>
+                        <h1>Thống kê kết quả</h1>
                         <!-- Button to Open the Modal -->
                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
                             Thêm phiếu khảo sát mới
@@ -49,25 +49,40 @@ $phieukhaosat__Get_All = $phieukhaosat->phieukhaosat__Get_All();
                         <table class="table table-dark table-hover">
                             <thead>
                                 <tr>
-                                    <th>Id phiếu khảo sát</th>
-                                    <th>Id áp dụng</th>
-                                    <th>Id đối tượng</th>                                   
-                                    <th>Kết quả</th>
-                                    <th>Ngày thực hiện</th>
+                                    <th>Id</th>
+                                    <th>Id đợt</th>                                   
+                                    <th>kohl</th>
+                                    <th>ithl</th>
+                                    <th>khahl</th>
+                                    <th>hl</th>
+                                    <th>rathl</th>
+                                    <th>% kohl</th>
+                                    <th>% ithl</th>
+                                    <th>% khahl</th>
+                                    <th>% hl</th>
+                                    <th>% rathl</th>
                                     <th>Thao tác</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php foreach ($phieukhaosat__Get_All as $item): ?>
+                                <?php foreach ($ketqua__Get_All as $item): ?>
                                     <tr>
-                                        <td><?php echo $item->id_phieu; ?></td>
-                                        <td><?php echo $item->id_apdung; ?></td>
-                                        <td><?php echo $item->id_doituong; ?></td>
-                                        <td><?php echo $item->ketqua; ?></td>
-                                        <td><?php echo $item->ngaythuchien; ?></td>
+                                        <td><?php echo $item->id; ?></td>
+                                        <td><?php echo $item->id_dot; ?></td>
+                                        <td><?php echo $item->kohl; ?></td>
+                                        <td><?php echo $item->ithl; ?></td>
+                                        <td><?php echo $item->khahl; ?></td>
+                                        <td><?php echo $item->hl; ?></td>                                     
+                                        <td><?php echo $item->rathl; ?></td>
+                                        <td><?php echo $item->per_kohl; ?></td>
+                                        <td><?php echo $item->per_ithl; ?></td>
+                                        <td><?php echo $item->per_khahl; ?></td>
+                                        <td><?php echo $item->per_hl; ?></td>                                    
+                                        <td><?php echo $item->per_rathl; ?></td>
+                                        
                                         <td>
-                                            <a href="?req=suaphieukhaosat&id_phieu=<?php echo $item->id_phieu; ?>" class="btn btn-primary">Sửa</a>
-                                            <a onclick="return confirm('Bạn có muốn xóa phiếu khảo sát này không');" href="./quanly/phieukhaosat/phieukhaosatAct.php?req=delete&id_phieu=<?php echo $item->id_phieu; ?>" class="btn btn-danger">Xóa</a>
+                                            <a href="?req=suaketqua&id=<?php echo $item->id; ?>" class="btn btn-primary">Sửa</a>
+                                            <a onclick="return confirm('Bạn có muốn xóa phiếu khảo sát này không');" href="./quanly/ketqua/ketquaAct.php?req=delete&id=<?php echo $item->id; ?>" class="btn btn-danger">Xóa</a>
                                         </td>
                                     </tr>
                                 <?php endforeach ?>
@@ -84,7 +99,7 @@ $phieukhaosat__Get_All = $phieukhaosat->phieukhaosat__Get_All();
 
                             <!-- Modal Header -->
                             <div class="modal-body">
-                                <form action="./quanly/phieukhaosat/phieukhaosatAct.php?req=add" method="post">
+                                <form action="./quanly/ketqua/ketquaAct.php?req=add" method="post">
                                     <div class="form-group">
                                         <label for="id_apdung">Id áp dụng</label>
                                         <input type="text" class="form-control" name="id_apdung" id="id_apdung">

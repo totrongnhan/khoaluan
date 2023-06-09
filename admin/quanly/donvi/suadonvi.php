@@ -43,6 +43,14 @@ $donvi__Get_By_Id = $donvi->donvi__Get_By_Id($id_donvi);
                 <label for="mota">Mô tả</label>
                 <input type="text" class="form-control" name="mota" id="mota" value="<?php echo $donvi__Get_By_Id->mota ?>">
             </div>
+            <div class="form-group">
+                    <label for="is_khoa">Thuộc khoa</label><br>
+                    <input type="radio" name="is_khoa" id="thuoc" value="1" <?=$donvi__Get_By_Id->is_khoa == 1 ? "checked" : ""?>>
+                    <label for="thuoc">Thuộc</label>
+                    <input type="radio" name="is_khoa" id="khong" value="0" <?=$donvi__Get_By_Id->is_khoa == 0 ? "checked" : ""?>>
+                    <label for="khong">Không</label>
+                </div>
+            
             <button class="btn btn-info">Cập nhật thông tin</button>
         </form>
 
