@@ -149,8 +149,10 @@
 
 
                     <!--              <a href="#">THÔNG TIN SINH VIÊN</a>-->
-                    <a href="http://localhost/TayDo/login/login.php" style="margin-right: -1px;">Đăng Xuất</a>
-                    <a href="http://localhost/TayDo/login/logout.php">Đổi Mật Khẩu</a>
+                    <a href="../login/index.php" style="margin-right: -1px;">Đăng Xuất</a>
+
+                    <a href="../user/doimatkhau/index.php">Đổi Mật Khẩu</a>
+
 
                 </ul>
     </div>

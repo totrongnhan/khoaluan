@@ -19,7 +19,7 @@ require "model/doituongapdungCls.php";
 require "model/namhocCls.php";
 require "model/hockyCls.php";
 require "model/dotkhaosatCls.php";
-require "model/ketquaCls.php";
+require "model/thongkeketquasvCls.php";
 
 
 
@@ -42,6 +42,6 @@ $doituongapdung = new doituongapdung();
 $namhoc = new namhoc();
 $hocky = new hocky();
 $dotkhaosat = new dotkhaosat();
-$ketqua = new ketqua();
+$thongkeketquasv = new thongkeketquasv();
 
 ?>

@@ -84,6 +84,7 @@ class taikhoan extends Database {
             return 0;
         }
     }
+    
 
     public function taikhoan_Add($tentaikhoan, $email, $matkhau, $mota, $id_phanquyen, $id_phannhom, $id_nguoidung) {
         $obj = $this->connect->prepare("INSERT INTO taikhoan(tentaikhoan, email, matkhau, mota, id_phanquyen, id_phannhom, id_nguoidung) VALUES (?,?,?,?,?,?,?)");
@@ -96,7 +97,7 @@ class taikhoan extends Database {
         $obj->execute(array($tentaikhoan, $email, $matkhau, $mota, $id_phanquyen, $id_phannhom, $id_nguoidung, $id_taikhoan));
         return $obj->rowCount();
     }
-    public function taikhoan__Reset($id_taikhoan, $matkhau) {
+    public function taikhoan__reset($id_taikhoan, $matkhau) {
         $obj = $this->connect->prepare("UPDATE taikhoan SET matkhau=? WHERE id_taikhoan=?");
         $obj->execute(array($matkhau, $id_taikhoan));
         return $obj->rowCount();

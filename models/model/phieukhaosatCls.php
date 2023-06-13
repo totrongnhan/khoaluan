@@ -88,6 +88,12 @@ class phieukhaosat extends Database {
     $aray = explode('|', $a);
     return $aray;
     }
+    public function phieukhaosat__Get_By_Id_phieudot($id_dot) {
+        $obj = $this->connect->prepare("SELECT * FROM phieukhaosat, doituongapdung, dotkhaosat WHERE phieukhaosat.id_apdung = doituongapdung.id_apdung AND doituongapdung.id_dot = dotkhaosat.id_dot AND dotkhaosat.id_dot = ?");
+        $obj->setFetchMode(PDO::FETCH_OBJ);
+        $obj->execute(array($id_dot));
+        return $obj->fetchAll();
+    }
     
 }
 ?>

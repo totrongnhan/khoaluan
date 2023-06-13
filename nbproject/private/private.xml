@@ -12,9 +12,10 @@
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/xampp/htdocs/Cntt14-master/admin/quanly/import-from-excel/action.php</file>
-            <file>file:/C:/xampp/htdocs/Cntt14-master/models/model/ketquaCls.php</file>
-            <file>file:/C:/xampp/htdocs/Cntt14-master/admin/quanly/ketqua/ketquaAct.php</file>
+            <file>file:/C:/xampp/htdocs/Cntt14-master/admin/quanly/thongkeketquasv/thongkeketquasv.php</file>
+            <file>file:/C:/xampp/htdocs/Cntt14-master/models/model/thongkeketquasvCls.php</file>
+            <file>file:/C:/xampp/htdocs/Cntt14-master/models/model/phieukhaosatCls.php</file>
+            <file>file:/C:/xampp/htdocs/Cntt14-master/admin/quanly/thongkeketquasv/thongkeketquasvAct.php</file>
         </group>
     </open-files>
 </project-private>

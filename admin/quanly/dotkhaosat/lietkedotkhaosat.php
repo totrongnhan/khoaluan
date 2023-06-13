@@ -72,7 +72,18 @@ $doituongapdung__Get_All = $doituongapdung->doituongapdung__Get_All()
                                     <td><?php echo $item->mota; ?></td>
                                     <td><?php echo $item->thoigianbatdau; ?></td>
                                     <td><?php echo $item->thoigianketthuc; ?></td>
-                                    <td><?php echo $item->id_hocky; ?></td>
+                                    <td>
+                                        <?php
+                                        $tenhocky = '';
+                                        foreach ($hocky__Get_All as $hockyitem) {
+                                            if ($hockyitem->id_hocky == $item->id_hocky) {
+                                                $tenhocky = $hockyitem->tenhocky;
+                                                break;
+                                            }
+                                        }
+                                        echo $tenhocky;
+                                        ?>
+                                    </td>
                                     
                                     <td>
                                         <a href="?req=suadotkhaosat&id_dot=<?php echo $item->id_dot; ?>" class="btn btn-primary">Sửa</a>

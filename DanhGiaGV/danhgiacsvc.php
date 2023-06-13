@@ -5,7 +5,8 @@
 
 require("../models/getModel.php");
 $id_giangvien = $_SESSION['user']->id_giangvien;
-$tenkhaosat__Get_By_Id_giangvien = $tenkhaosat->tenkhaosat__Get_By_Id_giangvien($id_giangvien);
+$id_dot =$dotkhaosat->dotkhaosat__Get_Last()->id_dot;
+$tenkhaosat__Get_By_Id_giangvien = $tenkhaosat->tenkhaosat__Get_By_Id_giangvien($id_giangvien,$id_dot);
                 
 $id = $_GET['id'];
                 

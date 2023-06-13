@@ -145,8 +145,8 @@ if (isset($_GET['req'])) {
         case 'suaphieukhaosat':
             require './quanly/phieukhaosat/suaphieukhaosat.php';
             break;
-        case 'lietkeketqua':
-            require './quanly/ketqua/lietkeketqua.php';
+        case 'thongkeketquasv':
+            require './quanly/thongkeketquasv/thongkeketquasv.php';
             break;
         case 'index':
             require './quanly/import-from-excel/index.php';

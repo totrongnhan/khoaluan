@@ -49,36 +49,36 @@ if (isset($_GET["req"])) {
                 header('Location: ../../index.php?req=lietketaikhoan&status=fail');
             }
             break;
-        case "reset":
-            
-           function random_string($length) {
-                $str = random_bytes($length);
-                $str = base64_encode($str);
-                $str = str_replace(["+", "/", "="], "", $str);
-                $str = substr($str, 0, $length);
-                return $str;
-            }
-                
-
-                $id_taikhoan = $_GET['id_taikhoan'];
-            
-            $email = $_GET['email'];
-            $matkhau = random_string(6);
-            $status = $taikhoan->taikhoan__Reset($id_taikhoan, $matkhau);
-            if ($status) {
-//			$subject="test Mail";
-//			$message="Hello ! This is a test Message";
-//			$from = "totrongnhan972@gmail.com";
-//			$headers="From :" . $from;
-//				mail($to,$subject,$message,$headers);
-//				echo "Mail sent";
-		
-  //mail("$email","My subject",$matkhau);
-                header('Location: ../../index.php?req=lietketaikhoan&status=success');
-            } else {
-                header('Location: ../../index.php?req=lietketaikhoan&status=fail');
-            }
-            break;
+//        case "reset":
+//            
+//           function random_string($length) {
+//                $str = random_bytes($length);
+//                $str = base64_encode($str);
+//                $str = str_replace(["+", "/", "="], "", $str);
+//                $str = substr($str, 0, $length);
+//                return $str;
+//            }
+//                
+//
+//                $id_taikhoan = $_GET['id_taikhoan'];
+//            
+//            $email = $_GET['email'];
+//            $matkhau = random_string(6);
+//            $status = $taikhoan->taikhoan__Reset($id_taikhoan, $matkhau);
+//            if ($status) {
+////			$subject="test Mail";
+////			$message="Hello ! This is a test Message";
+////			$from = "totrongnhan972@gmail.com";
+////			$headers="From :" . $from;
+////				mail($to,$subject,$message,$headers);
+////				echo "Mail sent";
+//		
+//  //mail("$email","My subject",$matkhau);
+//                header('Location: ../../index.php?req=lietketaikhoan&status=success');
+//            } else {
+//                header('Location: ../../index.php?req=lietketaikhoan&status=fail');
+//            }
+//            break;
     }
 }
 ?>

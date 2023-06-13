@@ -96,6 +96,7 @@ $tenkhaosat__Get_By_Id_sinhvien = $tenkhaosat->tenkhaosat__Get_By_Id_sinhvien($i
     
 
     <form action="" method="post">
+        
         <table>
             <thead>
                 <tr>

@@ -72,10 +72,10 @@ class tenkhaosat extends Database {
         $obj->execute(array($id_sinhvien, $id_dot));
         return $obj->fetchAll();
     }
-    public function tenkhaosat__Get_By_Id_giangvien($id_giangvien) {
-        $obj = $this->connect->prepare("SELECT * FROM phieukhaosatgv , doituongapdung , tenkhaosat WHERE phieukhaosatgv.id_apdung = doituongapdung.id_apdung AND doituongapdung.id_tenkhaosat = tenkhaosat.id_tenkhaosat AND phieukhaosatgv.id_doituong = ?;");
+    public function tenkhaosat__Get_By_Id_giangvien($id_giangvien, $id_dot) {
+        $obj = $this->connect->prepare("SELECT * FROM phieukhaosatgv , doituongapdung , tenkhaosat WHERE phieukhaosatgv.id_apdung = doituongapdung.id_apdung AND doituongapdung.id_tenkhaosat = tenkhaosat.id_tenkhaosat AND phieukhaosatgv.id_doituong = ? AND doituongapdung.id_dot = ?");
         $obj->setFetchMode(PDO::FETCH_OBJ);
-        $obj->execute(array($id_giangvien));
+        $obj->execute(array($id_giangvien, $id_dot));
         return $obj->fetchAll();
     }
 

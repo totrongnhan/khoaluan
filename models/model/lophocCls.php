@@ -70,5 +70,11 @@ class lophoc extends Database {
         $obj->execute(array($id_nganhhoc));
         return $obj->fetchAll();
     }
+    public function lophoc__Get_By_Id_sinhvien($id_sinhvien) {
+        $obj = $this->connect->prepare("SELECT * FROM lophoc, sinhvien WHERE lophoc.id_lophoc = sinhvien.id_lophoc AND id_sinhvien=?");
+        $obj->setFetchMode(PDO::FETCH_OBJ);
+        $obj->execute(array($id_sinhvien));
+        return $obj->fetch();
+    }
 }
 ?>

@@ -64,6 +64,8 @@ class sinhvien extends Database {
         $obj->execute(array($id_lophoc));
         return $obj->fetchAll();
     }
+
+    
 }
 ?>
 

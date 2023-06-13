@@ -33,6 +33,17 @@ require("../models/getModel.php");
                 }
                     
                 }
+                break;
+                
+                case 'change':
+                $id_taikhoan = $_POST['id_taikhoan'];
+                $matkhau = $_POST['matkhau'];
+                $status = $taikhoan->taikhoan__reset($id_taikhoan, $matkhau);
+                if($status != "0" ){
+                    header('location: ../../index.php?req=lietkehocky&status=success=success');
+                }else{
+                    header('location: ../user/index.php?page=quan-ly-tai-khoan&status=failed');
+                }
                 break; 
     
             case "logout":

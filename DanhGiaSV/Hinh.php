@@ -45,13 +45,16 @@
     </style>
 </head>
 <center>
+        <?php
+        include('../include/header_1.php');
+        ?>
 
 
 
 <!--        <table border="0" width="1500px;">
   </table>-->
 
-    <?php include_once '../include/header_1.php'; ?><br>
+
     <body>
         <h3 style="color: #0d6efd; font-size: 40px;"> Chào mừng học viên, sinh viên<br> đến với phần mềm khảo sát Trường Đại học Tây Đô</h3>
         <h3 style="color: #0d6efd; font-size: 40px;">Chúng tôi giữ kín các thông tin về người trả lời nên Anh/ Chị vui<br> lòng trả lời một cách thẳng thắn, khách quan<br>

@@ -124,6 +124,17 @@ $item_1 = $phieukhaosat->phieukhaosat__Get_By_Id($id);
     <form action="" method="post">
 
         <input type="hidden" name="id_phieu" value="<?= $id ?>"/>
+        <table>
+       <thead>
+                <tr>
+                    
+                    <th style="text-align: right; width: 750px;">
+                                    (1: KHÔNG hài lòng; 2: Ít Hài lòng; 3: Khá Hài lòng; 4: Hài lòng; 5: Rất Hài lòng; )</th>
+                    
+
+                </tr>
+            </thead>
+            </table>
 
 
         <table>
@@ -131,9 +142,9 @@ $item_1 = $phieukhaosat->phieukhaosat__Get_By_Id($id);
                 <tr>
                     <th style="text-align: center;
                         width: 200px;">Tên đánh giá</th>
-                    <th style="text-align: center;">Câu hỏi Đánh Giá</th>
+                    <th style="text-align: center; width: 750px;">Câu hỏi Đánh Giá</th>
                     <th style="text-align: center;
-                        width: 590px;">Sinh Viên Tự Chấm</th>
+                        width: 50px;">Sinh Viên Tự Chấm</th>
 
                 </tr>
             </thead>
@@ -174,17 +185,17 @@ $item_1 = $phieukhaosat->phieukhaosat__Get_By_Id($id);
                                     </p>
                                 <?php else: ?>
 
-                                    <p class="text-left border-custom box-2-set">
+                                    <p class="text-left border-custom box-2-set" style="text-align: center;">
                                         <input type="radio" name="ketqua[<?= $item_3->id_cauhoi ?>][]" id="" value="1" <?= isset($phieukhaosat__Get_By_Id_chuoi[$i]) ? ($phieukhaosat__Get_By_Id_chuoi[$i] == 1 ? "checked" : "") : "" ?> class="form-control" required>
-                                        <label for="<?php echo $item_3->id_cauhoi ?>">không hài lòng</label>
+                                        <label for="<?php echo $item_3->id_cauhoi ?>"></label>
                                         <input type="radio" name="ketqua[<?= $item_3->id_cauhoi ?>][]" id="" value="2" <?= isset($phieukhaosat__Get_By_Id_chuoi[$i]) ? ($phieukhaosat__Get_By_Id_chuoi[$i] == 2 ? "checked" : "") : "" ?> class="form-control" required>
-                                        <label for="<?php echo $item_3->id_cauhoi ?>">ít hài lòng</label>
+                                        <label for="<?php echo $item_3->id_cauhoi ?>"></label>
                                         <input type="radio" name="ketqua[<?= $item_3->id_cauhoi ?>][]" id="" value="3" <?= isset($phieukhaosat__Get_By_Id_chuoi[$i]) ? ($phieukhaosat__Get_By_Id_chuoi[$i] == 3 ? "checked" : "") : "" ?> class="form-control" required>
-                                        <label for="<?php echo $item_3->id_cauhoi ?>">khá hài lòng</label>
+                                        <label for="<?php echo $item_3->id_cauhoi ?>"></label>
                                         <input type="radio" name="ketqua[<?= $item_3->id_cauhoi ?>][]" id="" value="4" <?= isset($phieukhaosat__Get_By_Id_chuoi[$i]) ? ($phieukhaosat__Get_By_Id_chuoi[$i] == 4 ? "checked" : "") : "" ?> class="form-control" required>
-                                        <label for="<?php echo $item_3->id_cauhoi ?>">hài lòng</label>
+                                        <label for="<?php echo $item_3->id_cauhoi ?>"></label>
                                         <input type="radio" name="ketqua[<?= $item_3->id_cauhoi ?>][]" id="" value="5" <?= isset($phieukhaosat__Get_By_Id_chuoi[$i]) ? ($phieukhaosat__Get_By_Id_chuoi[$i] == 5 ? "checked" : "") : "" ?> class="form-control" required>
-                                        <label for="<?php echo $item_3->id_cauhoi ?>">rất hài lòng</label>
+                                        <label for="<?php echo $item_3->id_cauhoi ?>"></label>
                                     </p>
                                 <?php endif ?>
                                 <?php $i++ ?>

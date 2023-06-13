@@ -1,7 +1,27 @@
 <?php
 require("../models/getModel.php");
-$ketqua__Get_All = $ketqua->ketqua__Get_All();
+    $id_dot = -2;
+    $id_lophoc  = -2;
+    $thongkeketquasv__Get_By_Id_Lop_Hoc_And_Id_Dot = $thongkeketquasv->thongkeketquasv__Get_By_Id_Lop_Hoc_And_Id_Dot($id_lophoc, $id_dot);
+    $dotkhaosat__Get_All = $dotkhaosat->dotkhaosat__Get_All();
+    $lophoc__Get_All = $lophoc->lophoc__Get_All();
+    
+    
+
+
+if (isset($_GET['id_dot'])) {
+    $id_dot = $_GET['id_dot'];
+    
+}
+if(isset($_GET['id_lophoc'])){
+        $id_lophoc = $_GET['id_lophoc'];
+        $thongkeketquasv__Get_By_Id_Lop_Hoc_And_Id_Dot = $thongkeketquasv->thongkeketquasv__Get_By_Id_Lop_Hoc_And_Id_Dot($id_lophoc, $id_dot);
+    }
+
+//$thongkeketquasv__Get_By_Id_dot = $thongkeketquasv->thongkeketquasv__Get_By_Id_dot($id_dot);
+//$phieukhaosat__Get_All = $phieukhaosat->phieukhaosat__Get_By_Id_phieudot($id_phieu, $id_dot)
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -37,20 +57,126 @@ $ketqua__Get_All = $ketqua->ketqua__Get_All();
                         </ul>
                     </div>
                 </nav>
+                <div class="content-wrapper">
+     <!-- Content Header (Page header) -->
+     <section class="content-header">
+         <div class="container-fluid">
+             <div class="row mb-2">
+                 <div class="col-sm-6">
+                     <h1>Quản lý kết quả khảo sát sinh viên</h1>
+                 </div>
+                 <div class="col-sm-6">
+                     <ol class="breadcrumb float-sm-right">
+                         <li class="breadcrumb-item"><a href="#">Home</a></li>
+                         <li class="breadcrumb-item active">Quản lý kết quả khảo sát sinh viên</li>
+                     </ol>
+                 </div>
+             </div>
+         </div><!-- /.container-fluid -->
+     </section>
+
+     <section class="content">
+         <div class="col-12">
+             <div class="card card-success">
+                 <div class="card-header">
+                     <h3 class="card-title"></h3>
+                     <div class="card-tools">
+                         <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                             <i class="fas fa-minus"></i>
+                         </button>
+                     </div>
+                 </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col">
+                            <label for="">Chọn đợt (<?= count($dotkhaosat->dotkhaosat__Get_All()) ?>)</label>
+                            <select class="form-control" name="" required onchange="location.href = this.value">
+                                
+                                <option value="">Chọn đợt</option>
+                                <?php foreach ($dotkhaosat->dotkhaosat__Get_All() as $item): ?>
+                                    <option value="index.php?req=thongkeketquasv&id_dot=<?php echo $item->id_dot ?>"
+                                            <?= $id_dot == $item->id_dot ? "selected" : "" ?>>
+                                                <?= $item->tendot ?>
+                                    </option>
+                                <?php endforeach; ?>
+                            </select>
+                        </div>
+
+
+                        
+                        <div class="col">
+                            <?php if (isset($_GET['id_dot'])):?>
+                            <label for="">Chọn lớp học (<?= count($lophoc->lophoc__Get_All()) ?>)</label>
+
+                            <select class="form-control" name="" required onchange="location.href = this.value">
+                                
+                                <option value="">Chọn lớp học</option>
+                                <?php foreach ($lophoc->lophoc__Get_All() as $item): ?>
+                                    <option value="index.php?req=thongkeketquasv&id_dot=<?php echo $id_dot ?>&id_lophoc=<?php echo $item->id_lophoc ?>"
+                                            <?= $id_lophoc == $item->id_lophoc ? "selected" : "" ?>>
+                                                <?= $item->tenlophoc ?>
+                                    </option>
+                                <?php endforeach; ?>
+                            </select>
+
+
+
+                            <!-- <select class="form-control" name="" required onchange="location.href = this.value">
+                                
+                                <option value="">Chọn lớp học</option>
+                                <?php foreach ($lophoc->lophoc__Get_All() as $item): ?>
+                                    <option value="index.php?req=thongkeketquasv&id_dot=<?php echo $item->id_lophoc ?>"
+                                            <?= $id_lophoc == $item->id_lophoc ? "selected" : "" ?>>
+                                                <?= $item->tendot ?>
+                                   </option>
+                                 <?php endforeach; ?>
+                             </select> -->
+                             <?php endif; ?>
+                            </div>
+
+                     </div>
+
+                 </div>
+                 <!-- /.card-body -->
+                 <div class="card-footer">
+                     <!-- <input type="submit" value="Xử lý" class="btn btn-success float-right"
+                         <?=isset($_GET['id_lophoc']) ? "" : "disabled"?>> -->
+                 </div>
+             </div>
+         </div>
+     </section>
+                        <div class="form">
+                            <form action="./quanly/thongkeketquasv/thongkeketquasvAct.php?req=add" method="post">
+                            <input type="hidden" name="id_dot" value="<?php echo $id_dot?>"/>
+                            <input type="hidden" name="id_lophoc" value="<?php echo $id_lophoc?>"/>
+                                                  
+                                <button <?php echo count($thongkeketquasv__Get_By_Id_Lop_Hoc_And_Id_Dot)>0?"disabled":""?>>Thống kê</button>
+                            </form>
+                        </div>
+                        
+
+   
+                        
+                    </div>
+
+                </div>
                 <div class="container-fluid">
                     <div class="container">
                         <h1>Thống kê kết quả</h1>
                         <!-- Button to Open the Modal -->
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-                            Thêm phiếu khảo sát mới
-                        </button>
+                        
 
 
                         <table class="table table-dark table-hover">
                             <thead>
                                 <tr>
                                     <th>Id</th>
-                                    <th>Id đợt</th>                                   
+                                    <th>Id đợt</th>
+                                    <th>Id phiếu</th>
+                                    <th>Id lớp học</th>
+                                    <th>Id sinh viên</th>
+                                    <th>Mã sinh viên</th>
+                                    <th>Tên sinh viên</th>                
                                     <th>kohl</th>
                                     <th>ithl</th>
                                     <th>khahl</th>
@@ -65,74 +191,36 @@ $ketqua__Get_All = $ketqua->ketqua__Get_All();
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php foreach ($ketqua__Get_All as $item): ?>
+                                <?php $num = 0 ?>
+
+                                <?php foreach ($thongkeketquasv__Get_By_Id_Lop_Hoc_And_Id_Dot as $item) : ?>
                                     <tr>
                                         <td><?php echo $item->id; ?></td>
                                         <td><?php echo $item->id_dot; ?></td>
+                                        <td><?php echo $item->id_phieu; ?></td>
+                                        <td><?php echo $item->id_lophoc; ?></td>
+                                        <td><?php echo $item->id_sinhvien; ?></td>
+                                        <td><?php echo $item->ma_sinhvien; ?></td>
+                                        <td><?php echo $item->tensinhvien; ?></td>
                                         <td><?php echo $item->kohl; ?></td>
                                         <td><?php echo $item->ithl; ?></td>
                                         <td><?php echo $item->khahl; ?></td>
-                                        <td><?php echo $item->hl; ?></td>                                     
+                                        <td><?php echo $item->hl; ?></td>
                                         <td><?php echo $item->rathl; ?></td>
                                         <td><?php echo $item->per_kohl; ?></td>
                                         <td><?php echo $item->per_ithl; ?></td>
                                         <td><?php echo $item->per_khahl; ?></td>
-                                        <td><?php echo $item->per_hl; ?></td>                                    
+                                        <td><?php echo $item->per_hl; ?></td>
                                         <td><?php echo $item->per_rathl; ?></td>
-                                        
                                         <td>
-                                            <a href="?req=suaketqua&id=<?php echo $item->id; ?>" class="btn btn-primary">Sửa</a>
-                                            <a onclick="return confirm('Bạn có muốn xóa phiếu khảo sát này không');" href="./quanly/ketqua/ketquaAct.php?req=delete&id=<?php echo $item->id; ?>" class="btn btn-danger">Xóa</a>
+                                        <a onclick="return confirm('Bạn có muốn xóa thống kê này không');" href="./quanly/thongkeketquasv/thongkeketquasvAct.php?req=delete&id=<?php echo $item->id; ?>" class="btn btn-danger">Xóa</a>
                                         </td>
                                     </tr>
                                 <?php endforeach ?>
 
+
                             </tbody>
                         </table>
-                    </div>
-                </div>
-
-                <!-- The Modal -->
-                <div class="modal" id="myModal">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-
-                            <!-- Modal Header -->
-                            <div class="modal-body">
-                                <form action="./quanly/ketqua/ketquaAct.php?req=add" method="post">
-                                    <div class="form-group">
-                                        <label for="id_apdung">Id áp dụng</label>
-                                        <input type="text" class="form-control" name="id_apdung" id="id_apdung">
-                                    </div>
-                                    <div class="form-group">
-                                        
-                                        <label for="id_doituong">Id đối tượng</label>
-                                        <input type="text" class="form-control" name="id_doituong" id="id_doituong">
-                                    </div>
-                                    
-                                    <div class="form-group">
-                                        <label for="ketqua">Kết quả</label>
-                                        <input type="text" class="form-control" name="ketqua" id="ketqua">
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="ngaythuchien">Ngày thực hiện</label>
-                                        <input type="datetime-local" class="form-control" name="ngaythuchien" id="ngaythuchien">
-                                    </div>
-
-                                   
-
-
-                                    <button class="btn btn-success">Thêm phiếu khảo sát</button>
-                                </form>
-                            </div>
-
-                            <!-- Modal footer -->
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-danger" data-dismiss="modal">Đóng</button>
-                            </div>
-
-                        </div>
                     </div>
                 </div>
 
