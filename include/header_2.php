@@ -1,4 +1,4 @@
-
+<!--
 <!DOCTYPE html>
 <html lang="en">
 
@@ -40,7 +40,7 @@
                         <span class="navbar-toggler-icon"></span>
                     </button>
                     <form class="d-flex">
-                        <a class="dropdown-item">Xin chào:<?= isset($_SESSION['user'])?$_SESSION['user']->tengiangvien:"chuadapnhap" ;?></a>
+                        <a class="dropdown-item">Xin chào:<?= isset($_SESSION['user'])?$_SESSION['user']->tensinhvien:"chuadapnhap" ;?></a>
                         <a class="dropdown-item" href="../login/index.php">Đăng xuất</a>
 
 
@@ -61,4 +61,105 @@
     <script src="https://cdn.jsdelivr.net/npm/uikit@3.16.15/dist/js/uikit-icons.min.js"></script>
 </body>
     
+</html>-->
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <link type="text/css" rel="stylesheet" href="elemen/mycss.css" />
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/jscript.js"></script>
+    <title>Đánh giá điểm rèn luyện</title>
+
+</head>
+
+<body>
+    <center>
+        <!--         <div id="img">
+             <img id="img_top" <script src="../img/bannersv.png" width="1600px;"height="70" style="text-align: center; margin-left: -110px; margin-right: 100px;"></script>
+       
+        </div>-->
+        <img class="img_div" style="margin-left: -10px;
+            margin-top: auto;
+            width: -webkit-fill-available;
+            height: 80px;" src="../assets/img/bannertruong.jpg" ;>
+
+
+    </center>
+
+    <style>
+        img {
+            margin-bottom: -10px;
+        }
+
+
+        body {
+            margin: auto;
+            font-family: Arial, Helvetica, sans-serif;
+            background-size: 100px;
+
+        }
+
+        .topnav {
+
+            overflow: hidden;
+            background-color: dodgerblue;
+
+
+        }
+
+        .topnav a {
+            float: right;
+            margin-top: -10px;
+            color: #f2f2f2;
+            text-align: center;
+            padding: 14px 14px;
+            text-decoration: none;
+            font-size: 15px;
+            margin-right: 10px;
+
+        }
+
+        .topnav a:hover {
+            background-color: gray;
+            color: black;
+            text-align: right;
+
+
+        }
+
+        .topnav a.active {
+            background-color: dodgerblue;
+            color: white;
+        }
+    </style>
+    <form style="color: red; font-size: 25px; text-align: right;">
+
+        <a></a>Xin chào:
+        <?= isset($_SESSION['user'])?$_SESSION['user']->tengiangvien:"chuadapnhap" ;?>
+
+        </a>
+
+    </form>
+
+
+     <div class="topnav">
+        <h2 style="font-size: 22px; color: #ffffff; margin-bottom: -49px; margin-top: 10px;"><a href="../user/doimatkhau/index.php">Đổi Mật Khẩu</a><h2>
+                <ul>
+
+
+                    <!--              <a href="#">THÔNG TIN SINH VIÊN</a>-->
+                    <a href="../login/index.php" style="margin-right: -1px;">Đăng Xuất</a>
+
+
+
+
+                </ul>
+    </div>
+
+
+
+
+</body>
+
 </html>

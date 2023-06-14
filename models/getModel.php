@@ -20,6 +20,7 @@ require "model/namhocCls.php";
 require "model/hockyCls.php";
 require "model/dotkhaosatCls.php";
 require "model/thongkeketquasvCls.php";
+require "model/thongkeketquagvCls.php";
 
 
 
@@ -43,5 +44,6 @@ $namhoc = new namhoc();
 $hocky = new hocky();
 $dotkhaosat = new dotkhaosat();
 $thongkeketquasv = new thongkeketquasv();
+$thongkeketquagv = new thongkeketquagv();
 
 ?>

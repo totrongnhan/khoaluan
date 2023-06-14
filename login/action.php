@@ -23,13 +23,13 @@ require("../models/getModel.php");
                     $sinhvien = $taikhoan->taikhoan__Get_By_thongtinsinhvien($status->id_taikhoan);
                      $_SESSION['user'] = $sinhvien;
 
-                    header("location:../DanhgiaSV/Hinh.php");
+                    header("location:../DanhgiaSV/danhgia.php");
                 }   
                 if($status->id_phanquyen  == 2){
                     $giangvien = $taikhoan->taikhoan__Get_By_thongtingiangvien($status->id_taikhoan);
                      $_SESSION['user'] = $giangvien;
 
-                    header("location:../DanhgiaGV/Hinh.php");
+                    header("location:../DanhgiaGV/danhgia.php");
                 }
                     
                 }
@@ -38,7 +38,7 @@ require("../models/getModel.php");
                 case 'change':
                 $id_taikhoan = $_POST['id_taikhoan'];
                 $matkhau = $_POST['matkhau'];
-                $status = $taikhoan->taikhoan__reset($id_taikhoan, $matkhau);
+                $status = $taikhoan->taikhoanChangePassword($email, $passwordold, $passwordnew);
                 if($status != "0" ){
                     header('location: ../../index.php?req=lietkehocky&status=success=success');
                 }else{

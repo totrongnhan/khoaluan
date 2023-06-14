@@ -84,6 +84,25 @@ class taikhoan extends Database {
             return 0;
         }
     }
+    public function taikhoanChangePassword($email, $passwordold, $passwordnew) {
+        $selectMK = $this->connect->prepare("select matkhau from taikhoan where email =?");
+        $selectMK->setFetchMode(PDO::FETCH_OBJ);
+        $selectMK->execute(array($email));
+
+        if (count($selectMK->fetch()) == 1) {
+            $temp = $selectMK->fetch();
+            if ($passwordold == $temp->matkhau) {
+                $update = $this->connect->prepare("update taikhoan set matkhau=? where email =?");
+
+                $update->execute(array($passwordnew, $email));
+                return $update->rowCount();
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
+    }
     
 
     public function taikhoan_Add($tentaikhoan, $email, $matkhau, $mota, $id_phanquyen, $id_phannhom, $id_nguoidung) {
@@ -129,5 +148,51 @@ class taikhoan extends Database {
         $obj->execute(array($id_nguoidung));
         return $obj->fetchAll();
     }
+
+    
+    public function taikhoan__Get_All_Phan_Nhom() {
+        $obj = $this->connect->prepare("SELECT * FROM taikhoan, phannhom WHERE taikhoan.id_phannhom = phannhom.id_phannhom ");
+        $obj->setFetchMode(PDO::FETCH_OBJ);
+        $obj->execute(array());
+        return $obj->fetchAll();
+    }
+    public function taikhoan__Get_By_Id_Phan_Quyen($id_phan_quyen, $trang_thai = 1) {
+        $obj = $this->connect->prepare("SELECT * FROM taikhoan WHERE id_phan_quyen = ? AND trang_thai=?");
+        $obj->setFetchMode(PDO::FETCH_OBJ);
+        $obj->execute(array($id_phan_quyen, $trang_thai));
+        return $obj->fetchAll();
+    }
+
+    
+    public function taikhoan__Get_By_Id_Phan_Nhom($id_phannhom, $trang_thai = 1) {
+        $obj = $this->connect->prepare("SELECT * FROM taikhoan WHERE id_phannhom = ? AND trang_thai =?");
+        $obj->setFetchMode(PDO::FETCH_OBJ);
+        $obj->execute(array($id_phannhom, $trang_thai));
+        return $obj->fetchAll();
+    }
+
+    public function taikhoan__Get_By_Id_Nguoi_Dung($id_nguoidung, $trang_thai = 1) {
+        $obj = $this->connect->prepare("SELECT * FROM taikhoan WHERE id_nguoidung = ? AND trang_thai=?");
+        $obj->setFetchMode(PDO::FETCH_OBJ);
+        $obj->execute(array($id_nguoidung, $trang_thai));
+        return $obj->fetchAll();
+    }
+
+    public function taikhoan__Get_By_Sinh_Vien($id_nguoidung) {
+        $obj = $this->connect->prepare("SELECT * FROM taikhoan INNER JOIN sinhvien ON taikhoan.id_nguoidung = sinhvien.id_sinhvien WHERE taikhoan.id_phannhom = 3");
+        $obj->setFetchMode(PDO::FETCH_OBJ);
+        $obj->execute(array($id_nguoidung));
+        return $obj->fetchAll();
+    }
+
+    public function taikhoan__Get_By_Giang_Vien($id_nguoidung) {
+        $obj = $this->connect->prepare("SELECT * FROM taikhoan INNER JOIN sinhvien ON taikhoan.id_nguoidung = sinhvien.id_sinhvien WHERE taikhoan.id_phannhom = 2");
+        $obj->setFetchMode(PDO::FETCH_OBJ);
+        $obj->execute(array($id_nguoidung));
+        return $obj->fetchAll();
+    }
+
+}
+?>
 }
 ?>

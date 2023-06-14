@@ -50,7 +50,7 @@ if(isset($_GET['id_lophoc'])){
                     <div class="container-fluid">
                         <ul class="nav navbar-nav navbar-right">
                             <li>
-                                <a href="#"><i class="zmdi zmdi-notifications text-danger"></i>
+                                <a href="#"><i class="zmdi zmdi-notifications text-danger">aaa</i>
                                 </a>
                             </li>
                             <li><a href="..index.php">Trang Chủ</a></li>
@@ -65,12 +65,7 @@ if(isset($_GET['id_lophoc'])){
                  <div class="col-sm-6">
                      <h1>Quản lý kết quả khảo sát sinh viên</h1>
                  </div>
-                 <div class="col-sm-6">
-                     <ol class="breadcrumb float-sm-right">
-                         <li class="breadcrumb-item"><a href="#">Home</a></li>
-                         <li class="breadcrumb-item active">Quản lý kết quả khảo sát sinh viên</li>
-                     </ol>
-                 </div>
+                 
              </div>
          </div><!-- /.container-fluid -->
      </section>
@@ -79,12 +74,7 @@ if(isset($_GET['id_lophoc'])){
          <div class="col-12">
              <div class="card card-success">
                  <div class="card-header">
-                     <h3 class="card-title"></h3>
-                     <div class="card-tools">
-                         <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
-                             <i class="fas fa-minus"></i>
-                         </button>
-                     </div>
+                     
                  </div>
                 <div class="card-body">
                     <div class="row">

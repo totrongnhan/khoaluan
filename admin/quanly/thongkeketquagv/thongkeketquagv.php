@@ -1,10 +1,10 @@
 <?php
 require("../models/getModel.php");
     $id_dot = -2;
-    $id_lophoc  = -2;
-    $thongkeketquasv__Get_By_Id_Lop_Hoc_And_Id_Dot = $thongkeketquasv->thongkeketquasv__Get_By_Id_Lop_Hoc_And_Id_Dot($id_lophoc, $id_dot);
+    $id_donvi  = -2;
+    $thongkeketquagv__Get_By_Id_Lop_Hoc_And_Id_Dot = $thongkeketquagv->thongkeketquagv__Get_By_Id_Lop_Hoc_And_Id_Dot($id_donvi, $id_dot);
     $dotkhaosat__Get_All = $dotkhaosat->dotkhaosat__Get_All();
-    $lophoc__Get_All = $lophoc->lophoc__Get_All();
+    $donvi__Get_All = $donvi->donvi__Get_All();
     
     
 
@@ -13,12 +13,12 @@ if (isset($_GET['id_dot'])) {
     $id_dot = $_GET['id_dot'];
     
 }
-if(isset($_GET['id_lophoc'])){
-        $id_lophoc = $_GET['id_lophoc'];
-        $thongkeketquasv__Get_By_Id_Lop_Hoc_And_Id_Dot = $thongkeketquasv->thongkeketquasv__Get_By_Id_Lop_Hoc_And_Id_Dot($id_lophoc, $id_dot);
+if(isset($_GET['id_donvi'])){
+        $id_donvi = $_GET['id_donvi'];
+        $thongkeketquagv__Get_By_Id_Lop_Hoc_And_Id_Dot = $thongkeketquagv->thongkeketquagv__Get_By_Id_Lop_Hoc_And_Id_Dot($id_donvi, $id_dot);
     }
 
-//$thongkeketquasv__Get_By_Id_dot = $thongkeketquasv->thongkeketquasv__Get_By_Id_dot($id_dot);
+//$thongkeketquagv__Get_By_Id_dot = $thongkeketquagv->thongkeketquagv__Get_By_Id_dot($id_dot);
 //$phieukhaosat__Get_All = $phieukhaosat->phieukhaosat__Get_By_Id_phieudot($id_phieu, $id_dot)
 ?>
 
@@ -63,13 +63,10 @@ if(isset($_GET['id_lophoc'])){
          <div class="container-fluid">
              <div class="row mb-2">
                  <div class="col-sm-6">
-                     <h1>Quản lý kết quả khảo sát sinh viên</h1>
+                     <h1>Quản lý kết quả khảo sát giảng viên</h1>
                  </div>
                  <div class="col-sm-6">
-                     <ol class="breadcrumb float-sm-right">
-                         <li class="breadcrumb-item"><a href="#">Home</a></li>
-                         <li class="breadcrumb-item active">Quản lý kết quả khảo sát sinh viên</li>
-                     </ol>
+                     
                  </div>
              </div>
          </div><!-- /.container-fluid -->
@@ -80,11 +77,7 @@ if(isset($_GET['id_lophoc'])){
              <div class="card card-success">
                  <div class="card-header">
                      <h3 class="card-title"></h3>
-                     <div class="card-tools">
-                         <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
-                             <i class="fas fa-minus"></i>
-                         </button>
-                     </div>
+                     
                  </div>
                 <div class="card-body">
                     <div class="row">
@@ -94,7 +87,7 @@ if(isset($_GET['id_lophoc'])){
                                 
                                 <option value="">Chọn đợt</option>
                                 <?php foreach ($dotkhaosat->dotkhaosat__Get_All() as $item): ?>
-                                    <option value="index.php?req=thongkeketquasv&id_dot=<?php echo $item->id_dot ?>"
+                                    <option value="index.php?req=thongkeketquagv&id_dot=<?php echo $item->id_dot ?>"
                                             <?= $id_dot == $item->id_dot ? "selected" : "" ?>>
                                                 <?= $item->tendot ?>
                                     </option>
@@ -106,15 +99,15 @@ if(isset($_GET['id_lophoc'])){
                         
                         <div class="col">
                             <?php if (isset($_GET['id_dot'])):?>
-                            <label for="">Chọn lớp học (<?= count($lophoc->lophoc__Get_All()) ?>)</label>
+                            <label for="">Chọn đơn vị (<?= count($donvi->donvi__Get_All()) ?>)</label>
 
                             <select class="form-control" name="" required onchange="location.href = this.value">
                                 
-                                <option value="">Chọn lớp học</option>
-                                <?php foreach ($lophoc->lophoc__Get_All() as $item): ?>
-                                    <option value="index.php?req=thongkeketquasv&id_dot=<?php echo $id_dot ?>&id_lophoc=<?php echo $item->id_lophoc ?>"
-                                            <?= $id_lophoc == $item->id_lophoc ? "selected" : "" ?>>
-                                                <?= $item->tenlophoc ?>
+                                <option value="">Chọn đơn vị</option>
+                                <?php foreach ($donvi->donvi__Get_All() as $item): ?>
+                                    <option value="index.php?req=thongkeketquagv&id_dot=<?php echo $id_dot ?>&id_donvi=<?php echo $item->id_donvi ?>"
+                                            <?= $id_donvi == $item->id_donvi ? "selected" : "" ?>>
+                                                <?= $item->tendonvi ?>
                                     </option>
                                 <?php endforeach; ?>
                             </select>
@@ -124,9 +117,9 @@ if(isset($_GET['id_lophoc'])){
                             <!-- <select class="form-control" name="" required onchange="location.href = this.value">
                                 
                                 <option value="">Chọn lớp học</option>
-                                <?php foreach ($lophoc->lophoc__Get_All() as $item): ?>
-                                    <option value="index.php?req=thongkeketquasv&id_dot=<?php echo $item->id_lophoc ?>"
-                                            <?= $id_lophoc == $item->id_lophoc ? "selected" : "" ?>>
+                                <?php foreach ($donvi->donvi__Get_All() as $item): ?>
+                                    <option value="index.php?req=thongkeketquagv&id_dot=<?php echo $item->id_donvi ?>"
+                                            <?= $id_donvi == $item->id_donvi ? "selected" : "" ?>>
                                                 <?= $item->tendot ?>
                                    </option>
                                  <?php endforeach; ?>
@@ -140,17 +133,17 @@ if(isset($_GET['id_lophoc'])){
                  <!-- /.card-body -->
                  <div class="card-footer">
                      <!-- <input type="submit" value="Xử lý" class="btn btn-success float-right"
-                         <?=isset($_GET['id_lophoc']) ? "" : "disabled"?>> -->
+                         <?=isset($_GET['id_donvi']) ? "" : "disabled"?>> -->
                  </div>
              </div>
          </div>
      </section>
                         <div class="form">
-                            <form action="./quanly/thongkeketquasv/thongkeketquasvAct.php?req=add" method="post">
+                            <form action="./quanly/thongkeketquagv/thongkeketquagvAct.php?req=add" method="post">
                             <input type="hidden" name="id_dot" value="<?php echo $id_dot?>"/>
-                            <input type="hidden" name="id_lophoc" value="<?php echo $id_lophoc?>"/>
+                            <input type="hidden" name="id_donvi" value="<?php echo $id_donvi?>"/>
                                                   
-                                <button <?php echo count($thongkeketquasv__Get_By_Id_Lop_Hoc_And_Id_Dot)>0?"disabled":""?>>Thống kê</button>
+                                <button <?php echo count($thongkeketquagv__Get_By_Id_Lop_Hoc_And_Id_Dot)>0?"disabled":""?>>Thống kê</button>
                             </form>
                         </div>
                         
@@ -193,15 +186,15 @@ if(isset($_GET['id_lophoc'])){
                             <tbody>
                                 <?php $num = 0 ?>
 
-                                <?php foreach ($thongkeketquasv__Get_By_Id_Lop_Hoc_And_Id_Dot as $item) : ?>
+                                <?php foreach ($thongkeketquagv__Get_By_Id_Lop_Hoc_And_Id_Dot as $item) : ?>
                                     <tr>
                                         <td><?php echo $item->id; ?></td>
                                         <td><?php echo $item->id_dot; ?></td>
                                         <td><?php echo $item->id_phieu; ?></td>
-                                        <td><?php echo $item->id_lophoc; ?></td>
-                                        <td><?php echo $item->id_sinhvien; ?></td>
-                                        <td><?php echo $item->ma_sinhvien; ?></td>
-                                        <td><?php echo $item->tensinhvien; ?></td>
+                                        <td><?php echo $item->id_donvi; ?></td>
+                                        <td><?php echo $item->id_giangvien; ?></td>
+                                        <td><?php echo $item->ma_giangvien; ?></td>
+                                        <td><?php echo $item->tengiangvien; ?></td>
                                         <td><?php echo $item->kohl; ?></td>
                                         <td><?php echo $item->ithl; ?></td>
                                         <td><?php echo $item->khahl; ?></td>
@@ -213,7 +206,7 @@ if(isset($_GET['id_lophoc'])){
                                         <td><?php echo $item->per_hl; ?></td>
                                         <td><?php echo $item->per_rathl; ?></td>
                                         <td>
-                                        <a onclick="return confirm('Bạn có muốn xóa thống kê này không');" href="./quanly/thongkeketquasv/thongkeketquasvAct.php?req=delete&id=<?php echo $item->id; ?>" class="btn btn-danger">Xóa</a>
+                                        <a onclick="return confirm('Bạn có muốn xóa thống kê này không');" href="./quanly/thongkeketquagv/thongkeketquagvAct.php?req=delete&id=<?php echo $item->id; ?>" class="btn btn-danger">Xóa</a>
                                         </td>
                                     </tr>
                                 <?php endforeach ?>

@@ -141,8 +141,8 @@ $item_1 = $phieukhaosat->phieukhaosat__Get_By_Id($id);
             <thead>
                 <tr>
                     <th style="text-align: center;
-                        width: 200px;">Tên đánh giá</th>
-                    <th style="text-align: center; width: 750px;">Câu hỏi Đánh Giá</th>
+                        width: 200px;">Tên khảo sát</th>
+                    <th style="text-align: center; width: 750px;">Câu hỏi khảo sát</th>
                     <th style="text-align: center;
                         width: 50px;">Sinh Viên Tự Chấm</th>
 

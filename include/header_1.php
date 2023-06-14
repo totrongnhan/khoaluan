@@ -144,14 +144,14 @@
 
 
     <div class="topnav">
-        <h2 style="font-size: 22px; color: #ffffff; margin-bottom: -49px; margin-top: 10px;">Thông tin sinh viên<h2>
+        <h2 style="font-size: 22px; color: #ffffff; margin-bottom: -49px; margin-top: 10px;"><a href="../user/doimatkhau/index.php">Đổi Mật Khẩu</a><h2>
                 <ul>
 
 
                     <!--              <a href="#">THÔNG TIN SINH VIÊN</a>-->
                     <a href="../login/index.php" style="margin-right: -1px;">Đăng Xuất</a>
 
-                    <a href="../user/doimatkhau/index.php">Đổi Mật Khẩu</a>
+
 
 
                 </ul>

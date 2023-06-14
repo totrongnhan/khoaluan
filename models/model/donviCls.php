@@ -64,4 +64,10 @@ class donvi extends Database
         $obj->execute(array($id_donvi));
         return $obj->rowCount();
     }
+    public function donvi__Get_By_Id_giangvien($id_giangvien) {
+        $obj = $this->connect->prepare("SELECT * FROM donvi, giangvien WHERE donvi.id_donvi = giangvien.id_donvi AND id_giangvien=?");
+        $obj->setFetchMode(PDO::FETCH_OBJ);
+        $obj->execute(array($id_giangvien));
+        return $obj->fetch();
+    }
 }

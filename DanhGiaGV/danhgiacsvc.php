@@ -1,18 +1,14 @@
 <?php
-    session_start();
-    
-    
+session_start();
 
 require("../models/getModel.php");
 $id_giangvien = $_SESSION['user']->id_giangvien;
 $id_dot =$dotkhaosat->dotkhaosat__Get_Last()->id_dot;
 $tenkhaosat__Get_By_Id_giangvien = $tenkhaosat->tenkhaosat__Get_By_Id_giangvien($id_giangvien,$id_dot);
-                
-$id = $_GET['id'];
-                
-$item_1 = $phieukhaosatgv->phieukhaosatgv__Get_By_Id($id);
-                
 
+$id = $_GET['id'];
+
+$item_1 = $phieukhaosatgv->phieukhaosatgv__Get_By_Id($id);
 ?>
 
 <!DOCTYPE html>
@@ -20,7 +16,7 @@ $item_1 = $phieukhaosatgv->phieukhaosatgv__Get_By_Id($id);
 
     <head>
 
-        <title>Khảo sát đánh giá cho sv</title>
+        <title>Khảo sát đánh giá cho gv</title>
         <meta charset="utf-8">
         <script type="text/javascript" src="../assets/vendor/jquery/jquery.min.js"></script>
         <style type="text/css">
@@ -65,28 +61,35 @@ $item_1 = $phieukhaosatgv->phieukhaosatgv__Get_By_Id($id);
                 margin: 4px 2px;
                 cursor: pointer;
             }
-           
+
+
         </style>
     </head>
+    <?php
+        include('../include/header_2.php');
+        ?>
     <center>
-      <div class="dnn_banner bannerg">            
+<!--        <div class="dnn_banner bannerg">            
             <img src="../assets/img/bannertruong.jpg" style="width: 1400px;"/>
             <nav class="navbar" style="background-color: 5fbf00;">
                 <div class="container-fluid">
-<!--                    <a class="navbar-brand" href="../danhgia/danhgia.php>">Trang chủ</a>-->
-<!--                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>-->
+                                        <a class="navbar-brand" href="../danhgia/danhgia.php>">Trang chủ</a>
+                                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                                            <span class="navbar-toggler-icon"></span>
+                                        </button>
                     <form class="d-flex">
-                        
-                        <a style="font-size: 25px; margin-left: 1200px; color: red; margin-top: 50px; " class="dropdown-item">Xin chào:<?= isset($_SESSION['user'])?$_SESSION['user']->tengiangvien:"chuadapnhap" ;?>
+
+                        <a style="font-size: 25px;
+                           text-align: right;
+                           color: red;
+                           margin-top: 50px; " class="dropdown-item">Xin chào:<?= isset($_SESSION['user']) ? $_SESSION['user']->tengiangvien : "chuadapnhap"; ?>
                         </a>
-<!--                        <a class="dropdown-item" href="../login/index.php">Đăng xuất</a>-->
+                                                <a class="dropdown-item" href="../login/index.php">Đăng xuất</a>
 
 
                     </form>
                 </div>
-        </div>
+        </div>-->
 
 
 
@@ -99,103 +102,108 @@ $item_1 = $phieukhaosatgv->phieukhaosatgv__Get_By_Id($id);
 
     </body>
     <table border="1">
-        <tr>
-
-            <th style="text-align: center; background-color: #82ce34;">THÔNG TIN SINH VIÊN</th>
-            
-            <td style="border-collapse: collapse; background-color: #82ce34; width: 80px;" > <a href="../login/index.php">Đăng xuất</a></td>
-
-
-        </tr>
+        
 
 
 
     </table>
 
     <?php
-    
     if (isset($_POST['ketqua'])) {
         $kq = "";
-    $id_phieu = $_POST['id_phieu'];
-    foreach ($_POST['ketqua'] as $ket_qua) {
-        $subArray = implode('|', $ket_qua);
-        $kq .= $subArray . "|";
-      
-    }
-    
-    $status =  $phieukhaosatgv->phieukhaosatgv__Update_KQ($id_phieu, $kq);
+        $id_phieu = $_POST['id_phieu'];
+        foreach ($_POST['ketqua'] as $ket_qua) {
+            $subArray = implode('|', $ket_qua);
+            $kq .= $subArray . "|";
+        }
+
+        $status = $phieukhaosatgv->phieukhaosatgv__Update_KQ($id_phieu, $kq);
     }
     ?>
 
     <form action="" method="post">
-        
-        <input type="hidden" name="id_phieu" value="<?=$id?>"/>
-        
-        
+
+        <input type="hidden" name="id_phieu" value="<?= $id ?>"/>
+        <table>
+       <thead>
+                <tr>
+                    
+                    <th style="text-align: right; width: 750px;">
+                                    (1: KHÔNG hài lòng; 2: Ít Hài lòng; 3: Khá Hài lòng; 4: Hài lòng; 5: Rất Hài lòng; )</th>
+                    
+
+                </tr>
+            </thead>
+            </table>
+
+
         <table>
             <thead>
                 <tr>
-                    <th style="text-align: center; width: 200px;">Tên đánh giá</th>
-                    <th style="text-align: center;">Câu hỏi Đánh Giá</th>
-                    <th style="text-align: center; width: 590px;">Sinh Viên Tự Chấm</th>
+                    <th style="text-align: center;
+                        width: 200px;">Tên khảo sát</th>
+                    <th style="text-align: center; width: 750px;">Câu hỏi khảo sát</th>
+                    <th style="text-align: center;
+                        width: 50px;">Sinh Viên Tự Chấm</th>
 
                 </tr>
             </thead>
             <tbody>
-                <?php $i = 0?>
-              
-                    <tr>
-                        <th style="text-align: center;">
-                            <?= $item_1->tenkhaosat0 ?>
-                        </th>
-                        <td>
-                            <?php foreach ($nhomcauhoi->nhomcauhoi__Get_By_Id_tenkhaosat($item_1->id_tenkhaosat) as $item_2): ?>
-                                <h4 class="text-left border-custom box-1">
-                                    <?= $item_2->tennhomcauhoi ?>
-                                </h4>
-                                <?php foreach ($cauhoi->cauhoi__Get_By_Id_nhom($item_2->id_nhomcauhoi) as $item_3): ?>
-                                    <p class="text-left border-custom box-2">
-                                        <?= $item_3->tencauhoi ?>
-                                    </p>
-                                <?php endforeach ?>
+                <?php $i = 0 ?>
 
+                <tr>
+                    <th style="text-align: center;">
+                        <?= $item_1->tenkhaosat0 ?>
+                    </th>
+                    <td>
+                        <?php foreach ($nhomcauhoi->nhomcauhoi__Get_By_Id_tenkhaosat($item_1->id_tenkhaosat) as $item_2): ?>
+                            <h4 class="text-left border-custom box-1">
+                                <?= $item_2->tennhomcauhoi ?>
+                            </h4>
+                            <?php foreach ($cauhoi->cauhoi__Get_By_Id_nhom($item_2->id_nhomcauhoi) as $item_3): ?>
+                                <p class="text-left border-custom box-2">
+                                    <?= $item_3->tencauhoi ?>
+                                </p>
                             <?php endforeach ?>
-                        </td>
-                        <td>
-                            <?php foreach ($nhomcauhoi->nhomcauhoi__Get_By_Id_tenkhaosat($item_1->id_tenkhaosat) as $item_2): ?>
-                                <h4 class="text-left border-custom box-1-set">
 
-                                </h4>
-                                <?php foreach ($cauhoi->cauhoi__Get_By_Id_nhom($item_2->id_nhomcauhoi) as $item_3): ?>
-                                    <?php $phieukhaosatgv__Get_By_Id = $phieukhaosatgv->phieukhaosatgv__Get_By_Id($id);
-                                    $phieukhaosatgv__Get_By_Id_chuoi = $phieukhaosatgv->phieukhaosatgv__Get_By_Id_chuoi(isset($phieukhaosatgv__Get_By_Id->ketqua) ? $phieukhaosatgv__Get_By_Id->ketqua : "|");
-                                    ?>
-                            
-                            <?php if($item_3->is_text == 1): ?>
-                             <p class="text-left border-custom box-2-set">
-                                 <input type="text" name="ketqua[<?= $item_3->id_cauhoi ?>][]" id="" value="<?= isset($phieukhaosatgv__Get_By_Id_chuoi[$i]) ? $phieukhaosatgv__Get_By_Id_chuoi[$i] : ""?>" class="form-control">
-                             </p>
-                            <?php else:?>
-                           
+                        <?php endforeach ?>
+                    </td>
+                    <td>
+                        <?php foreach ($nhomcauhoi->nhomcauhoi__Get_By_Id_tenkhaosat($item_1->id_tenkhaosat) as $item_2): ?>
+                            <h4 class="text-left border-custom box-1-set">
+
+                            </h4>
+                            <?php foreach ($cauhoi->cauhoi__Get_By_Id_nhom($item_2->id_nhomcauhoi) as $item_3): ?>
+                                <?php
+                                $phieukhaosatgv__Get_By_Id = $phieukhaosatgv->phieukhaosatgv__Get_By_Id($id);
+                                $phieukhaosatgv__Get_By_Id_chuoi = $phieukhaosatgv->phieukhaosatgv__Get_By_Id_chuoi(isset($phieukhaosatgv__Get_By_Id->ketqua) ? $phieukhaosatgv__Get_By_Id->ketqua : "|");
+                                ?>
+
+                                <?php if ($item_3->is_text == 1): ?>
                                     <p class="text-left border-custom box-2-set">
-                                        <input type="radio" name="ketqua[<?= $item_3->id_cauhoi ?>][]" id="" value="1" <?=isset($phieukhaosatgv__Get_By_Id_chuoi[$i]) ? ($phieukhaosatgv__Get_By_Id_chuoi[$i] == 1 ? "checked" : "") : ""?> class="form-control" required>
-                                        <label for="<?php echo $item_3->id_cauhoi ?>">không hài lòng</label>
-                                        <input type="radio" name="ketqua[<?= $item_3->id_cauhoi ?>][]" id="" value="2" <?=isset($phieukhaosatgv__Get_By_Id_chuoi[$i]) ? ($phieukhaosatgv__Get_By_Id_chuoi[$i] == 2 ? "checked" : "") : ""?> class="form-control" required>
-                                        <label for="<?php echo $item_3->id_cauhoi ?>">ít hài lòng</label>
-                                        <input type="radio" name="ketqua[<?= $item_3->id_cauhoi ?>][]" id="" value="3" <?=isset($phieukhaosatgv__Get_By_Id_chuoi[$i]) ? ($phieukhaosatgv__Get_By_Id_chuoi[$i] == 3 ? "checked" : "") : ""?> class="form-control" required>
-                                        <label for="<?php echo $item_3->id_cauhoi ?>">khá hài lòng</label>
-                                        <input type="radio" name="ketqua[<?= $item_3->id_cauhoi ?>][]" id="" value="4" <?=isset($phieukhaosatgv__Get_By_Id_chuoi[$i]) ? ($phieukhaosatgv__Get_By_Id_chuoi[$i] == 4 ? "checked" : "") : ""?> class="form-control" required>
-                                        <label for="<?php echo $item_3->id_cauhoi ?>">hài lòng</label>
-                                        <input type="radio" name="ketqua[<?= $item_3->id_cauhoi ?>][]" id="" value="5" <?=isset($phieukhaosatgv__Get_By_Id_chuoi[$i]) ? ($phieukhaosatgv__Get_By_Id_chuoi[$i] == 5 ? "checked" : "") : ""?> class="form-control" required>
-                                        <label for="<?php echo $item_3->id_cauhoi ?>">rất hài lòng</label>
+                                        <input type="text" name="ketqua[<?= $item_3->id_cauhoi ?>][]" id="" value="<?= isset($phieukhaosatgv__Get_By_Id_chuoi[$i]) ? $phieukhaosatgv__Get_By_Id_chuoi[$i] : "" ?>" class="form-control">
                                     </p>
-                                    <?php endif?>
-                                    <?php $i++ ?>
-                                <?php endforeach ?>
-                            <?php endforeach ?>
-                        </td>
+                                <?php else: ?>
 
-                    </tr>
+                                    <p class="text-left border-custom box-2-set" style="text-align: center;">
+                                        <input type="radio" name="ketqua[<?= $item_3->id_cauhoi ?>][]" id="" value="1" <?= isset($phieukhaosatgv__Get_By_Id_chuoi[$i]) ? ($phieukhaosatgv__Get_By_Id_chuoi[$i] == 1 ? "checked" : "") : "" ?> class="form-control" required>
+                                        <label for="<?php echo $item_3->id_cauhoi ?>"></label>
+                                        <input type="radio" name="ketqua[<?= $item_3->id_cauhoi ?>][]" id="" value="2" <?= isset($phieukhaosatgv__Get_By_Id_chuoi[$i]) ? ($phieukhaosatgv__Get_By_Id_chuoi[$i] == 2 ? "checked" : "") : "" ?> class="form-control" required>
+                                        <label for="<?php echo $item_3->id_cauhoi ?>"></label>
+                                        <input type="radio" name="ketqua[<?= $item_3->id_cauhoi ?>][]" id="" value="3" <?= isset($phieukhaosatgv__Get_By_Id_chuoi[$i]) ? ($phieukhaosatgv__Get_By_Id_chuoi[$i] == 3 ? "checked" : "") : "" ?> class="form-control" required>
+                                        <label for="<?php echo $item_3->id_cauhoi ?>"></label>
+                                        <input type="radio" name="ketqua[<?= $item_3->id_cauhoi ?>][]" id="" value="4" <?= isset($phieukhaosatgv__Get_By_Id_chuoi[$i]) ? ($phieukhaosatgv__Get_By_Id_chuoi[$i] == 4 ? "checked" : "") : "" ?> class="form-control" required>
+                                        <label for="<?php echo $item_3->id_cauhoi ?>"></label>
+                                        <input type="radio" name="ketqua[<?= $item_3->id_cauhoi ?>][]" id="" value="5" <?= isset($phieukhaosatgv__Get_By_Id_chuoi[$i]) ? ($phieukhaosatgv__Get_By_Id_chuoi[$i] == 5 ? "checked" : "") : "" ?> class="form-control" required>
+                                        <label for="<?php echo $item_3->id_cauhoi ?>"></label>
+                                    </p>
+                                <?php endif ?>
+                                <?php $i++ ?>
+                            <?php endforeach ?>
+                        <?php endforeach ?>
+                    </td>
+
+                </tr>
             </tbody>
 
         </table>

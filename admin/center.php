@@ -3,7 +3,9 @@
 if (isset($_GET['req'])) {
     $request = $_GET['req'];
     switch ($request) {
-
+        case 'quan-ly-tai-khoan':
+            require './quanly/quan-ly-tai-khoan/index.php';
+            break;
         case 'lietketaikhoan':
             require './quanly/taikhoan/lietketaikhoan.php';
             break;
@@ -147,6 +149,9 @@ if (isset($_GET['req'])) {
             break;
         case 'thongkeketquasv':
             require './quanly/thongkeketquasv/thongkeketquasv.php';
+            break;
+        case 'thongkeketquagv':
+            require './quanly/thongkeketquagv/thongkeketquagv.php';
             break;
         case 'index':
             require './quanly/import-from-excel/index.php';

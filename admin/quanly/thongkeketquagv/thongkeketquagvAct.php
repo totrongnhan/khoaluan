@@ -12,12 +12,12 @@ if (isset($_GET["req"])) {
             $status = 0;
             $id_dot = $_POST["id_dot"];
 
-            $thongkeketquasv__Get_All = $thongkeketquasv->thongkeketquasv__Get_All();
-$thongkeketquasv__Get_By_Id_Phieu = $thongkeketquasv->thongkeketquasv__Get_By_Id_Phieu($id_lophoc, $id_dot, $id_sinhvien);
-            $phieukhaosat__Get_By_Id_phieudot = $phieukhaosat->phieukhaosat__Get_By_Id_phieudot($id_dot);
+            $thongkeketquagv__Get_All = $thongkeketquagv->thongkeketquagv__Get_All();
+            $thongkeketquagv__Get_By_Id_Phieu = $thongkeketquagv->thongkeketquagv__Get_By_Id_Phieu($id_donvi, $id_dot, $id_giangvien);
+            $phieukhaosatgv__Get_By_Id_phieudot = $phieukhaosatgv->phieukhaosatgv__Get_By_Id_phieudot($id_dot);
             
-            if(count($phieukhaosat__Get_By_Id_phieudot) > 0){
-                foreach ($phieukhaosat__Get_By_Id_phieudot as $item) {
+            if(count($phieukhaosatgv__Get_By_Id_phieudot) > 0){
+                foreach ($phieukhaosatgv__Get_By_Id_phieudot as $item) {
                     $kohl = 0;
                     $ithl = 0;
                     $khahl = 0;
@@ -31,22 +31,22 @@ $thongkeketquasv__Get_By_Id_Phieu = $thongkeketquasv->thongkeketquasv__Get_By_Id
                     $sum = 0;
                     $arr = [];
 
-                    $lophoc__Get_By_Id_sinhvien = $lophoc->lophoc__Get_By_Id_sinhvien($item->id_doituong);
+                    $donvi__Get_By_Id_giangvien = $donvi->donvi__Get_By_Id_giangvien($item->id_doituong);
 
 
 
             
                      $id_phieu = $item->id_phieu;
-                     $id_lophoc = $lophoc__Get_By_Id_sinhvien->id_lophoc;
-                     $id_sinhvien = $lophoc__Get_By_Id_sinhvien->id_sinhvien;
-                     $ma_sinhvien = $lophoc__Get_By_Id_sinhvien->ma_sinhvien;
-                     $tensinhvien = $lophoc__Get_By_Id_sinhvien->tensinhvien;
+                     $id_donvi = $donvi__Get_By_Id_giangvien->id_donvi;
+                     $id_giangvien = $donvi__Get_By_Id_giangvien->id_giangvien;
+                     $ma_giangvien = $donvi__Get_By_Id_giangvien->ma_giangvien;
+                     $tengiangvien = $donvi__Get_By_Id_giangvien->tengiangvien;
 
 
 
 
                     if($item->ketqua != "" || $item->ketqua !=null){
-                        $arr = $phieukhaosat->phieukhaosat__Get_By_Id_chuoi($item->ketqua);
+                        $arr = $phieukhaosatgv->phieukhaosatgv__Get_By_Id_chuoi($item->ketqua);
                     };
                     foreach ($arr as $item_1) {
                         echo $item_1 . " \n ";
@@ -66,16 +66,16 @@ $thongkeketquasv__Get_By_Id_Phieu = $thongkeketquasv->thongkeketquasv__Get_By_Id
                     $per_hl = round($hl / $sum_per *100);
                     $per_rathl = round($rathl / $sum_per *100);
 
-                    $status .= $thongkeketquasv->thongkeketquasv_Add($id_dot, $id_phieu, $id_lophoc, $id_sinhvien, $ma_sinhvien, $tensinhvien, $kohl, $ithl, $khahl, $hl, $rathl, $per_kohl, $per_ithl, $per_khahl, $per_hl, $per_rathl);
+                    $status .= $thongkeketquagv->thongkeketquagv_Add($id_dot, $id_phieu, $id_donvi, $id_giangvien, $ma_giangvien, $tengiangvien, $kohl, $ithl, $khahl, $hl, $rathl, $per_kohl, $per_ithl, $per_khahl, $per_hl, $per_rathl);
                 }
 
     
             }
 
             if($status != 0){
-                header("Location: ../../index.php?req=thongkeketquasv&id_dot=$id_dot&status=success");
+                header("Location: ../../index.php?req=thongkeketquagv&id_dot=$id_dot&status=success");
             }else {
-                header("Location: ../../index.php?req=thongkeketquasv&id_dot=$id_dot&status=fail");
+                header("Location: ../../index.php?req=thongkeketquagv&id_dot=$id_dot&status=fail");
             }
             break;
 
@@ -93,18 +93,18 @@ $thongkeketquasv__Get_By_Id_Phieu = $thongkeketquasv->thongkeketquasv__Get_By_Id
             $per_rathl = $_POST["per_rathl"];
             $status = $ketqua->ketqua_Add($id, $id_dot, $kohl, $ithl, $khahl, $hl, $rathl, $per_kohl, $per_ithl, $per_khahl, $per_hl, $per_rathl);
             if ($status) {
-                header("Location: ../../index.php?req=thongkeketquasv&id_dot=$id_dot&status=success");
+                header("Location: ../../index.php?req=thongkeketquagv&id_dot=$id_dot&status=success");
             } else {
-                header("Location: ../../index.php?req=thongkeketquasv&id_dot=$id_dot&status=fail");
+                header("Location: ../../index.php?req=thongkeketquagv&id_dot=$id_dot&status=fail");
             }
             break;
         case "delete":
             $id = $_GET["id"];
-            $status = $thongkeketquasv->thongkeketquasv__Delete($id);
+            $status = $thongkeketquagv->thongkeketquagv__Delete($id);
             if ($status) {
-                header("Location: ../../index.php?req=thongkeketquasv&status=success");
+                header("Location: ../../index.php?req=thongkeketquagv&status=success");
             } else {
-                header("Location: ../../index.php?req=thongkeketquasv&status=fail");
+                header("Location: ../../index.php?req=thongkeketquagv&status=fail");
             }
             break;
     }

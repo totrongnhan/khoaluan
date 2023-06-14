@@ -21,6 +21,7 @@
                 <a href="index.php?req=lietkecauhoi" class="w3-bar-item w3-button">Câu hỏi</a>
                 <a href="index.php?req=lietkenhomcauhoi" class="w3-bar-item w3-button">Nhóm câu hỏi</a>
                 <a href="index.php?req=thongkeketquasv" class="w3-bar-item w3-button">Thống kê kết quả sinh viên</a>
+                <a href="index.php?req=thongkeketquagv" class="w3-bar-item w3-button">Thống kê kết quả giảng viên</a>
             </div>
 
             <div class="w3-dropdown-click">
@@ -28,6 +29,7 @@
                     Quản lý tài khoản <i class="fa fa-caret-down"></i>
                 </button>
                 <div id="demoDrop" class="w3-dropdown-content w3-bar-block w3-white w3-card">
+                    <a href="index.php?req=quan-ly-tai-khoan" class="w3-bar-item w3-button">Tài khoản</a>
                     <a href="index.php?req=lietketaikhoan" class="w3-bar-item w3-button">Tài khoản</a>
                     <a href="index.php?req=lietkesinhvien" class="w3-bar-item w3-button">Sinh viên</a>
                     <a href="index.php?req=lietkegiangvien" class="w3-bar-item w3-button">Giảng viên</a>

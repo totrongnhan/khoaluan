@@ -52,9 +52,11 @@ $tenkhaosat__Get_By_Id_giangvien = $tenkhaosat->tenkhaosat__Get_By_Id_giangvien(
             
         </style>
     </head>
+       <?php
+        include('../include/header_2.php');
+        ?>
     <center>
-        <?php echo $id_giangvien ?>
-        <?php echo $id_dot ?>
+        
 
 
 
@@ -63,33 +65,9 @@ $tenkhaosat__Get_By_Id_giangvien = $tenkhaosat->tenkhaosat__Get_By_Id_giangvien(
 
 
 
-        <div class="dnn_banner bannerg">            
-            <img src="../assets/img/bannertruong.jpg" style="width: 1400px;"/>
-            <nav class="navbar" style="background-color: 5fbf00;">
-                <div class="container-fluid">
-<!--                    <a class="navbar-brand" href="../danhgia/danhgia.php>">Trang chủ</a>-->
-<!--                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>-->
-                    <form class="d-flex">
-                        
-                        <a style="font-size: 25px; margin-left: 1200px; color: red; margin-top: 50px; " class="dropdown-item">Xin chào:<?= isset($_SESSION['user'])?$_SESSION['user']->tengiangvien:"chuadapnhap" ;?>
-                        </a>
-<!--                        <a class="dropdown-item" href="../login/index.php">Đăng xuất</a>-->
-
-
-                    </form>
-                </div>
-        </div>
+        
         <table border="1">
-        <tr>
-
-
-            
-            <td style="border-collapse: collapse; background-color: #82ce34; width: 80px;" > <a href="../login/index.php">Đăng xuất</a></td>
-
-
-        </tr>
+        
 
 
 
