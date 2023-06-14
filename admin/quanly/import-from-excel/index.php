@@ -16,14 +16,14 @@ $sinhvien__Get_All = $sinhvien->sinhvien__Get_All();
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active">Quản lý trình độ</li>
+                        <li class="breadcrumb-item active">Quản lý sinh viên</li>
                     </ol>
                 </div>
             </div>
         </div><!-- /.container-fluid -->
     </section>
     <section class="content">
-        <form class="row form" action="action.php?req=import" method="post"
+        <form class="row form" action="./quanly/import-from-excel/action.php?req=import" method="post"
               enctype="multipart/form-data">
             <div class="col-12">
                 <div class="card card-success">
@@ -68,7 +68,7 @@ $sinhvien__Get_All = $sinhvien->sinhvien__Get_All();
                             <i class="fas fa-minus"></i>
                         </button>
                     </div>
-                    <a href="action.php?req=export" class="btn btn-danger float-right">EXPORT</a>
+                    <a href="./quanly/import-from-excel/action.php?req=export" class="btn btn-danger float-right">Xuất file excel</a>
 
                 </div>
                 <!-- /.card-header -->

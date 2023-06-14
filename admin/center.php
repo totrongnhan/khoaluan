@@ -139,9 +139,9 @@ if (isset($_GET['req'])) {
         case 'suaphieukhaosatgv':
             require './quanly/phieukhaosatgv/suaphieukhaosatgv.php';
             break;
-        case 'taophieu':
-            require './quanly/taophieu/taophieu.php';
-            break;
+//        case 'taophieu':
+//            require './quanly/taophieu/taophieu.php';
+//            break;
         case 'suaphieukhaosat':
             require './quanly/phieukhaosat/suaphieukhaosat.php';
             break;
@@ -150,6 +150,9 @@ if (isset($_GET['req'])) {
             break;
         case 'index':
             require './quanly/import-from-excel/index.php';
+            break;
+        case 'index-tk':
+            require './quanly/import-from-excel/index-tk.php';
             break;
     }
 } else {

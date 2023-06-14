@@ -1,7 +1,5 @@
 <?php
-session_start();
-
-require("../../models/getModel.php");
+require("../models/getModel.php");
 $taikhoan__Get_All = $taikhoan->taikhoan__Get_All();
 ?>
 
@@ -26,7 +24,7 @@ $taikhoan__Get_All = $taikhoan->taikhoan__Get_All();
         </div><!-- /.container-fluid -->
     </section>
     <section class="content">
-        <form class="row form" action="action-tk.php?req=taikhoan" method="post" enctype="multipart/form-data">
+        <form class="row form" action="./quanly/import-from-excel/action-tk.php?req=taikhoan" method="post" enctype="multipart/form-data">
             <div class="col-12">
                 <div class="card card-success">
                     <div class="card-header">
@@ -70,7 +68,7 @@ $taikhoan__Get_All = $taikhoan->taikhoan__Get_All();
                             <i class="fas fa-minus"></i>
                         </button>
                     </div>
-                    <a href="action-tk.php?req=export" class="btn btn-danger float-right">EXPORT</a>
+                    <a href="./quanly/import-from-excel/action-tk.php?req=export" class="btn btn-danger float-right">Xuất file excel</a>
 
                 </div>
                 <!-- /.card-header -->

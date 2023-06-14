@@ -31,6 +31,8 @@
                     <a href="index.php?req=lietketaikhoan" class="w3-bar-item w3-button">Tài khoản</a>
                     <a href="index.php?req=lietkesinhvien" class="w3-bar-item w3-button">Sinh viên</a>
                     <a href="index.php?req=lietkegiangvien" class="w3-bar-item w3-button">Giảng viên</a>
+                    <a href="index.php?req=index" class="w3-bar-item w3-button">Import Sinh viên</a>
+                    <a href="index.php?req=index-tk" class="w3-bar-item w3-button">Import Tài khoản</a>
                     <a href="index.php?req=lietkephannhom" class="w3-bar-item w3-button">Phân nhóm</a>
                     <a href="index.php?req=lietkephanquyen" class="w3-bar-item w3-button">Phân quyền</a>
                 </div>
