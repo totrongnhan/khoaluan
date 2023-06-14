@@ -1,6 +1,6 @@
 <?php
 
-require "model/taikhoan.php";
+require "model/taikhoanCls.php";
 require "model/lophocCls.php";
 require "model/khoahocCls.php";
 require "model/nganhhocCls.php";

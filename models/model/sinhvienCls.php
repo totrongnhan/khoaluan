@@ -66,7 +66,7 @@ class sinhvien extends Database {
     }
 
         
-    public function sinhvien__Get_All_Not_Exits($id_lophoc ,$trang_thai = 1) {
+    public function sinhvien__Get_All_Not_Exits($id_lophoc) {
         $obj = $this->connect->prepare("SELECT * FROM sinhvien WHERE id_lophoc =? AND id_sinhvien NOT IN (SELECT id_nguoidung FROM taikhoan, phannhom WHERE taikhoan.id_phannhom = phannhom.id_phannhom AND phannhom.id_phannhom = ?)");
         $obj->setFetchMode(PDO::FETCH_OBJ);
         $obj->execute(array($id_lophoc, 3));
@@ -75,4 +75,3 @@ class sinhvien extends Database {
 
 }
 ?>
-

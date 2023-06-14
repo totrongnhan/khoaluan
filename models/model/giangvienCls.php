@@ -71,6 +71,12 @@ class giangvien extends Database {
         $obj->execute(array($id_donvi));
         return $obj->fetchAll();
     }
+
+    public function giangvien__Get_All_Not_Exits($id_donvi) {
+        $obj = $this->connect->prepare("SELECT * FROM giangvien, donvi WHERE giangvien.id_donvi = donvi.id_donvi AND donvi.id_donvi =?  AND giangvien.id_giangvien NOT IN (SELECT id_nguoidung FROM taikhoan, phannhom WHERE taikhoan.id_phannhom = phannhom.id_phannhom AND phannhom.id_phannhom = 2)");
+        $obj->setFetchMode(PDO::FETCH_OBJ);
+        $obj->execute(array($id_donvi));
+        return $obj->fetchAll();
+    }
 }
 ?>
-

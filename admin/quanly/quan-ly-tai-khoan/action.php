@@ -1,6 +1,6 @@
 <?php
 
-    require "../../models/getModel.php";
+    require("../../../models/getModel.php");
     $href = $_SERVER["HTTP_REFERER"];
     if(strlen(strpos($href, '&status')) > 0){
         $href = explode('&status', $href)[0];
@@ -38,14 +38,15 @@
             case "add_admin":
                 $status  = 0;
               
-                $id_phan_quyen = $_POST["id_phan_quyen"];
-                $id_phan_nhom = $_POST["id_phan_nhom"];
-                $id_nguoi_dung = 0;
+                $id_phanquyen = $_POST["id_phanquyen"];
+                $id_phannhom = $_POST["id_phannhom"];
+                $id_nguoidung = 0;
+                $tentaikhoan = $_POST["tentaikhoan"];
                 $email = $_POST["email"];
-                $mat_khau = $_POST["mat_khau"];
-                $ghi_chu = date("Y-m-d H:i:s");
+                $matkhau = $_POST["matkhau"];
+                $mota = date('Y-m-d H:i:s');
 
-                $status .= $taikhoan->taikhoan__Add($email, $mat_khau, $ghi_chu, $id_phan_quyen, $id_phan_nhom, $item);
+                $status = $taikhoan->taikhoan_Add($tentaikhoan, $email, $matkhau, $mota, $id_phanquyen, $id_phannhom, $id_nguoidung);
                 if($status !=0 ){
                     header("location: $href&status=success");
                 }else{
@@ -57,18 +58,19 @@
             case "add_sv":
                 $status  = 0;
               
-                $id_phan_quyen = $_POST["id_phan_quyen"];
-                $id_phan_nhom = $_POST["id_phan_nhom"];
-                $id_nguoi_dung = $_POST["id_nguoi_dung"];
+                $id_phanquyen = $_POST["id_phanquyen"];
+                $id_phannhom = $_POST["id_phannhom"];
+                $id_nguoidung = $_POST["id_nguoidung"];
+                $mota = date('Y-m-d H:i:s');
 
-                foreach($id_nguoi_dung as $item){
+                foreach($id_nguoidung as $item){
                     $sinhvien__Get_By_Id = $sinhvien->sinhvien__Get_By_Id($item);
                     
+                    $tentaikhoan = $sinhvien__Get_By_Id->tensinhvien;
                     $email = $sinhvien__Get_By_Id->email;
-                    $mat_khau = locDau($sinhvien__Get_By_Id->ten_sinh_vien).date("@is");
-                    $ghi_chu = date("Y-m-d H:i:s");
+                    $matkhau = locDau($sinhvien__Get_By_Id->tensinhvien).date("@is");
 
-                    $status .= $taikhoan->taikhoan__Add($email, $mat_khau, $ghi_chu, $id_phan_quyen, $id_phan_nhom, $item);
+                    $status = $taikhoan->taikhoan_Add($tentaikhoan, $email, $matkhau, $mota, $id_phanquyen, $id_phannhom, $sinhvien__Get_By_Id->id_sinhvien);
                 }
 
                 if($status !=0 ){
@@ -78,21 +80,22 @@
                 }
                 
                 break;
-            case "add_btdk":
+            case "add_gv":
                 $status  = 0;
               
-                $id_phan_quyen = $_POST["id_phan_quyen"];
-                $id_phan_nhom = $_POST["id_phan_nhom"];
-                $id_nguoi_dung = $_POST["id_nguoi_dung"];
+                $id_phanquyen = $_POST["id_phanquyen"];
+                $id_phannhom = $_POST["id_phannhom"];
+                $id_nguoidung = $_POST["id_nguoidung"];
+                $mota = date('Y-m-d H:i:s');
 
-                foreach($id_nguoi_dung as $item){
-                    $bithudoankhoa__Get_By_Id = $bithudoankhoa->bithudoankhoa__Get_By_Id($item);
+                foreach($id_nguoidung as $item){
+                    $giangvien__Get_By_Id = $giangvien->giangvien__Get_By_Id($item);
                     
-                    $email = $bithudoankhoa__Get_By_Id->email;
-                    $mat_khau = locDau($bithudoankhoa__Get_By_Id->ten_bi_thu).date("@is");
-                    $ghi_chu = date("Y-m-d H:i:s");
+                    $tentaikhoan = $giangvien__Get_By_Id->tengiangvien;
+                    $email = $giangvien__Get_By_Id->email;
+                    $matkhau = locDau($giangvien__Get_By_Id->tengiangvien).date("@is");
 
-                    $status .= $taikhoan->taikhoan__Add($email, $mat_khau, $ghi_chu, $id_phan_quyen, $id_phan_nhom, $item);
+                    $status = $taikhoan->taikhoan_Add($tentaikhoan, $email, $matkhau, $mota, $id_phanquyen, $id_phannhom, $giangvien__Get_By_Id->id_giangvien);
                 }
 
                 if($status !=0 ){
@@ -106,8 +109,8 @@
             
             case "delete":
                 $status = 0;
-                $id_tai_khoan = $_GET["id_tai_khoan"];
-                $status .= $taikhoan->taikhoan__Delete($id_tai_khoan);
+                $id_taikhoan = $_GET["id_taikhoan"];
+                $status .= $taikhoan->taikhoan__Delete($id_taikhoan);
             
                 if($status !=0 ){
                     header("location: $href&status=success");
@@ -119,24 +122,11 @@
               
             case "reset":
                 $status = 0;
-                $id_tai_khoan = $_GET["id_tai_khoan"];
-                $id_sinh_vien = $taikhoan->taikhoan__Get_By_Id($id_tai_khoan)->id_nguoi_dung;
+                $id_taikhoan = $_GET["id_taikhoan"];
+                $id_sinh_vien = $taikhoan->taikhoan__Get_By_Id($id_taikhoan)->id_nguoidung;
                 $sinhvien__Get_By_Id = $sinhvien->sinhvien__Get_By_Id($id_sinh_vien);
-                $mat_khau = locDau($sinhvien__Get_By_Id->ten_sinh_vien).date("@is");
-                $status .= $taikhoan->taikhoan__Reset($id_tai_khoan, $mat_khau);
-            
-                if($status !=0 ){
-                    header("location: $href&status=success");
-                }else{
-                    header("location: $href&status=failed");
-                }
-            break;
-
-            case "active":
-                $status = 0;
-                $id_tai_khoan = $_GET["id_tai_khoan"];
-                $trang_thai = $_GET["trang_thai"] == 1 ? 0 : 1;
-                $status .= $taikhoan->taikhoan__Active($id_tai_khoan, $trang_thai);
+                $matkhau = locDau($sinhvien__Get_By_Id->ten_sinh_vien).date("@is");
+                $status .= $taikhoan->taikhoan__Reset($id_taikhoan, $matkhau);
             
                 if($status !=0 ){
                     header("location: $href&status=success");
