@@ -33,7 +33,7 @@ $phieukhaosat__Get_All = $phieukhaosat->phieukhaosat__Get_All();
                                 <a href="#"><i class="zmdi zmdi-notifications text-danger"></i>
                                 </a>
                             </li>
-                            <li><a href="..index.php">Trang Chủ</a></li>
+                            
                         </ul>
                     </div>
                 </nav>
@@ -41,12 +41,12 @@ $phieukhaosat__Get_All = $phieukhaosat->phieukhaosat__Get_All();
                     <div class="container">
                         <h1>Danh sách phiếu khảo sát</h1>
                         <!-- Button to Open the Modal -->
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+<!--                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
                             Thêm phiếu khảo sát mới
-                        </button>
+                        </button>-->
 
 
-                        <table class="table table-dark table-hover">
+                        <table class="table table-dark table-hover" id="tablejs">
                             <thead>
                                 <tr>
                                     <th>Id phiếu khảo sát</th>

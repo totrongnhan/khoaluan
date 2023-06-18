@@ -18,8 +18,8 @@
 
 
                     for($row = 2; $row<=$highestRow; $row++){
-                        $ma_sinhvien          = $sheetData[$row]['B'];
-                        $tensinhvien      = $sheetData[$row]['C'];
+                        $ma_giangvien          = $sheetData[$row]['B'];
+                        $tengiangvien      = $sheetData[$row]['C'];
                         $gioitinh      = $sheetData[$row]['D'];
                         $ngaysinh  = $sheetData[$row]['E'];
                         $email      = $sheetData[$row]['F'];
@@ -27,15 +27,16 @@
                         $diachilienlac      = $sheetData[$row]['H'];
                         $sdt1      = $sheetData[$row]['I'];
                         $sdt2      = $sheetData[$row]['J'];
-                        $id_lophoc      = $sheetData[$row]['K'];
-                        $status .= $sinhvien->sinhvien_Add($ma_sinhvien, $tensinhvien, $gioitinh, $ngaysinh, $email, $diachithuongtru, $diachilienlac, $sdt1, $sdt2, $id_lophoc);
+                        $id_donvi      = $sheetData[$row]['K'];
+                        $id_trinhdo      = $sheetData[$row]['L'];
+                        $status .= $giangvien->giangvien_Add($ma_giangvien, $tengiangvien, $gioitinh, $ngaysinh, $email, $diachithuongtru, $diachilienlac, $sdt1, $sdt2, $id_donvi, $id_trinhdo);
                     }
                 }
                
                 if($status == 0){
-                    header("location:../index.php?page=import-from-excel&status=fail");
+                    header("location:../../index.php?req=index-gv&status=fail");
                 }else{
-                    header("location:../index.php?page=import-from-excel&status=success");
+                    header("location:../../index.php?req=index-gv&status=success");
                 }
             break;  
             
@@ -43,7 +44,7 @@
                                
                 $status = 0;
                 
-                $sinhvien__Get_All = $sinhvien->sinhvien__Get_All();
+                $giangvien__Get_All = $giangvien->giangvien__Get_All();
 
                 $objPHPExcel = new PHPExcel(); 
                 $objPHPExcel->setActiveSheetIndex(0); 
@@ -61,6 +62,7 @@
                 $objPHPExcel->getActiveSheet()->getStyle('I1')->getFont()->setBold(true);
                 $objPHPExcel->getActiveSheet()->getStyle('J1')->getFont()->setBold(true);
                 $objPHPExcel->getActiveSheet()->getStyle('K1')->getFont()->setBold(true);
+                $objPHPExcel->getActiveSheet()->getStyle('L1')->getFont()->setBold(true);
 
                 $objPHPExcel->getActiveSheet()->SetCellValue('A1', "ID");
                 $objPHPExcel->getActiveSheet()->SetCellValue('B1', "MASV");
@@ -72,11 +74,12 @@
                 $objPHPExcel->getActiveSheet()->SetCellValue('H1', "DIACHILIENLAC");
                 $objPHPExcel->getActiveSheet()->SetCellValue('I1', "SDT1");
                 $objPHPExcel->getActiveSheet()->SetCellValue('J1', "SDT2");
-                $objPHPExcel->getActiveSheet()->SetCellValue('K1', "IDLOPHOC");
-                foreach($sinhvien__Get_All as $item){
-                    $objPHPExcel->getActiveSheet()->SetCellValue('A'.$row_hd, "".$item->id_sinhvien);
-                    $objPHPExcel->getActiveSheet()->SetCellValue('B'.$row_hd, "".$item->ma_sinhvien);
-                    $objPHPExcel->getActiveSheet()->SetCellValue('C'.$row_hd, "".$item->tensinhvien);
+                $objPHPExcel->getActiveSheet()->SetCellValue('K1', "IDDONVI");
+                $objPHPExcel->getActiveSheet()->SetCellValue('L1', "IDTRINHDO");
+                foreach($giangvien__Get_All as $item){
+                    $objPHPExcel->getActiveSheet()->SetCellValue('A'.$row_hd, "".$item->id_giangvien);
+                    $objPHPExcel->getActiveSheet()->SetCellValue('B'.$row_hd, "".$item->ma_giangvien);
+                    $objPHPExcel->getActiveSheet()->SetCellValue('C'.$row_hd, "".$item->tengiangvien);
                     $objPHPExcel->getActiveSheet()->SetCellValue('D'.$row_hd, "".$item->gioitinh);
                     $objPHPExcel->getActiveSheet()->SetCellValue('E'.$row_hd, "".$item->ngaysinh);
                     $objPHPExcel->getActiveSheet()->SetCellValue('F'.$row_hd, "".$item->email);
@@ -84,7 +87,8 @@
                     $objPHPExcel->getActiveSheet()->SetCellValue('H'.$row_hd, "".$item->diachilienlac);
                     $objPHPExcel->getActiveSheet()->SetCellValue('I'.$row_hd, "".$item->sdt1);
                     $objPHPExcel->getActiveSheet()->SetCellValue('J'.$row_hd, "".$item->sdt2);
-                    $objPHPExcel->getActiveSheet()->SetCellValue('K'.$row_hd, "".$item->id_lophoc);
+                    $objPHPExcel->getActiveSheet()->SetCellValue('K'.$row_hd, "".$item->id_donvi);
+                    $objPHPExcel->getActiveSheet()->SetCellValue('L'.$row_hd, "".$item->id_trinhdo);
 
                     $row_hd +=1;
                 }
@@ -109,9 +113,9 @@
                 $status .= unlink($file);
 
                 if($status == 0){
-                    header("location:../index.php?page=import-from-excel&status=fail");
+                    header("location:../../index.php?req=index-gv&status=fail");
                 }else{
-                    header("location:../index.php?page=import-from-excel&status=success");
+                    header("location:../../index.php?req=index-gv&status=success");
                 }
                 break; 
         }

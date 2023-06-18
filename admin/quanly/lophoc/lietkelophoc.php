@@ -35,7 +35,7 @@ $khoahoc__Get_All = $khoahoc->khoahoc__Get_All();
                                 <a href="#"><i class="zmdi zmdi-notifications text-danger"></i>
                                 </a>
                             </li>
-                            <li><a href="..index.php">Trang Chủ</a></li>
+                            
                         </ul>
                     </div>
                 </nav>

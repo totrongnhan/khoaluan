@@ -1,4 +1,6 @@
 <?php
+
+
 //userCls
 $a = "./models/configs/config.php";
 $b = "../models/configs/config.php";
@@ -84,24 +86,13 @@ class taikhoan extends Database {
             return 0;
         }
     }
-    public function taikhoanChangePassword($email, $passwordold, $passwordnew) {
-        $selectMK = $this->connect->prepare("select matkhau from taikhoan where email =?");
-        $selectMK->setFetchMode(PDO::FETCH_OBJ);
-        $selectMK->execute(array($email));
+    public function taikhoanChangePassword($id_taikhoan, $matkhau) {
+        
+                $update = $this->connect->prepare("update taikhoan set matkhau=? where id_taikhoan =?");
 
-        if (count($selectMK->fetch()) == 1) {
-            $temp = $selectMK->fetch();
-            if ($passwordold == $temp->matkhau) {
-                $update = $this->connect->prepare("update taikhoan set matkhau=? where email =?");
-
-                $update->execute(array($passwordnew, $email));
+                $update->execute(array($matkhau, $id_taikhoan));
                 return $update->rowCount();
-            } else {
-                return false;
-            }
-        } else {
-            return false;
-        }
+           
     }
     
 

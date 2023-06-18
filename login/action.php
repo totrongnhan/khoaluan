@@ -14,7 +14,7 @@ require("../models/getModel.php");
                     header("location:../login/index.php?status=fail");
                     return;
                 }else{
-                    if($status->id_phanquyen  == 0){
+                    if($status->id_phanquyen  == 1){
                     $_SESSION['admin'] = $status;
                     header("location:../admin");
                 }
@@ -38,7 +38,7 @@ require("../models/getModel.php");
                 case 'change':
                 $id_taikhoan = $_POST['id_taikhoan'];
                 $matkhau = $_POST['matkhau'];
-                $status = $taikhoan->taikhoanChangePassword($email, $passwordold, $passwordnew);
+                $status = $taikhoan->taikhoanChangePassword($id_taikhoan, $matkhau);
                 if($status != "0" ){
                     header('location: ../../index.php?req=lietkehocky&status=success=success');
                 }else{

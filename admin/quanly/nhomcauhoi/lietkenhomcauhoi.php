@@ -34,7 +34,7 @@ $tenkhaosat__Get_All = $tenkhaosat->tenkhaosat__Get_All();
                                 <a href="#"><i class="zmdi zmdi-notifications text-danger"></i>
                                 </a>
                             </li>
-                            <li><a href="..index.php">Trang Chủ</a></li>
+                            
                         </ul>
                     </div>
                 </nav>
@@ -114,8 +114,8 @@ $tenkhaosat__Get_All = $tenkhaosat->tenkhaosat__Get_All();
                                     <div class="form-group">
                                         <label for="id_tenkhaosat">ID tên khảo sát</label>
                                         <select class="form-control" name="id_tenkhaosat" id="id_tenkhaosat">
-                                            <?php foreach ($nhomcauhoi__Get_All as $item): ?>
-                                                <option value="<?= $item->id_tenkhaosat ?>"><?= $item->id_tenkhaosat ?></option>
+                                            <?php foreach ($tenkhaosat__Get_All as $item): ?>
+                                                <option value="<?= $item->id_tenkhaosat ?>"><?= $item->tenkhaosat0 ?></option>
                                             <?php endforeach ?>
                                         </select>
                                     </div>

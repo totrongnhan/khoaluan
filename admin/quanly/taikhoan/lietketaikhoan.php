@@ -42,7 +42,7 @@ $taikhoan__Get_checkgv = $taikhoan->taikhoan__Get_checkgv();
                             <a href="#"><i class="zmdi zmdi-notifications text-danger"></i>
                             </a>
                         </li>
-                        <li><a href="../index.php">Trang Chủ</a></li>
+                        
                     </ul>
                 </div>
             </nav>

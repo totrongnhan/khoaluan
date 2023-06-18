@@ -26,6 +26,7 @@ if (isset($_GET["req"])) {
             $id_nganhhoc = $_POST['id_nganhhoc'];
             $id_khoahoc = $_POST['id_khoahoc'];
             $status = $lophoc->lophoc__Update($id_lophoc, $tenlophoc, $mota, $id_nganhhoc, $id_khoahoc);
+            
             if ($status) {
                 header('Location: ../../index.php?req=lietkelophoc&status=success');
             } else {

@@ -1,9 +1,8 @@
 <?php
-    session_start();
-    if(!isset($_SESSION['admin'])){
-        header('location: ../login/index.php');
-    }
-    
+session_start();
+if (!isset($_SESSION['admin'])) {
+    header('location: ../login/index.php');
+}
 ?>
 
 
@@ -59,6 +58,7 @@
 
 
 
+
     <!-- Js Files -->
     <script src="../assets/vendor/jquery/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
@@ -108,28 +108,47 @@
             }
         })
     }
+
+    window.addEventListener("load", function() {
+
+        $('#tablejs').DataTable({
+            responsive: true,
+            dom: 'Blfrtip',
+            buttons: [{
+                    extend: 'excel',
+                    exportOptions: {
+                        columns: ':visible'
+                    }
+                },
+                'colvis'
+            ],
+            columnDefs: [{
+                //                                                            targets: -1,
+                visible: false
+            }]
+        }).buttons().container().appendTo('#tablejs_wrapper .col-md-12:eq(1)');
+    });
     </script>
     <?php
-       if(isset($_GET['status'])){
-           if($_GET['status'] == "success"){
-               echo "<script>
+    if (isset($_GET['status'])) {
+        if ($_GET['status'] == "success") {
+            echo "<script>
                Swal.fire(
                    'Thành công!',
                    'Thao tác thành công!',
                    'success'
                  )</script>";
-           }
-           if($_GET['status'] == "failed"){
-               echo "<script>
+        }
+        if ($_GET['status'] == "failed") {
+            echo "<script>
                Swal.fire(
                    'Thất bại!',
                    'Thao tác không thành công!',
                    'error'
                  )</script>";
-           }
-         
-       }
-?>
+        }
+    }
+    ?>
 </body>
 
 </html>

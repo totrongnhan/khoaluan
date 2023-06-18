@@ -23,6 +23,34 @@ $lophoc__Get_All = $lophoc->lophoc__Get_All();
         <!-- Latest compiled JavaScript -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
     </head>
+     <!-- Js Files -->
+    <script src="../assets/vendor/jquery/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+    </script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+
+    <script src="../assets/theme/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="../assets/theme/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+    <script src="../assets/theme/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="../assets/theme/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+    <script src="../assets/theme/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="../assets/theme/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+    <script src="../assets/theme/plugins/jszip/jszip.min.js"></script>
+    <script src="../assets/theme/plugins/pdfmake/pdfmake.min.js"></script>
+    <script src="../assets/theme/plugins/pdfmake/vfs_fonts.js"></script>
+    <script src="../assets/theme/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+    <script src="../assets/theme/plugins/datatables-buttons/js/buttons.print.min.js"></script>
+    <script src="../assets/theme/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+
+    <script src="../assets/vendor/sweetalert2@11.js"></script>
+    <!-- Bootstrap4 Duallistbox -->
+    <script src="../assets/theme/plugins/bootstrap4-duallistbox/jquery.bootstrap-duallistbox.min.js"></script>
     <body>
 
 
@@ -35,7 +63,7 @@ $lophoc__Get_All = $lophoc->lophoc__Get_All();
                             <a href="#"><i class="zmdi zmdi-notifications text-danger"></i>
                             </a>
                         </li>
-                        <li><a href="../index.php">Trang Chủ</a></li>
+                        
                     </ul>
                 </div>
             </nav>

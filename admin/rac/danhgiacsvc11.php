@@ -118,6 +118,12 @@ $item_1 = $phieukhaosatgv->phieukhaosatgv__Get_By_Id($id);
         }
 
         $status = $phieukhaosatgv->phieukhaosatgv__Update_KQ($id_phieu, $kq);
+        if ($status) {
+            echo"<script>location.href='danhgia.php?status=success'</script>";
+            } else {
+    
+                echo"<script>location.href='danhgia.php?status=fail'</script>";
+            }
     }
     ?>
 

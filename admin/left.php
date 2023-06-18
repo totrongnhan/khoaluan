@@ -8,7 +8,7 @@
     <body>
 
         <div class="w3-sidebar w3-bar-block w3-light-grey w3-card" style="width:160px;">
-            <a href="#" class="w3-bar-item w3-button">Trang chủ</a>
+            <a href="index.php?req=trangchu" class="w3-bar-item w3-button">Trang chủ</a>
             <button class="w3-button w3-block w3-left-align" onclick="myAccFunc()">
                 Quản lý phiếu <i class="fa fa-caret-down"></i>
             </button>
@@ -30,11 +30,12 @@
                 </button>
                 <div id="demoDrop" class="w3-dropdown-content w3-bar-block w3-white w3-card">
                     <a href="index.php?req=quan-ly-tai-khoan" class="w3-bar-item w3-button">Tài khoản</a>
-                    <a href="index.php?req=lietketaikhoan" class="w3-bar-item w3-button">Tài khoản</a>
+                    <!--                    <a href="index.php?req=lietketaikhoan" class="w3-bar-item w3-button">Tài khoản</a>-->
                     <a href="index.php?req=lietkesinhvien" class="w3-bar-item w3-button">Sinh viên</a>
                     <a href="index.php?req=lietkegiangvien" class="w3-bar-item w3-button">Giảng viên</a>
                     <a href="index.php?req=index" class="w3-bar-item w3-button">Import Sinh viên</a>
-                    <a href="index.php?req=index-tk" class="w3-bar-item w3-button">Import Tài khoản</a>
+                    <a href="index.php?req=index-gv" class="w3-bar-item w3-button">Import Giảng viên</a>
+                    <!--                    <a href="index.php?req=index-tk" class="w3-bar-item w3-button">Import Tài khoản</a>-->
                     <a href="index.php?req=lietkephannhom" class="w3-bar-item w3-button">Phân nhóm</a>
                     <a href="index.php?req=lietkephanquyen" class="w3-bar-item w3-button">Phân quyền</a>
                 </div>
@@ -54,6 +55,7 @@
                     <a href="index.php?req=lietkehocky" class="w3-bar-item w3-button">Học kỳ</a>
                 </div>
             </div>
+            <a href="../login/index.php" class="w3-bar-item w3-button">Đăng xuất</a>
 
         </div>
 

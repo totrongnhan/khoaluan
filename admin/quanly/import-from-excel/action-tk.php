@@ -32,9 +32,9 @@ if (isset($_GET['req'])) {
             }
 
             if ($status == 0) {
-                header("location:../index-tk.php?page=import-from-excel&status=fail");
+                header("location:../../index.php?req=index-tk&status=fail");
             } else {
-                header("location:../index-tk.php?page=import-from-excel&status=success");
+                header("location:../../index.php?req=index-tk&status=success");
             }
             break;
 
@@ -68,14 +68,14 @@ if (isset($_GET['req'])) {
             $objPHPExcel->getActiveSheet()->SetCellValue('H1', "ID_NGUOIDUNG");
 
             foreach ($taikhoan__Get_All as $item) {
-                $objPHPExcel->getActiveSheet()->SetCellValue('A'.$row_hd, "". $item->id_taikhoan);
-                $objPHPExcel->getActiveSheet()->SetCellValue('B'.$row_hd, "". $item->tentaikhoan);
-                $objPHPExcel->getActiveSheet()->SetCellValue('C'.$row_hd, "". $item->email);
-                $objPHPExcel->getActiveSheet()->SetCellValue('D'.$row_hd, "". $item->matkhau);
-                $objPHPExcel->getActiveSheet()->SetCellValue('E'.$row_hd, "". $item->mota);
-                $objPHPExcel->getActiveSheet()->SetCellValue('F'.$row_hd, "". $item->id_phanquyen);
-                $objPHPExcel->getActiveSheet()->SetCellValue('G'.$row_hd, "". $item->id_phannhom);
-                $objPHPExcel->getActiveSheet()->SetCellValue('H'.$row_hd, "". $item->id_nguoidung);
+                $objPHPExcel->getActiveSheet()->SetCellValue('A' . $row_hd, "" . $item->id_taikhoan);
+                $objPHPExcel->getActiveSheet()->SetCellValue('B' . $row_hd, "" . $item->tentaikhoan);
+                $objPHPExcel->getActiveSheet()->SetCellValue('C' . $row_hd, "" . $item->email);
+                $objPHPExcel->getActiveSheet()->SetCellValue('D' . $row_hd, "" . $item->matkhau);
+                $objPHPExcel->getActiveSheet()->SetCellValue('E' . $row_hd, "" . $item->mota);
+                $objPHPExcel->getActiveSheet()->SetCellValue('F' . $row_hd, "" . $item->id_phanquyen);
+                $objPHPExcel->getActiveSheet()->SetCellValue('G' . $row_hd, "" . $item->id_phannhom);
+                $objPHPExcel->getActiveSheet()->SetCellValue('H' . $row_hd, "" . $item->id_nguoidung);
 
                 $row_hd += 1;
             }
@@ -100,9 +100,9 @@ if (isset($_GET['req'])) {
             $status .= unlink($file);
 
             if ($status == 0) {
-                header("location:../index-tk.php?page=import-from-excel&status=fail");
+                header("location:../../index.php?req=index-tk&status=fail");
             } else {
-                header("location:../index-tk.php?page=import-from-excel&status=success");
+                header("location:../../index.php?req=index-tk&status=success");
             }
             break;
     }

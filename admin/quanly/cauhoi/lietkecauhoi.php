@@ -34,7 +34,7 @@ $nhomcauhoi__Get_All = $nhomcauhoi->nhomcauhoi__Get_All();
                                 <a href="#"><i class="zmdi zmdi-notifications text-danger"></i>
                                 </a>
                             </li>
-                            <li><a href="..index.php">Trang Chủ</a></li>
+                            
                         </ul>
                     </div>
                 </nav>
@@ -47,7 +47,7 @@ $nhomcauhoi__Get_All = $nhomcauhoi->nhomcauhoi__Get_All();
                         </button>
 
 
-                        <table class="table table-dark table-hover">
+                        <table class="table table-dark table-hover" >
                             <thead>
                                 <tr>
                                     <th>Id câu hỏi</th>

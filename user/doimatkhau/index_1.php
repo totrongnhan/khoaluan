@@ -1,52 +1,59 @@
-
-<!-- Content Wrapper. Contains page content -->
-<div class="ml-0 mr-3 content-wrapper">
-    <!-- Content Header (Page header) -->
-    <section class="content-header">
-        <div class="container-fluid">
-            <div class="row mb-2">
-                <div class="col-sm-6">
-                </div>
-                <div class="col-sm-6">
-                    <ol class="breadcrumb float-sm-right">
-                    </ol>
-                </div>
-            </div>
-        </div><!-- /.container-fluid -->
-    </section>
-    <section class="content">
-        <form class="row form" action="../login/action.php?req=change" method="post" enctype="multipart/form-data">
-
-            <input type="hidden" name="id_taikhoan" value="<?=$_SESSION['user']->id_taikhoan?>">
-            <div class="col-12">
-                <div class="card card-secondary">
-                    <div class="card-header">
-                        <h3 class="card-title"><i class="fas fa-lock"></i> Đổi mật khẩu
-                        </h3>
-                        <div class="card-tools">
-
-                        </div>
-                    </div>
-                    
-                    <div class="card-body">
-                        <div class="form-group">
-                            <label for="">Email</label>
-                            <input type="text" readonly class="form-control" id="staticEmail2"
-                                value="<?=$_SESSION['user']->email?>">
-                        </div>
-                        <div class="form-group">
-                            <label for="">Mật khẩu</label>
-                            <input type="password" class="form-control" id="inputPassword2" placeholder="Mật khẩu mới"
-                                name="matkhau" required>
-                        </div>
-                    </div>
-                    <!-- /.card-body -->
-                    <div class="card-footer">
-                        <input type="submit" value="Cập nhật" class="btn btn-secondary float-right">
-                    </div>
-                </div>
-                <!-- /.card -->
-            </div>
-        </form>
-    </section>
+<?php
+    require './form/mod/taikhoanCls.php';
+    $id_taikhoan = $_GET['id_taikhoan'];
+    $taikhoan = new taikhoan();
+    $list_taikhoan = $taikhoan->TaikhoanGetbyId($id_taikhoan);
+  ?>
+<div class="container mt-3">
+  <h2>Đổi mật khẩu tại đây!!!</h2>
+  <form action="" method="POST">
+    <input type="hidden" class="form-control" placeholder="" name="id_taikhoan" value="<?=$list_taikhoan->id_taikhoan?>">
+    <div class="mb-3">
+      <label class="form-label">Tên tài khoản:</label>
+      <input type="text" class="form-control" placeholder="" name="ten_taikhoan">
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Mật khẩu cũ</label>
+      <input type="password" required class="form-control" placeholder="" name="password_cu">
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Mật khẩu mới</label>
+      <input type="password" required class="form-control" placeholder="" name="password_moi">
+    </div>
+    <button type="submit" name="doimatkhau" class="btn btn-primary">Đổi mật khẩu</button>
+  </form>
 </div>
+<script src="../assets/vendor/sweetalert2@11.js"></script>
+<?php
+    require 'form/mod/config.php';
+	if(isset($_POST['doimatkhau'])){
+    
+		$id_taikhoan = $_POST['id_taikhoan'];
+    $ten_taikhoan = $_POST['ten_taikhoan'];
+		$matkhau_cu = $_POST['password_cu'];
+		$matkhau_moi = $_POST['password_moi'];
+		$sql = "SELECT * FROM taikhoan WHERE ten_taikhoan='$ten_taikhoan' AND matkhau='$matkhau_cu' LIMIT 1";
+		$row = mysqli_query($mysqli,$sql);
+		$count = mysqli_num_rows($row);
+		if($count>0){
+			$sql_update = mysqli_query($mysqli,"UPDATE taikhoan SET matkhau='$matkhau_moi' WHERE id_taikhoan='$id_taikhoan'");
+			echo "<script>
+      Swal.fire({
+          title: 'Đổi mật khẩu thành công!',
+          text: 'Hãy trở lại Trang Chủ để thao tác',
+          icon: 'success',
+          confirmButtonColor: '#3085d6',
+          });
+      </script>";
+		}else{
+			echo "<script>
+            Swal.fire({
+                title: 'Vui lòng nhập lại',
+                text: 'Tài khoản hoặc mật khẩu không đúng!',
+                icon: 'warning',
+                confirmButtonColor: '#3085d6',
+                });
+            </script>";
+		}
+	} 
+?>

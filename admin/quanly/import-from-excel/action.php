@@ -33,9 +33,9 @@
                 }
                
                 if($status == 0){
-                    header("location:../index.php?page=import-from-excel&status=fail");
+                    header("location:../../index.php?req=index&status=fail");
                 }else{
-                    header("location:../index.php?page=import-from-excel&status=success");
+                    header("location:../../index.php?req=index&status=success");
                 }
             break;  
             
@@ -109,9 +109,9 @@
                 $status .= unlink($file);
 
                 if($status == 0){
-                    header("location:../index.php?page=import-from-excel&status=fail");
+                    header("location:../../index.php?req=index&status=fail");
                 }else{
-                    header("location:../index.php?page=import-from-excel&status=success");
+                    header("location:../../index.php?req=index&status=success");
                 }
                 break; 
         }

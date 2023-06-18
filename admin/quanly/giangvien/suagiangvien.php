@@ -10,7 +10,7 @@ $giangvien__Get_By_Id = $giangvien->giangvien__Get_By_Id($id_giangvien);
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Thêm sinh viên</title>
+        <title>Sửa giảng viên</title>
         <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
 
@@ -25,7 +25,7 @@ $giangvien__Get_By_Id = $giangvien->giangvien__Get_By_Id($id_giangvien);
     </head>
     <body>
         <div class="container">
-            <h1>Sửa thông tin sinh viên</h1>
+            <h1>Sửa thông tin giảng viên</h1>
             <form action="./quanly/giangvien/giangvienAct.php?req=update" method="post">
                 <input type="hidden" name="id_giangvien" value="<?php echo $id_giangvien; ?>" id="">
                 <div class="form-group">

@@ -182,7 +182,7 @@
                 <?php if($id_phannhom == 2):?>
                 <div class="card-body">
                     <div class="form-group">
-                        <label for="">Chọn khoa <span class="color-crimson">(*)</span></label>
+                        <label for="">Chọn đơn vị <span class="color-crimson">(*)</span></label>
                         <select class="form-control" name="id_donvi" required onchange="location.href=this.value">
                             <?php if(isset($_GET['id_donvi'])):?>
                             <?php $id_donvi = $_GET['id_donvi'];?>
@@ -198,7 +198,7 @@
                             <?php endif?>
                             <?php endforeach; ?>
                             <?php else:?>
-                            <option value="">Chọn Khoa</option>
+                            <option value="">Chọn đơn vị</option>
                             <?php foreach ($donvi__Get_All as $item):?>
                             <option
                                 value="?req=quan-ly-tai-khoan&id_phannhom=<?=$id_phannhom?>&id_donvi=<?=$item->id_donvi?>">
@@ -360,7 +360,7 @@
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
-                    <table id="tablejs" class="table table-bordered table-striped display responsive nowrap"
+                    <table id="tablejs" class="table table-dark table-hover""
                         width="100%">
                         <thead>
                             <tr>
@@ -411,21 +411,21 @@
 
     <script>
     window.addEventListener("load", function() {
-        $("#tablejs").DataTable({
-            "responsive": true,
-            "autoWidth": false,
-            "buttons": [{
-                    extend: 'excel',
-                    exportOptions: {
-                        columns: ':visible'
-                    }
-                },
-                'colvis'
-            ],
-            columnDefs: [{
-                visible: false
-            }]
-        }).buttons().container().appendTo('#tablejs_wrapper .col-md-6:eq(0)');
+//        $("#tablejs").DataTable({
+//            "responsive": true,
+//            "autoWidth": false,
+//            "buttons": [{
+//                    extend: 'excel',
+//                    exportOptions: {
+//                        columns: ':visible'
+//                    }
+//                },
+//                'colvis'
+//            ],
+//            columnDefs: [{
+//                visible: false
+//            }]
+//        }).buttons().container().appendTo('#tablejs_wrapper .col-md-6:eq(0)');
     });
 
     function update_obj(id_taikhoan) {

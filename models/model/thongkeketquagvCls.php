@@ -34,9 +34,9 @@ class thongkeketquagv extends Database {
         return $obj->fetchAll();
     }
 
-    public function thongkeketquagv_Add($id_dot, $id_phieu, $id_donvi, $id_giangvien, $ma_giangvien, $tengiangvien, $kohl, $ithl, $khahl, $hl, $rathl, $per_kohl, $per_ithl, $per_khahl, $per_hl, $per_rathl) {
-        $obj = $this->connect->prepare("INSERT INTO thongkeketquagv(id_dot, id_phieu, id_donvi, id_giangvien, ma_giangvien, tengiangvien, kohl, ithl, khahl, hl, rathl, per_kohl, per_ithl, per_khahl, per_hl, per_rathl) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
-        $obj->execute(array($id_dot, $id_phieu, $id_donvi, $id_giangvien, $ma_giangvien, $tengiangvien, $kohl, $ithl, $khahl, $hl, $rathl, $per_kohl, $per_ithl, $per_khahl, $per_hl, $per_rathl));
+    public function thongkeketquagv_Add($id_tenkhaosat, $id_dot, $id_phieu, $id_donvi, $id_giangvien, $ma_giangvien, $tengiangvien, $kohl, $ithl, $khahl, $hl, $rathl, $per_kohl, $per_ithl, $per_khahl, $per_hl, $per_rathl) {
+        $obj = $this->connect->prepare("INSERT INTO thongkeketquagv(id_tenkhaosat, id_dot, id_phieu, id_donvi, id_giangvien, ma_giangvien, tengiangvien, kohl, ithl, khahl, hl, rathl, per_kohl, per_ithl, per_khahl, per_hl, per_rathl) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+        $obj->execute(array($id_tenkhaosat, $id_dot, $id_phieu, $id_donvi, $id_giangvien, $ma_giangvien, $tengiangvien, $kohl, $ithl, $khahl, $hl, $rathl, $per_kohl, $per_ithl, $per_khahl, $per_hl, $per_rathl));
         return $obj->rowCount();
     }
 
@@ -46,10 +46,10 @@ class thongkeketquagv extends Database {
         $obj->execute(array($id));
         return $obj->fetch();
     }
-    public function thongkeketquagv__Get_By_Id_Lop_Hoc_And_Id_Dot($id_donvi, $id_dot) {
-        $obj = $this->connect->prepare("SELECT * FROM thongkeketquagv WHERE id_donvi=? AND id_dot = ?");
+    public function thongkeketquagv__Get_By_Id_Lop_Hoc_And_Id_Dot($id_donvi, $id_dot, $_tenkhaosat) {
+        $obj = $this->connect->prepare("SELECT * FROM thongkeketquagv WHERE id_donvi=? AND id_dot = ? AND id_tenkhaosat=?");
         $obj->setFetchMode(PDO::FETCH_OBJ);
-        $obj->execute(array($id_donvi, $id_dot));
+        $obj->execute(array($id_donvi, $id_dot, $_tenkhaosat));
         return $obj->fetchAll();
     }
 
@@ -64,6 +64,12 @@ class thongkeketquagv extends Database {
         $obj->setFetchMode(PDO::FETCH_OBJ);
         $obj->execute(array($id_dot, $id_donvi));
         return $obj->fetch();
+    }
+    public function thongkeketquagv__Get_By_Id_Tenkhaosat($id_tenkhaosat) {
+        $obj = $this->connect->prepare("SELECT * FROM thongkeketquagv WHERE id_tenkhaosat = ?");
+        $obj->setFetchMode(PDO::FETCH_OBJ);
+        $obj->execute(array($id_tenkhaosat));
+        return $obj->fetchAll();
     }
     public function thongkeketquagv__Get_By_Id_dot($id_dot) {
         $obj = $this->connect->prepare("SELECT * FROM thongkeketquagv WHERE id_dot = ?");
@@ -82,6 +88,47 @@ class thongkeketquagv extends Database {
         $obj = $this->connect->prepare("DELETE FROM thongkeketquagv WHERE id = ?");
         $obj->execute(array($id));
         return $obj->rowCount();
+        
+    }
+    public function thongkeketquagv__Delete_All($id_tenkhaosat) {
+        $obj = $this->connect->prepare("DELETE FROM thongkeketquagv WHERE id_tenkhaosat = ?");
+        $obj->execute(array($id_tenkhaosat));
+        return $obj->rowCount();
+    }
+    public function thongkeketquagv__All_muc1($id_dot) {
+        $obj = $this->connect->prepare("SELECT SUM(kohl) as `sum_so_luong`FROM thongkeketquagv WHERE id_dot = ? AND kohl != 0");
+        $obj->setFetchMode(PDO::FETCH_OBJ);
+        $obj->execute(array($id_dot));
+        return $obj->fetch();
+    }
+
+    public function thongkeketquagv__All_muc2($id_dot) {
+        $obj = $this->connect->prepare("SELECT SUM(ithl) as `sum_so_luong` FROM thongkeketquagv WHERE id_dot = ? AND ithl != 0");
+        $obj->setFetchMode(PDO::FETCH_OBJ);
+        $obj->execute(array($id_dot));
+        return $obj->fetch();
+    }
+
+    public function thongkeketquagv__All_muc3($id_dot) {
+        $obj = $this->connect->prepare("SELECT SUM(khahl)as `sum_so_luong` FROM thongkeketquagv WHERE id_dot = ? AND khahl != 0");
+        $obj->setFetchMode(PDO::FETCH_OBJ);
+        $obj->execute(array($id_dot));
+        return $obj->fetch();
+    }
+
+    public function thongkeketquagv__All_muc4($id_dot) {
+        $obj = $this->connect->prepare("SELECT SUM(hl)as `sum_so_luong` FROM thongkeketquagv WHERE id_dot = ? AND hl != 0");
+        $obj->setFetchMode(PDO::FETCH_OBJ);
+        $obj->execute(array($id_dot));
+        return $obj->fetch();
+    }
+
+    public function thongkeketquagv__All_muc5($id_dot) {
+        $obj = $this->connect->prepare("SELECT SUM(rathl) as `sum_so_luong` FROM thongkeketquagv WHERE id_dot = ? AND rathl != 0");
+
+        $obj->setFetchMode(PDO::FETCH_OBJ);
+        $obj->execute(array($id_dot));
+        return $obj->fetch();
     }
 
 }

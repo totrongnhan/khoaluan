@@ -159,7 +159,14 @@ if (isset($_GET['req'])) {
         case 'index-tk':
             require './quanly/import-from-excel/index-tk.php';
             break;
+        case 'index-gv':
+            require './quanly/import-from-excel/index-gv.php';
+            break;
+        case 'trangchu':
+            require './quanly/trangchu.php';
+            break;
     }
 } else {
+    echo"<script>location.href='index.php?req=trangchu'</script>";
     
 }
