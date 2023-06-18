@@ -2,13 +2,13 @@
 session_start();
 
 require("../models/getModel.php");
-$id_sinhvien = $_SESSION['user']->id_sinhvien;
+$id_giangvien = $_SESSION['user']->id_giangvien;
 $id_dot =$dotkhaosat->dotkhaosat__Get_Last()->id_dot;
-$tenkhaosat__Get_By_Id_sinhvien = $tenkhaosat->tenkhaosat__Get_By_Id_sinhvien($id_sinhvien,$id_dot);
+$tenkhaosat__Get_By_Id_giangvien = $tenkhaosat->tenkhaosat__Get_By_Id_giangvien($id_giangvien,$id_dot);
 
 $id = $_GET['id'];
 
-$item_1 = $phieukhaosat->phieukhaosat__Get_By_Id($id);
+$item_1 = $phieukhaosatgv->phieukhaosatgv__Get_By_Id($id);
 ?>
 
 <!DOCTYPE html>
@@ -16,7 +16,7 @@ $item_1 = $phieukhaosat->phieukhaosat__Get_By_Id($id);
 
     <head>
 
-        <title>Khảo sát đánh giá cho sv</title>
+        <title>Khảo sát đánh giá cho gv</title>
         <meta charset="utf-8">
         <script type="text/javascript" src="../assets/vendor/jquery/jquery.min.js"></script>
         <style type="text/css">
@@ -66,7 +66,7 @@ $item_1 = $phieukhaosat->phieukhaosat__Get_By_Id($id);
         </style>
     </head>
     <?php
-        include('../include/header_1.php');
+        include('../include/header_2.php');
         ?>
     <center>
 <!--        <div class="dnn_banner bannerg">            
@@ -82,7 +82,7 @@ $item_1 = $phieukhaosat->phieukhaosat__Get_By_Id($id);
                         <a style="font-size: 25px;
                            text-align: right;
                            color: red;
-                           margin-top: 50px; " class="dropdown-item">Xin chào:<?= isset($_SESSION['user']) ? $_SESSION['user']->tensinhvien : "chuadapnhap"; ?>
+                           margin-top: 50px; " class="dropdown-item">Xin chào:<?= isset($_SESSION['user']) ? $_SESSION['user']->tengiangvien : "chuadapnhap"; ?>
                         </a>
                                                 <a class="dropdown-item" href="../login/index.php">Đăng xuất</a>
 
@@ -117,7 +117,7 @@ $item_1 = $phieukhaosat->phieukhaosat__Get_By_Id($id);
             $kq .= $subArray . "|";
         }
 
-        $status = $phieukhaosat->phieukhaosat__Update_KQ($id_phieu, $kq);
+        $status = $phieukhaosatgv->phieukhaosatgv__Update_KQ($id_phieu, $kq);
     }
     ?>
 
@@ -175,26 +175,26 @@ $item_1 = $phieukhaosat->phieukhaosat__Get_By_Id($id);
                             </h4>
                             <?php foreach ($cauhoi->cauhoi__Get_By_Id_nhom($item_2->id_nhomcauhoi) as $item_3): ?>
                                 <?php
-                                $phieukhaosat__Get_By_Id = $phieukhaosat->phieukhaosat__Get_By_Id($id);
-                                $phieukhaosat__Get_By_Id_chuoi = $phieukhaosat->phieukhaosat__Get_By_Id_chuoi(isset($phieukhaosat__Get_By_Id->ketqua) ? $phieukhaosat__Get_By_Id->ketqua : "|");
+                                $phieukhaosatgv__Get_By_Id = $phieukhaosatgv->phieukhaosatgv__Get_By_Id($id);
+                                $phieukhaosatgv__Get_By_Id_chuoi = $phieukhaosatgv->phieukhaosatgv__Get_By_Id_chuoi(isset($phieukhaosatgv__Get_By_Id->ketqua) ? $phieukhaosatgv__Get_By_Id->ketqua : "|");
                                 ?>
 
                                 <?php if ($item_3->is_text == 1): ?>
                                     <p class="text-left border-custom box-2-set">
-                                        <input type="text" name="ketqua[<?= $item_3->id_cauhoi ?>][]" id="" value="<?= isset($phieukhaosat__Get_By_Id_chuoi[$i]) ? $phieukhaosat__Get_By_Id_chuoi[$i] : "" ?>" class="form-control">
+                                        <input type="text" name="ketqua[<?= $item_3->id_cauhoi ?>][]" id="" value="<?= isset($phieukhaosatgv__Get_By_Id_chuoi[$i]) ? $phieukhaosatgv__Get_By_Id_chuoi[$i] : "" ?>" class="form-control">
                                     </p>
                                 <?php else: ?>
 
                                     <p class="text-left border-custom box-2-set" style="text-align: center;">
-                                        <input type="radio" name="ketqua[<?= $item_3->id_cauhoi ?>][]" id="" value="1" <?= isset($phieukhaosat__Get_By_Id_chuoi[$i]) ? ($phieukhaosat__Get_By_Id_chuoi[$i] == 1 ? "checked" : "") : "" ?> class="form-control" required>
+                                        <input type="radio" name="ketqua[<?= $item_3->id_cauhoi ?>][]" id="" value="1" <?= isset($phieukhaosatgv__Get_By_Id_chuoi[$i]) ? ($phieukhaosatgv__Get_By_Id_chuoi[$i] == 1 ? "checked" : "") : "" ?> class="form-control" required>
                                         <label for="<?php echo $item_3->id_cauhoi ?>"></label>
-                                        <input type="radio" name="ketqua[<?= $item_3->id_cauhoi ?>][]" id="" value="2" <?= isset($phieukhaosat__Get_By_Id_chuoi[$i]) ? ($phieukhaosat__Get_By_Id_chuoi[$i] == 2 ? "checked" : "") : "" ?> class="form-control" required>
+                                        <input type="radio" name="ketqua[<?= $item_3->id_cauhoi ?>][]" id="" value="2" <?= isset($phieukhaosatgv__Get_By_Id_chuoi[$i]) ? ($phieukhaosatgv__Get_By_Id_chuoi[$i] == 2 ? "checked" : "") : "" ?> class="form-control" required>
                                         <label for="<?php echo $item_3->id_cauhoi ?>"></label>
-                                        <input type="radio" name="ketqua[<?= $item_3->id_cauhoi ?>][]" id="" value="3" <?= isset($phieukhaosat__Get_By_Id_chuoi[$i]) ? ($phieukhaosat__Get_By_Id_chuoi[$i] == 3 ? "checked" : "") : "" ?> class="form-control" required>
+                                        <input type="radio" name="ketqua[<?= $item_3->id_cauhoi ?>][]" id="" value="3" <?= isset($phieukhaosatgv__Get_By_Id_chuoi[$i]) ? ($phieukhaosatgv__Get_By_Id_chuoi[$i] == 3 ? "checked" : "") : "" ?> class="form-control" required>
                                         <label for="<?php echo $item_3->id_cauhoi ?>"></label>
-                                        <input type="radio" name="ketqua[<?= $item_3->id_cauhoi ?>][]" id="" value="4" <?= isset($phieukhaosat__Get_By_Id_chuoi[$i]) ? ($phieukhaosat__Get_By_Id_chuoi[$i] == 4 ? "checked" : "") : "" ?> class="form-control" required>
+                                        <input type="radio" name="ketqua[<?= $item_3->id_cauhoi ?>][]" id="" value="4" <?= isset($phieukhaosatgv__Get_By_Id_chuoi[$i]) ? ($phieukhaosatgv__Get_By_Id_chuoi[$i] == 4 ? "checked" : "") : "" ?> class="form-control" required>
                                         <label for="<?php echo $item_3->id_cauhoi ?>"></label>
-                                        <input type="radio" name="ketqua[<?= $item_3->id_cauhoi ?>][]" id="" value="5" <?= isset($phieukhaosat__Get_By_Id_chuoi[$i]) ? ($phieukhaosat__Get_By_Id_chuoi[$i] == 5 ? "checked" : "") : "" ?> class="form-control" required>
+                                        <input type="radio" name="ketqua[<?= $item_3->id_cauhoi ?>][]" id="" value="5" <?= isset($phieukhaosatgv__Get_By_Id_chuoi[$i]) ? ($phieukhaosatgv__Get_By_Id_chuoi[$i] == 5 ? "checked" : "") : "" ?> class="form-control" required>
                                         <label for="<?php echo $item_3->id_cauhoi ?>"></label>
                                     </p>
                                 <?php endif ?>
